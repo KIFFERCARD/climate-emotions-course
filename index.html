@@ -53,7 +53,8 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
   cursor: pointer; transition: all 0.2s; font-size: 13.5px; position: relative;
   color: rgba(255,255,255,0.7);
 }
-.nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-item:hover:not(.locked) { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-item.locked { opacity: 0.4; cursor: not-allowed; }
 .nav-item.active { background: rgba(255,255,255,0.12); color: #fff; font-weight: 600; }
 .nav-item.active::before {
   content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px;
@@ -185,7 +186,14 @@ li { margin-bottom: 8px; }
 .quiz-actions { text-align: center; padding-top: 8px; }
 .quiz-result { text-align: center; font-size: 16px; font-weight: 600; padding: 16px; margin-top: 12px; border-radius: 8px; display: none; }
 .quiz-result.pass { background: var(--light-green); color: var(--green); }
+.quiz-result.fail { background: #FEE2E2; color: #DC2626; }
 .quiz-result.info { background: var(--light-blue); color: var(--blue); }
+.btn.disabled, .btn:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+.requirement-note { font-size: 13px; color: var(--text-light); text-align: center; margin-top: 8px; font-style: italic; }
+.requirement-note .req-check { color: var(--green); font-weight: 600; }
+.requirement-note .req-pending { color: #DC2626; }
+.quiz-retry { display: none; margin-top: 12px; text-align: center; }
+.quiz-retry.show { display: block; }
 
 /* ── Buttons ── */
 .btn {
@@ -438,14 +446,20 @@ li { margin-bottom: 8px; }
       <label class="quiz-option"><input type="radio" name="q0-2" value="3"> A natural cycle unrelated to human activity</label>
       <div class="quiz-explanation">Indigenous ways of knowing frame climate change as a relational crisis and a call to renew our relationships with land and each other.</div>
     </div>
-    <div class="quiz-actions"><button class="btn btn-primary" onclick="checkQuiz(0)">Check My Answers</button></div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" onclick="checkQuiz(0)">Check My Answers</button>
+      <div class="quiz-retry" id="quizRetry-0"><button class="btn btn-secondary" onclick="retryQuiz(0)">Try Again</button></div>
+    </div>
     <div class="quiz-result" id="quizResult-0"></div>
   </div>
 </div>
 
 <div class="module-nav">
   <span></span>
-  <button class="btn btn-primary" onclick="goToModule(1)">Next: Climate Emotions →</button>
+  <div>
+    <button class="btn btn-primary disabled" id="nextBtn-0" disabled onclick="goToModule(1)">Next: Climate Emotions →</button>
+    <p class="requirement-note" id="reqNote-0"><span class="req-pending">✦ Pass the knowledge check with 100% accuracy to continue</span></p>
+  </div>
 </div>
 </div>
 </div>
@@ -553,8 +567,8 @@ li { margin-bottom: 8px; }
     <h4>Personal Reflection</h4>
     <p><em>Which of the nine emotions do you identify with most strongly? Has this changed over time? How have these emotions influenced your personal or professional life?</em></p>
   </div>
-  <textarea placeholder="Your reflections are private and will not be shared..."></textarea>
-  <p class="save-note">Your reflection is saved locally in your browser as you type.</p>
+  <textarea id="reflection-1" placeholder="Your reflections are private and will not be shared..." oninput="checkModuleRequirements(1)"></textarea>
+  <p class="save-note">Your reflection is saved locally in your browser as you type. <strong>A response is required to continue.</strong></p>
 </div>
 
 <div class="quiz" id="quiz-1">
@@ -600,14 +614,20 @@ li { margin-bottom: 8px; }
       <label class="quiz-option"><input type="radio" name="q1-4" value="3"> Physical paralysis caused by environmental toxins</label>
       <div class="quiz-explanation">Ecoparalysis emerges from deep caring that has been exhausted by helplessness, not from apathy or indifference.</div>
     </div>
-    <div class="quiz-actions"><button class="btn btn-primary" onclick="checkQuiz(1)">Check My Answers</button></div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" onclick="checkQuiz(1)">Check My Answers</button>
+      <div class="quiz-retry" id="quizRetry-1"><button class="btn btn-secondary" onclick="retryQuiz(1)">Try Again</button></div>
+    </div>
     <div class="quiz-result" id="quizResult-1"></div>
   </div>
 </div>
 
 <div class="module-nav">
   <button class="btn btn-secondary" onclick="goToModule(0)">← Previous</button>
-  <button class="btn btn-primary" onclick="goToModule(2)">Next: What Shapes Emotions →</button>
+  <div>
+    <button class="btn btn-primary disabled" id="nextBtn-1" disabled onclick="goToModule(2)">Next: What Shapes Emotions →</button>
+    <p class="requirement-note" id="reqNote-1"><span class="req-pending">✦ Complete the reflection and pass the knowledge check with 100% to continue</span></p>
+  </div>
 </div>
 </div>
 </div>
@@ -739,14 +759,20 @@ li { margin-bottom: 8px; }
       <label class="quiz-option"><input type="radio" name="q2-3" value="3"> Media exposure and information environments</label>
       <div class="quiz-explanation">Social and environmental drivers include geography, social support, media, and connection to place — not biological characteristics like blood type.</div>
     </div>
-    <div class="quiz-actions"><button class="btn btn-primary" onclick="checkQuiz(2)">Check My Answers</button></div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" onclick="checkQuiz(2)">Check My Answers</button>
+      <div class="quiz-retry" id="quizRetry-2"><button class="btn btn-secondary" onclick="retryQuiz(2)">Try Again</button></div>
+    </div>
     <div class="quiz-result" id="quizResult-2"></div>
   </div>
 </div>
 
 <div class="module-nav">
   <button class="btn btn-secondary" onclick="goToModule(1)">← Previous</button>
-  <button class="btn btn-primary" onclick="goToModule(3)">Next: Resilience &amp; Coping →</button>
+  <div>
+    <button class="btn btn-primary disabled" id="nextBtn-2" disabled onclick="goToModule(3)">Next: Resilience &amp; Coping →</button>
+    <p class="requirement-note" id="reqNote-2"><span class="req-pending">✦ Pass the knowledge check with 100% accuracy to continue</span></p>
+  </div>
 </div>
 </div>
 </div>
@@ -854,7 +880,8 @@ li { margin-bottom: 8px; }
     <h4>Reflection Prompt</h4>
     <p><em>Think about a time when you felt overwhelmed by climate-related information or emotions. Which type(s) of coping did you use? What is one concrete resilience practice you could incorporate into your life or professional work this week?</em></p>
   </div>
-  <textarea placeholder="Your reflections are private..."></textarea>
+  <textarea id="reflection-3" placeholder="Your reflections are private..." oninput="checkModuleRequirements(3)"></textarea>
+  <p class="save-note"><strong>A response is required to continue.</strong></p>
 </div>
 
 <div class="quiz" id="quiz-3">
@@ -900,14 +927,20 @@ li { margin-bottom: 8px; }
       <label class="quiz-option"><input type="radio" name="q3-4" value="3"> Reframing activism as a moral calling</label>
       <div class="quiz-explanation">Problem-focused coping involves taking direct action to address the source of stress.</div>
     </div>
-    <div class="quiz-actions"><button class="btn btn-primary" onclick="checkQuiz(3)">Check My Answers</button></div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" onclick="checkQuiz(3)">Check My Answers</button>
+      <div class="quiz-retry" id="quizRetry-3"><button class="btn btn-secondary" onclick="retryQuiz(3)">Try Again</button></div>
+    </div>
     <div class="quiz-result" id="quizResult-3"></div>
   </div>
 </div>
 
 <div class="module-nav">
   <button class="btn btn-secondary" onclick="goToModule(2)">← Previous</button>
-  <button class="btn btn-primary" onclick="goToModule(4)">Next: Professional Roles →</button>
+  <div>
+    <button class="btn btn-primary disabled" id="nextBtn-3" disabled onclick="goToModule(4)">Next: Professional Roles →</button>
+    <p class="requirement-note" id="reqNote-3"><span class="req-pending">✦ Complete the reflection and pass the knowledge check with 100% to continue</span></p>
+  </div>
 </div>
 </div>
 </div>
@@ -990,7 +1023,8 @@ li { margin-bottom: 8px; }
 </div>
 
 <div class="reflection">
-  <textarea placeholder="Write your reflection here..."></textarea>
+  <textarea id="reflection-4" placeholder="Write your reflection here..." oninput="checkModuleRequirements(4)"></textarea>
+  <p class="save-note" style="margin-top:6px"><strong>A response is required to continue.</strong></p>
 </div>
 
 <div class="takeaways">
@@ -1038,14 +1072,20 @@ li { margin-bottom: 8px; }
       <label class="quiz-option"><input type="radio" name="q4-3" value="3"> To simplify complex Indigenous concepts for Western audiences</label>
       <div class="quiz-explanation">Cultural safety ensures Indigenous knowledge is engaged with respectfully, honouring Indigenous leadership and epistemologies.</div>
     </div>
-    <div class="quiz-actions"><button class="btn btn-primary" onclick="checkQuiz(4)">Check My Answers</button></div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" onclick="checkQuiz(4)">Check My Answers</button>
+      <div class="quiz-retry" id="quizRetry-4"><button class="btn btn-secondary" onclick="retryQuiz(4)">Try Again</button></div>
+    </div>
     <div class="quiz-result" id="quizResult-4"></div>
   </div>
 </div>
 
 <div class="module-nav">
   <button class="btn btn-secondary" onclick="goToModule(3)">← Previous</button>
-  <button class="btn btn-primary" onclick="goToModule(5)">Next: Final Assessment →</button>
+  <div>
+    <button class="btn btn-primary disabled" id="nextBtn-4" disabled onclick="goToModule(5)">Next: Final Assessment →</button>
+    <p class="requirement-note" id="reqNote-4"><span class="req-pending">✦ Complete the reflection and pass the knowledge check with 100% to continue</span></p>
+  </div>
 </div>
 </div>
 </div>
@@ -1078,11 +1118,12 @@ li { margin-bottom: 8px; }
     <h4>Final Reflection</h4>
     <p><em>What is one thing you have learned that has shifted your understanding of climate emotions? What is one concrete step you will take in your professional or personal life to apply what you have learned?</em></p>
   </div>
-  <textarea placeholder="Your final reflection..."></textarea>
+  <textarea id="reflection-5" placeholder="Your final reflection..." oninput="checkFinalReflection()"></textarea>
+  <p class="save-note"><strong>A response is required before submitting the final assessment.</strong></p>
 </div>
 
 <h2>Final Knowledge Assessment</h2>
-<p>Complete the following 20-question assessment. A score of 80% or higher (16 out of 20) is required to earn your certificate of completion. You may retake the assessment up to 3 times.</p>
+<p>Complete the following 20-question assessment. A score of 100% (20 out of 20 correct) is required to earn your certificate of completion. You may retake the assessment as many times as needed.</p>
 
 <div class="quiz" id="quiz-5">
   <div class="quiz-header">Final Assessment — 20 Questions</div>
@@ -1227,7 +1268,11 @@ li { margin-bottom: 8px; }
       <label class="quiz-option"><input type="radio" name="qf-19" value="3"> Individual coping strategies are sufficient to address the mental health impacts of climate change</label>
       <div class="quiz-explanation">The course emphasizes that climate emotions are meaningful, not pathological, and that a whole-of-society approach is needed.</div>
     </div>
-    <div class="quiz-actions"><button class="btn btn-success" onclick="checkFinalAssessment()">Submit Final Assessment</button></div>
+    <div class="quiz-actions">
+      <button class="btn btn-success disabled" id="finalSubmitBtn" disabled onclick="checkFinalAssessment()">Submit Final Assessment</button>
+      <p class="requirement-note" id="finalReflectionNote"><span class="req-pending">✦ Complete the final reflection above before submitting</span></p>
+      <div class="quiz-retry" id="quizRetry-5"><button class="btn btn-secondary" onclick="retryQuiz(5)">Try Again</button></div>
+    </div>
     <div class="quiz-result" id="quizResult-5"></div>
   </div>
 </div>
@@ -1277,9 +1322,13 @@ function buildNav() {
   nav.innerHTML = '';
   modules.forEach((m, i) => {
     const div = document.createElement('div');
-    div.className = 'nav-item' + (completed.has(i) ? ' completed' : '') + (currentModule === i ? ' active' : '');
+    // Determine if module is accessible: must have completed all previous modules
+    const isAccessible = i === 0 || completed.has(i - 1) || completed.has(i) || i <= currentModule;
+    div.className = 'nav-item' + (completed.has(i) ? ' completed' : '') + (currentModule === i ? ' active' : '') + (!isAccessible ? ' locked' : '');
     div.innerHTML = `<span class="dot"></span><span>${m.short}: ${m.title}</span>`;
-    div.onclick = () => goToModule(i);
+    if (isAccessible) {
+      div.onclick = () => goToModule(i);
+    }
     nav.appendChild(div);
   });
 }
@@ -1288,6 +1337,63 @@ function updateProgress() {
   const pct = Math.round((completed.size / modules.length) * 100);
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('progressText').textContent = pct + '% complete';
+}
+
+// ─── Module requirement tracking ───
+const quizPassed = {};       // moduleIdx -> true if 100% achieved
+const reflectionDone = {};   // moduleIdx -> true if reflection text entered
+// Which modules have reflections (textarea IDs: reflection-1, reflection-3, reflection-4, reflection-5)
+const modulesWithReflection = { 1: true, 3: true, 4: true, 5: true };
+
+function checkModuleRequirements(moduleIdx) {
+  // Check reflection
+  const textarea = document.getElementById('reflection-' + moduleIdx);
+  if (textarea) {
+    reflectionDone[moduleIdx] = textarea.value.trim().length > 0;
+  }
+  updateNextButton(moduleIdx);
+}
+
+function updateNextButton(moduleIdx) {
+  const btn = document.getElementById('nextBtn-' + moduleIdx);
+  const note = document.getElementById('reqNote-' + moduleIdx);
+  if (!btn) return;
+
+  const needsReflection = modulesWithReflection[moduleIdx] || false;
+  const quizOk = quizPassed[moduleIdx] || false;
+  const reflectionOk = !needsReflection || (reflectionDone[moduleIdx] || false);
+
+  if (quizOk && reflectionOk) {
+    btn.classList.remove('disabled');
+    btn.disabled = false;
+    if (note) note.innerHTML = '<span class="req-check">&#10003; All requirements met — you may continue</span>';
+  } else {
+    btn.classList.add('disabled');
+    btn.disabled = true;
+    if (note) {
+      const parts = [];
+      if (!quizOk) parts.push('pass the knowledge check with 100%');
+      if (!reflectionOk) parts.push('complete the reflection');
+      note.innerHTML = '<span class="req-pending">&#10022; Please ' + parts.join(' and ') + ' to continue</span>';
+    }
+  }
+}
+
+function checkFinalReflection() {
+  const textarea = document.getElementById('reflection-5');
+  const btn = document.getElementById('finalSubmitBtn');
+  const note = document.getElementById('finalReflectionNote');
+  if (textarea && textarea.value.trim().length > 0) {
+    reflectionDone[5] = true;
+    btn.classList.remove('disabled');
+    btn.disabled = false;
+    if (note) note.innerHTML = '<span class="req-check">&#10003; Reflection complete — you may submit</span>';
+  } else {
+    reflectionDone[5] = false;
+    btn.classList.add('disabled');
+    btn.disabled = true;
+    if (note) note.innerHTML = '<span class="req-pending">&#10022; Complete the final reflection above before submitting</span>';
+  }
 }
 
 // ─── Navigation ───
@@ -1380,13 +1486,46 @@ function checkQuiz(moduleIdx) {
   }
   const result = document.getElementById('quizResult-' + moduleIdx);
   result.style.display = 'block';
-  result.className = 'quiz-result info';
-  result.textContent = `You got ${correct} out of ${total} correct!`;
+  const retryDiv = document.getElementById('quizRetry-' + moduleIdx);
+  if (correct === total) {
+    result.className = 'quiz-result pass';
+    result.textContent = `Excellent! You got ${correct} out of ${total} correct — 100%!`;
+    quizPassed[moduleIdx] = true;
+    if (retryDiv) retryDiv.classList.remove('show');
+    // Disable radio buttons to lock in answers
+    quiz.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+    updateNextButton(moduleIdx);
+  } else {
+    result.className = 'quiz-result fail';
+    result.textContent = `You got ${correct} out of ${total} correct. You need 100% to continue. Review the feedback and try again.`;
+    quizPassed[moduleIdx] = false;
+    if (retryDiv) retryDiv.classList.add('show');
+  }
+}
+
+function retryQuiz(moduleIdx) {
+  const isFinal = moduleIdx === 5;
+  const quiz = document.getElementById('quiz-' + moduleIdx);
+  const prefix = isFinal ? 'qf-' : `q${moduleIdx}-`;
+  // Clear all selections and styling
+  quiz.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('correct', 'incorrect'));
+  quiz.querySelectorAll('.quiz-explanation').forEach(exp => exp.classList.remove('show'));
+  quiz.querySelectorAll('input[type="radio"]').forEach(r => { r.checked = false; r.disabled = false; });
+  const result = document.getElementById('quizResult-' + moduleIdx);
+  result.style.display = 'none';
+  const retryDiv = document.getElementById('quizRetry-' + moduleIdx);
+  if (retryDiv) retryDiv.classList.remove('show');
+  // Scroll to quiz top
+  quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ─── Final assessment ───
-let finalAttempts = 0;
 function checkFinalAssessment() {
+  // Check that final reflection is done
+  if (!reflectionDone[5]) {
+    alert('Please complete the final reflection before submitting the assessment.');
+    return;
+  }
   const quiz = document.getElementById('quiz-5');
   const questions = quiz.querySelectorAll('.quiz-question');
   let correct = 0;
@@ -1406,17 +1545,20 @@ function checkFinalAssessment() {
     if (selected.value === correctVal) correct++;
   });
   if (!allAnswered) { alert('Please answer all 20 questions before submitting.'); return; }
-  finalAttempts++;
   const pct = Math.round((correct / total) * 100);
-  const passed = pct >= 80;
+  const passed = correct === total;
   const result = document.getElementById('quizResult-5');
+  const retryDiv = document.getElementById('quizRetry-5');
   result.style.display = 'block';
   if (passed) {
     result.className = 'quiz-result pass';
-    result.innerHTML = `Congratulations! You scored ${correct}/${total} (${pct}%). You have passed the final assessment!`;
+    result.innerHTML = `Congratulations! You scored ${correct}/${total} (100%). You have passed the final assessment!`;
     completed.add(5);
     updateProgress();
     buildNav();
+    if (retryDiv) retryDiv.classList.remove('show');
+    // Disable all radio buttons
+    quiz.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
     // Show certificate
     const cert = document.getElementById('certificate');
     cert.style.display = 'block';
@@ -1425,13 +1567,9 @@ function checkFinalAssessment() {
     document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
     cert.scrollIntoView({ behavior: 'smooth' });
   } else {
-    const remaining = 3 - finalAttempts;
-    result.className = 'quiz-result info';
-    if (remaining > 0) {
-      result.innerHTML = `You scored ${correct}/${total} (${pct}%). You need 80% to pass. You have ${remaining} attempt(s) remaining. Review the material and try again.`;
-    } else {
-      result.innerHTML = `You scored ${correct}/${total} (${pct}%). You have used all 3 attempts. Please review the course material and contact the MHCCA for further guidance.`;
-    }
+    result.className = 'quiz-result fail';
+    result.innerHTML = `You scored ${correct}/${total} (${pct}%). You need 100% (20/20) to earn your certificate. Review the feedback above and try again.`;
+    if (retryDiv) retryDiv.classList.add('show');
   }
 }
 
