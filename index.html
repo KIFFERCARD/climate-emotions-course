@@ -309,7 +309,8 @@ li { margin-bottom: 8px; }
 .welcome-details li { padding: 4px 0; font-size: 14px; opacity: 0.8; }
 .welcome-details li::before { content: '✦ '; color: #fff; opacity: 0.6; }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+<script>if(!window.jspdf){document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"><\/script>')}</script>
 </head>
 <body>
 
@@ -1630,6 +1631,9 @@ function downloadCertificate() {
   btn.disabled = true;
 
   try {
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+      throw new Error('PDF library not loaded. Please check your internet connection and refresh the page.');
+    }
     var jsPDF = window.jspdf.jsPDF;
     var pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
     var pw = 297, ph = 210, cx = pw / 2;
