@@ -309,7 +309,6 @@ li { margin-bottom: 8px; }
 .welcome-details li { padding: 4px 0; font-size: 14px; opacity: 0.8; }
 .welcome-details li::before { content: '✦ '; color: #fff; opacity: 0.6; }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -1347,6 +1346,7 @@ function checkModuleRequirements(moduleIdx) {
     reflectionDone[moduleIdx] = textarea.value.trim().length > 0;
   }
   updateNextButton(moduleIdx);
+  saveProgress();
 }
 
 function updateNextButton(moduleIdx) {
@@ -1389,6 +1389,7 @@ function checkFinalReflection() {
     btn.disabled = true;
     if (note) note.innerHTML = '<span class="req-pending">&#10022; Complete the final reflection above before submitting</span>';
   }
+  saveProgress();
 }
 
 // ─── Navigation ───
@@ -1407,6 +1408,7 @@ function goToModule(idx) {
   document.getElementById('page-welcome').classList.remove('active');
   buildNav();
   updateProgress();
+  saveProgress();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   closeSidebar();
 }
@@ -1490,6 +1492,7 @@ function checkQuiz(moduleIdx) {
     // Disable radio buttons to lock in answers
     quiz.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
     updateNextButton(moduleIdx);
+    saveProgress();
   } else {
     result.className = 'quiz-result fail';
     result.textContent = `You got ${correct} out of ${total} correct. You need 100% to continue. Review the feedback and try again.`;
@@ -1562,6 +1565,7 @@ function checkFinalAssessment() {
     document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
     document.getElementById('downloadCertBtn').style.display = 'inline-block';
     cert.scrollIntoView({ behavior: 'smooth' });
+    saveProgress();
   } else {
     result.className = 'quiz-result fail';
     result.innerHTML = `You scored ${correct}/${total} (${pct}%). You need 100% (20/20) to earn your certificate. Review the feedback above and try again.`;
@@ -1620,84 +1624,212 @@ function startBreathing() {
 
 // ─── Certificate PDF Download ───
 function downloadCertificate() {
-  const btn = document.getElementById('downloadCertBtn');
-  const originalText = btn.textContent;
+  var btn = document.getElementById('downloadCertBtn');
+  var originalText = btn.textContent;
   btn.textContent = 'Generating PDF...';
   btn.disabled = true;
 
-  // Temporarily hide the download button so it doesn't appear in the PDF
-  btn.style.visibility = 'hidden';
-
-  const cert = document.getElementById('certificate');
-  const logoImg = cert.querySelector('.cert-logo');
-
-  // Convert logo to base64 first to avoid cross-origin issues
-  function convertLogoAndCapture() {
-    return new Promise(function(resolve) {
-      if (logoImg && logoImg.src && !logoImg.src.startsWith('data:')) {
-        var canvas = document.createElement('canvas');
-        var img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = function() {
-          canvas.width = img.naturalWidth;
-          canvas.height = img.naturalHeight;
-          canvas.getContext('2d').drawImage(img, 0, 0);
-          logoImg.src = canvas.toDataURL('image/png');
-          resolve();
-        };
-        img.onerror = function() {
-          // If cross-origin fails, try without — html2canvas will handle it with allowTaint
-          resolve();
-        };
-        img.src = logoImg.src;
-      } else {
-        resolve();
-      }
-    });
-  }
-
-  convertLogoAndCapture().then(function() {
-    return html2canvas(cert, {
-      scale: 2,
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: '#FFFFFF',
-      logging: false
-    });
-  }).then(function(canvas) {
-    var imgData = canvas.toDataURL('image/png');
-    var imgWidth = canvas.width;
-    var imgHeight = canvas.height;
-
-    // Create landscape PDF sized to the certificate
-    var pdfWidth = 297; // A4 landscape width in mm
-    var pdfHeight = 210; // A4 landscape height in mm
-    var ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-    var width = imgWidth * ratio;
-    var height = imgHeight * ratio;
-    var xOffset = (pdfWidth - width) / 2;
-    var yOffset = (pdfHeight - height) / 2;
-
+  try {
     var jsPDF = window.jspdf.jsPDF;
     var pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-    pdf.addImage(imgData, 'PNG', xOffset, yOffset, width, height);
+    var pw = 297, ph = 210, cx = pw / 2;
 
-    var learnerName = document.getElementById('certName').textContent.replace(/\s+/g, '_');
-    pdf.save('MHCCA_Certificate_' + learnerName + '.pdf');
+    // ── Background gradient border ──
+    pdf.setDrawColor(20, 112, 175);
+    pdf.setLineWidth(1.5);
+    pdf.roundedRect(15, 12, pw - 30, ph - 24, 6, 6, 'S');
+    pdf.setDrawColor(58, 150, 199);
+    pdf.setLineWidth(0.5);
+    pdf.roundedRect(19, 16, pw - 38, ph - 32, 4, 4, 'S');
 
-    btn.style.visibility = 'visible';
+    // ── Logo as text (matches the MHCCA brand) ──
+    pdf.setFillColor(20, 112, 175);
+    var logoW = 80, logoH = 18;
+    var logoX = cx - logoW / 2, logoY = 28;
+    pdf.roundedRect(logoX, logoY, logoW, logoH, 2, 2, 'F');
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(22);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('MHCCA', cx, logoY + 13, { align: 'center' });
+
+    // Subtitle under logo
+    pdf.setTextColor(20, 112, 175);
+    pdf.setFontSize(7);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('MENTAL HEALTH AND CLIMATE CHANGE ALLIANCE', cx, logoY + logoH + 6, { align: 'center' });
+
+    // ── Certificate title ──
+    pdf.setTextColor(13, 90, 140);
+    pdf.setFontSize(26);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Certificate of Completion', cx, 72, { align: 'center' });
+
+    // Decorative line
+    pdf.setDrawColor(58, 150, 199);
+    pdf.setLineWidth(1);
+    pdf.line(cx - 20, 78, cx + 20, 78);
+
+    // ── This certifies that ──
+    pdf.setTextColor(100, 100, 100);
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text('This certifies that', cx, 90, { align: 'center' });
+
+    // ── Learner name ──
+    var learnerName = document.getElementById('certName').textContent;
+    pdf.setTextColor(13, 90, 140);
+    pdf.setFontSize(24);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text(learnerName, cx, 104, { align: 'center' });
+
+    // ── has successfully completed ──
+    pdf.setTextColor(100, 100, 100);
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text('has successfully completed', cx, 116, { align: 'center' });
+
+    // ── Course title ──
+    pdf.setTextColor(13, 90, 140);
+    pdf.setFontSize(16);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Understanding Climate Emotions:', cx, 128, { align: 'center' });
+    pdf.text('A Professional Development Course', cx, 136, { align: 'center' });
+
+    // ── Offered by ──
+    pdf.setTextColor(100, 100, 100);
+    pdf.setFontSize(11);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text('A two-hour online course offered by the', cx, 150, { align: 'center' });
+    pdf.text('Mental Health and Climate Change Alliance (MHCCA)', cx, 157, { align: 'center' });
+
+    // ── Date ──
+    var dateText = document.getElementById('certDate').textContent;
+    pdf.setFontSize(11);
+    pdf.text('Date of Completion: ' + dateText, cx, 172, { align: 'center' });
+
+    // ── Save ──
+    var fileName = 'MHCCA_Certificate_' + learnerName.replace(/\s+/g, '_') + '.pdf';
+    pdf.save(fileName);
+
     btn.textContent = originalText;
     btn.disabled = false;
-  }).catch(function(err) {
+  } catch(err) {
     console.error('PDF generation error:', err);
-    btn.style.visibility = 'visible';
     btn.textContent = originalText;
     btn.disabled = false;
-    alert('There was an error generating the PDF. Please try again.');
-  });
+    alert('There was an error generating the PDF: ' + err.message);
+  }
+}
+
+// ─── Progress Persistence ───
+const STORAGE_KEY = 'mhcca_climate_emotions_progress';
+
+function saveProgress() {
+  try {
+    // Collect quiz answers
+    var quizAnswers = {};
+    document.querySelectorAll('input[type="radio"]:checked').forEach(function(r) {
+      quizAnswers[r.name] = r.value;
+    });
+    // Collect reflection text
+    var reflections = {};
+    document.querySelectorAll('textarea[id^="reflection-"]').forEach(function(ta) {
+      if (ta.value.trim()) reflections[ta.id] = ta.value;
+    });
+    var state = {
+      currentModule: currentModule,
+      completed: Array.from(completed),
+      quizPassed: Object.assign({}, quizPassed),
+      reflectionDone: Object.assign({}, reflectionDone),
+      quizAnswers: quizAnswers,
+      reflections: reflections,
+      savedAt: new Date().toISOString()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch(e) {
+    // Silently fail if localStorage is unavailable
+  }
+}
+
+function loadProgress() {
+  try {
+    var data = localStorage.getItem(STORAGE_KEY);
+    if (!data) return false;
+    var state = JSON.parse(data);
+
+    // Restore completed modules
+    if (state.completed) {
+      state.completed.forEach(function(i) { completed.add(i); });
+    }
+    // Restore quiz passed state
+    if (state.quizPassed) {
+      Object.keys(state.quizPassed).forEach(function(k) {
+        quizPassed[k] = state.quizPassed[k];
+      });
+    }
+    // Restore reflection done state
+    if (state.reflectionDone) {
+      Object.keys(state.reflectionDone).forEach(function(k) {
+        reflectionDone[k] = state.reflectionDone[k];
+      });
+    }
+    // Restore reflection text
+    if (state.reflections) {
+      Object.keys(state.reflections).forEach(function(id) {
+        var ta = document.getElementById(id);
+        if (ta) ta.value = state.reflections[id];
+      });
+    }
+    // Restore quiz answers and lock passed quizzes
+    if (state.quizAnswers) {
+      Object.keys(state.quizAnswers).forEach(function(name) {
+        var radio = document.querySelector('input[name="' + name + '"][value="' + state.quizAnswers[name] + '"]');
+        if (radio) radio.checked = true;
+      });
+      // Re-show feedback and lock passed quizzes
+      Object.keys(state.quizPassed).forEach(function(moduleIdx) {
+        if (state.quizPassed[moduleIdx]) {
+          var quiz = document.getElementById('quiz-' + moduleIdx);
+          if (quiz) {
+            quiz.querySelectorAll('.quiz-question').forEach(function(q, i) {
+              var correctVal = q.dataset.correct;
+              q.querySelectorAll('.quiz-option').forEach(function(opt) {
+                var inp = opt.querySelector('input');
+                if (inp.value === correctVal) opt.classList.add('correct');
+              });
+              q.querySelector('.quiz-explanation').classList.add('show');
+            });
+            quiz.querySelectorAll('input[type="radio"]').forEach(function(r) { r.disabled = true; });
+            var result = document.getElementById('quizResult-' + moduleIdx);
+            if (result) {
+              var total = quiz.querySelectorAll('.quiz-question').length;
+              result.style.display = 'block';
+              result.className = 'quiz-result pass';
+              result.textContent = 'Excellent! You got ' + total + ' out of ' + total + ' correct \u2014 100%!';
+            }
+          }
+        }
+      });
+    }
+    // Restore current module and navigate
+    if (typeof state.currentModule === 'number' && state.currentModule >= 0) {
+      currentModule = state.currentModule;
+      document.querySelectorAll('.module-page').forEach(function(p) { p.classList.remove('active'); });
+      document.getElementById('page-welcome').classList.remove('active');
+      var target = document.getElementById('page-' + currentModule);
+      if (target) target.classList.add('active');
+    }
+    // Update requirement notes for all modules
+    modules.forEach(function(m, i) { updateNextButton(i); });
+
+    return true;
+  } catch(e) {
+    return false;
+  }
 }
 
 // ─── Init ───
+loadProgress();
 buildNav();
 updateProgress();
 </script>
