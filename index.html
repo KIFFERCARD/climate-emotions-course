@@ -1624,16 +1624,38 @@ function startBreathing() {
 }
 
 // ─── Certificate PDF Download ───
+function loadImageAsDataURL(src) {
+  return new Promise(function(resolve, reject) {
+    var img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      resolve({ dataUrl: canvas.toDataURL('image/png'), width: img.naturalWidth, height: img.naturalHeight });
+    };
+    img.onerror = function() { reject(new Error('Could not load logo image.')); };
+    img.src = src;
+  });
+}
+
 function downloadCertificate() {
   var btn = document.getElementById('downloadCertBtn');
   var originalText = btn.textContent;
   btn.textContent = 'Generating PDF...';
   btn.disabled = true;
 
-  try {
-    if (!window.jspdf || !window.jspdf.jsPDF) {
-      throw new Error('PDF library not loaded. Please check your internet connection and refresh the page.');
-    }
+  if (!window.jspdf || !window.jspdf.jsPDF) {
+    alert('PDF library not loaded. Please check your internet connection and refresh the page.');
+    btn.textContent = originalText;
+    btn.disabled = false;
+    return;
+  }
+
+  // Load the actual MHCCA logo, then build the PDF
+  loadImageAsDataURL('MHCCA_logo.webp').then(function(logoData) {
     var jsPDF = window.jspdf.jsPDF;
     var pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
     var pw = 297, ph = 210, cx = pw / 2;
@@ -1646,70 +1668,63 @@ function downloadCertificate() {
     pdf.setLineWidth(0.5);
     pdf.roundedRect(19, 16, pw - 38, ph - 32, 4, 4, 'S');
 
-    // ── Logo as text (matches the MHCCA brand) ──
-    pdf.setFillColor(20, 112, 175);
-    var logoW = 80, logoH = 18;
-    var logoX = cx - logoW / 2, logoY = 28;
-    pdf.roundedRect(logoX, logoY, logoW, logoH, 2, 2, 'F');
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(22);
-    pdf.setFont('helvetica', 'bold');
-    pdf.text('MHCCA', cx, logoY + 13, { align: 'center' });
-
-    // Subtitle under logo
-    pdf.setTextColor(20, 112, 175);
-    pdf.setFontSize(7);
-    pdf.setFont('helvetica', 'bold');
-    pdf.text('MENTAL HEALTH AND CLIMATE CHANGE ALLIANCE', cx, logoY + logoH + 6, { align: 'center' });
+    // ── Actual MHCCA logo ──
+    var logoAspect = logoData.width / logoData.height;
+    var logoW = 90;
+    var logoH = logoW / logoAspect;
+    var logoX = cx - logoW / 2;
+    var logoY = 24;
+    pdf.addImage(logoData.dataUrl, 'PNG', logoX, logoY, logoW, logoH);
 
     // ── Certificate title ──
+    var contentY = logoY + logoH + 10;
     pdf.setTextColor(13, 90, 140);
     pdf.setFontSize(26);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Certificate of Completion', cx, 72, { align: 'center' });
+    pdf.text('Certificate of Completion', cx, contentY, { align: 'center' });
 
     // Decorative line
     pdf.setDrawColor(58, 150, 199);
     pdf.setLineWidth(1);
-    pdf.line(cx - 20, 78, cx + 20, 78);
+    pdf.line(cx - 20, contentY + 6, cx + 20, contentY + 6);
 
     // ── This certifies that ──
     pdf.setTextColor(100, 100, 100);
     pdf.setFontSize(12);
     pdf.setFont('helvetica', 'normal');
-    pdf.text('This certifies that', cx, 90, { align: 'center' });
+    pdf.text('This certifies that', cx, contentY + 18, { align: 'center' });
 
     // ── Learner name ──
     var learnerName = document.getElementById('certName').textContent;
     pdf.setTextColor(13, 90, 140);
     pdf.setFontSize(24);
     pdf.setFont('helvetica', 'bold');
-    pdf.text(learnerName, cx, 104, { align: 'center' });
+    pdf.text(learnerName, cx, contentY + 32, { align: 'center' });
 
     // ── has successfully completed ──
     pdf.setTextColor(100, 100, 100);
     pdf.setFontSize(12);
     pdf.setFont('helvetica', 'normal');
-    pdf.text('has successfully completed', cx, 116, { align: 'center' });
+    pdf.text('has successfully completed', cx, contentY + 44, { align: 'center' });
 
     // ── Course title ──
     pdf.setTextColor(13, 90, 140);
     pdf.setFontSize(16);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Understanding Climate Emotions:', cx, 128, { align: 'center' });
-    pdf.text('A Professional Development Course', cx, 136, { align: 'center' });
+    pdf.text('Understanding Climate Emotions:', cx, contentY + 56, { align: 'center' });
+    pdf.text('A Professional Development Course', cx, contentY + 64, { align: 'center' });
 
     // ── Offered by ──
     pdf.setTextColor(100, 100, 100);
     pdf.setFontSize(11);
     pdf.setFont('helvetica', 'normal');
-    pdf.text('A two-hour online course offered by the', cx, 150, { align: 'center' });
-    pdf.text('Mental Health and Climate Change Alliance (MHCCA)', cx, 157, { align: 'center' });
+    pdf.text('A two-hour online course offered by the', cx, contentY + 78, { align: 'center' });
+    pdf.text('Mental Health and Climate Change Alliance (MHCCA)', cx, contentY + 85, { align: 'center' });
 
     // ── Date ──
     var dateText = document.getElementById('certDate').textContent;
     pdf.setFontSize(11);
-    pdf.text('Date of Completion: ' + dateText, cx, 172, { align: 'center' });
+    pdf.text('Date of Completion: ' + dateText, cx, contentY + 100, { align: 'center' });
 
     // ── Save ──
     var fileName = 'MHCCA_Certificate_' + learnerName.replace(/\s+/g, '_') + '.pdf';
@@ -1717,12 +1732,12 @@ function downloadCertificate() {
 
     btn.textContent = originalText;
     btn.disabled = false;
-  } catch(err) {
+  }).catch(function(err) {
     console.error('PDF generation error:', err);
     btn.textContent = originalText;
     btn.disabled = false;
     alert('There was an error generating the PDF: ' + err.message);
-  }
+  });
 }
 
 // ─── Progress Persistence ───
@@ -1747,6 +1762,8 @@ function saveProgress() {
       reflectionDone: Object.assign({}, reflectionDone),
       quizAnswers: quizAnswers,
       reflections: reflections,
+      certName: document.getElementById('certName').textContent,
+      certDate: document.getElementById('certDate').textContent,
       savedAt: new Date().toISOString()
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -1822,6 +1839,13 @@ function loadProgress() {
       document.getElementById('page-welcome').classList.remove('active');
       var target = document.getElementById('page-' + currentModule);
       if (target) target.classList.add('active');
+    }
+    // Restore certificate name and date if earned
+    if (state.certName && state.certName !== 'Learner') {
+      document.getElementById('certName').textContent = state.certName;
+      document.getElementById('certDate').textContent = state.certDate || '';
+      document.getElementById('certificate').style.display = 'block';
+      document.getElementById('downloadCertBtn').style.display = 'inline-block';
     }
     // Update requirement notes for all modules
     modules.forEach(function(m, i) { updateNextButton(i); });
