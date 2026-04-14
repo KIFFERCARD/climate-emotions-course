@@ -309,6 +309,8 @@ li { margin-bottom: 8px; }
 .welcome-details li { padding: 4px 0; font-size: 14px; opacity: 0.8; }
 .welcome-details li::before { content: '✦ '; color: #fff; opacity: 0.6; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -1283,6 +1285,7 @@ li { margin-bottom: 8px; }
   <p><strong style="color:var(--dark-teal);font-size:16px;">Understanding Climate Emotions:<br>A Professional Development Course</strong></p>
   <p style="margin-top:16px;">A two-hour online course offered by the<br>Mental Health and Climate Change Alliance (MHCCA)</p>
   <p style="margin-top:16px;font-size:13px;">Date of Completion: <span id="certDate"></span></p>
+  <button id="downloadCertBtn" class="btn btn-primary" onclick="downloadCertificate()" style="margin-top:24px;display:none;">⬇ Download Certificate (PDF)</button>
 </div>
 
 <div class="module-nav">
@@ -1557,6 +1560,7 @@ function checkFinalAssessment() {
     const name = prompt('Please enter your name for the certificate:') || 'Learner';
     document.getElementById('certName').textContent = name;
     document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('downloadCertBtn').style.display = 'inline-block';
     cert.scrollIntoView({ behavior: 'smooth' });
   } else {
     result.className = 'quiz-result fail';
@@ -1612,6 +1616,85 @@ function startBreathing() {
     }, step.dur);
   }
   doStep();
+}
+
+// ─── Certificate PDF Download ───
+function downloadCertificate() {
+  const btn = document.getElementById('downloadCertBtn');
+  const originalText = btn.textContent;
+  btn.textContent = 'Generating PDF...';
+  btn.disabled = true;
+
+  // Temporarily hide the download button so it doesn't appear in the PDF
+  btn.style.visibility = 'hidden';
+
+  const cert = document.getElementById('certificate');
+  const logoImg = cert.querySelector('.cert-logo');
+
+  // Convert logo to base64 first to avoid cross-origin issues
+  function convertLogoAndCapture() {
+    return new Promise(function(resolve) {
+      if (logoImg && logoImg.src && !logoImg.src.startsWith('data:')) {
+        var canvas = document.createElement('canvas');
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function() {
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          canvas.getContext('2d').drawImage(img, 0, 0);
+          logoImg.src = canvas.toDataURL('image/png');
+          resolve();
+        };
+        img.onerror = function() {
+          // If cross-origin fails, try without — html2canvas will handle it with allowTaint
+          resolve();
+        };
+        img.src = logoImg.src;
+      } else {
+        resolve();
+      }
+    });
+  }
+
+  convertLogoAndCapture().then(function() {
+    return html2canvas(cert, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#FFFFFF',
+      logging: false
+    });
+  }).then(function(canvas) {
+    var imgData = canvas.toDataURL('image/png');
+    var imgWidth = canvas.width;
+    var imgHeight = canvas.height;
+
+    // Create landscape PDF sized to the certificate
+    var pdfWidth = 297; // A4 landscape width in mm
+    var pdfHeight = 210; // A4 landscape height in mm
+    var ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+    var width = imgWidth * ratio;
+    var height = imgHeight * ratio;
+    var xOffset = (pdfWidth - width) / 2;
+    var yOffset = (pdfHeight - height) / 2;
+
+    var jsPDF = window.jspdf.jsPDF;
+    var pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+    pdf.addImage(imgData, 'PNG', xOffset, yOffset, width, height);
+
+    var learnerName = document.getElementById('certName').textContent.replace(/\s+/g, '_');
+    pdf.save('MHCCA_Certificate_' + learnerName + '.pdf');
+
+    btn.style.visibility = 'visible';
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }).catch(function(err) {
+    console.error('PDF generation error:', err);
+    btn.style.visibility = 'visible';
+    btn.textContent = originalText;
+    btn.disabled = false;
+    alert('There was an error generating the PDF. Please try again.');
+  });
 }
 
 // ─── Init ───
