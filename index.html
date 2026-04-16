@@ -324,7 +324,7 @@ li { margin-bottom: 8px; }
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <img src="MHCCA_logo.webp" alt="MHCCA — Mental Health and Climate Change Alliance" style="width:100%;max-width:220px;margin-bottom:12px;">
+    <img src="MHCCA_logo.png" alt="MHCCA — Mental Health and Climate Change Alliance" style="width:100%;max-width:220px;margin-bottom:12px;">
     <h2>Understanding Climate Emotions</h2>
     <p>Professional Development Course</p>
   </div>
@@ -1276,7 +1276,7 @@ li { margin-bottom: 8px; }
 </div>
 
 <div class="certificate" id="certificate">
-  <img class="cert-logo" src="MHCCA_logo.webp" alt="MHCCA — Mental Health and Climate Change Alliance" style="width:220px;margin:0 auto 16px;display:block;">
+  <img class="cert-logo" src="MHCCA_logo.png" alt="MHCCA — Mental Health and Climate Change Alliance" style="width:220px;margin:0 auto 16px;display:block;">
   <h2>Certificate of Completion</h2>
   <div class="cert-line"></div>
   <p>This certifies that</p>
@@ -1655,7 +1655,7 @@ function downloadCertificate() {
   }
 
   // Load the actual MHCCA logo, then build the PDF
-  loadImageAsDataURL('MHCCA_logo.webp').then(function(logoData) {
+  loadImageAsDataURL('MHCCA_logo.png').then(function(logoData) {
     var jsPDF = window.jspdf.jsPDF;
     var pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
     var pw = 297, ph = 210, cx = pw / 2;
