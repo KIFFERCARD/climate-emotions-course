@@ -207,7 +207,9 @@ li { margin-bottom: 8px; }
 .btn-secondary:hover { background: #d1d5db; }
 .btn-success { background: var(--green); color: #fff; }
 .btn-success:hover { background: #047857; }
-.module-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--grey); }
+.module-nav { display: flex; justify-content: flex-end; align-items: flex-start; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--grey); }
+.module-nav .requirement-note { margin-top: 8px; }
+.module-nav > div { text-align: right; }
 
 /* ── Reflection ── */
 .reflection { margin: 24px 0; }
@@ -222,7 +224,7 @@ li { margin-bottom: 8px; }
 /* ── Breathing exercise ── */
 .breathing-exercise { text-align: center; margin: 32px 0; padding: 40px; background: linear-gradient(135deg, #EFF6FB 0%, var(--very-light-teal) 100%); border-radius: var(--radius); }
 .breath-circle {
-  width: 160px; height: 160px; border-radius: 50%; margin: 24px auto;
+  width: 160px; height: 160px; border-radius: 50%; margin: 40px auto 64px;
   background: radial-gradient(circle, var(--light-teal) 0%, var(--teal) 100%);
   display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: 18px; font-weight: 600;
@@ -232,7 +234,7 @@ li { margin-bottom: 8px; }
 .breath-circle.hold { transform: scale(1.4); opacity: 0.8; }
 .breath-circle.exhale { transform: scale(1); }
 .breath-circle.pause { transform: scale(1); opacity: 0.8; }
-.breath-instruction { font-size: 16px; color: var(--dark-teal); font-weight: 500; min-height: 28px; margin-top: 16px; }
+.breath-instruction { font-size: 16px; color: var(--dark-teal); font-weight: 500; min-height: 28px; margin-top: 24px; }
 
 /* ── Scenario cards ── */
 .scenario-cards { display: grid; gap: 20px; margin: 24px 0; }
@@ -282,6 +284,123 @@ li { margin-bottom: 8px; }
   .tab-buttons { gap: 2px; }
   .tab-btn { padding: 8px 12px; font-size: 12px; }
 }
+
+/* ── Opening reflection (gated submit) ── */
+.opening-reflection { margin: 0 0 32px; }
+.opening-reflection .info-box { padding: 22px 24px; }
+.opening-reflection h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--rose); }
+.opening-reflection .prompt-text { font-style: italic; margin-bottom: 12px; color: var(--text); }
+.opening-reflection textarea {
+  width: 100%; min-height: 100px; padding: 14px; border: 2px solid var(--grey);
+  border-radius: var(--radius); font-family: inherit; font-size: 14px; line-height: 1.6;
+  resize: vertical; transition: border-color 0.2s; background: #fff;
+}
+.opening-reflection textarea:focus { outline: none; border-color: var(--rose); }
+.opening-reflection textarea:disabled { background: #faf6f8; color: var(--text-light); cursor: default; }
+.opening-reflection .opening-actions { display: flex; align-items: center; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.opening-reflection .opening-status { font-size: 13px; color: var(--text-light); flex: 1; min-width: 200px; }
+.opening-reflection .opening-status .submitted { color: var(--green); font-weight: 600; }
+.opening-reflection .opening-status .pending { color: var(--text-light); font-style: italic; }
+
+/* ── MHCCA resource-link callout (subtle, in-flow) ── */
+.resource-link {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: #FBFCFE; border: 1px solid var(--grey); border-left: 3px solid var(--teal);
+  border-radius: 10px; padding: 14px 18px; margin: 18px 0;
+  font-size: 14px; line-height: 1.55;
+}
+.resource-link .rl-icon {
+  flex: 0 0 32px; height: 32px; border-radius: 8px;
+  background: var(--very-light-teal); color: var(--teal);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700;
+}
+.resource-link .rl-body { flex: 1; }
+.resource-link .rl-hook { font-weight: 600; color: var(--dark-teal); margin-bottom: 2px; }
+.resource-link .rl-desc { color: var(--text-light); font-size: 13.5px; margin-bottom: 6px; }
+.resource-link a { color: var(--teal); font-weight: 600; text-decoration: none; font-size: 13.5px; }
+.resource-link a:hover { text-decoration: underline; }
+.resource-link a::after { content: ' ↗'; font-size: 11px; opacity: 0.7; }
+
+/* ── Climate emotions wheel ── */
+.emotions-wheel-wrap {
+  display: grid; grid-template-columns: minmax(280px, 360px) 1fr; gap: 28px;
+  align-items: start; margin: 24px 0;
+}
+@media (max-width: 720px) { .emotions-wheel-wrap { grid-template-columns: 1fr; } }
+.emotions-wheel { width: 100%; max-width: 360px; aspect-ratio: 1 / 1; margin: 0 auto; display: block; }
+.emotions-wheel .seg { cursor: pointer; transition: opacity 0.2s, transform 0.2s; transform-origin: center; }
+.emotions-wheel .seg:hover { opacity: 0.85; }
+.emotions-wheel .seg.active { opacity: 1; }
+.emotions-wheel .seg:not(.active).any-active { opacity: 0.35; }
+.emotions-wheel .seg-label {
+  font-size: 13px; font-weight: 700; fill: #fff; pointer-events: none;
+  font-family: 'Open Sans', sans-serif; letter-spacing: 0.4px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+.emotions-wheel .seg:focus { outline: none; }
+.emotions-wheel .seg:focus-visible { stroke: var(--dark-teal); stroke-width: 3; }
+.emotions-wheel .hub-label {
+  font-size: 11px; font-weight: 700; fill: var(--dark-teal);
+  text-anchor: middle; pointer-events: none;
+}
+.wheel-detail {
+  background: var(--white); border: 1px solid var(--grey); border-radius: var(--radius);
+  padding: 20px 22px; min-height: 240px; box-shadow: var(--shadow);
+}
+.wheel-detail .wd-default { color: var(--text-light); font-style: italic; font-size: 14px; }
+.wheel-detail h4 { font-size: 17px; color: var(--dark-teal); margin-bottom: 10px; }
+.wheel-detail p { font-size: 14px; line-height: 1.65; margin-bottom: 10px; }
+.wheel-detail p:last-child { margin-bottom: 0; }
+.wheel-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.wheel-tag { background: var(--very-light-teal); color: var(--dark-teal); padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+
+/* ── Levels of action grid (Module 4) ── */
+.levels-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.level-card {
+  background: var(--white); border: 1px solid var(--grey); border-top: 4px solid var(--teal);
+  border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
+}
+.level-card.individual { border-top-color: var(--teal); }
+.level-card.familial { border-top-color: var(--green); }
+.level-card.community { border-top-color: var(--amber); }
+.level-card.systemic { border-top-color: var(--rose); }
+.level-card .level-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 3px 10px; border-radius: 12px; margin-bottom: 8px;
+  background: var(--very-light-teal); color: var(--dark-teal);
+}
+.level-card.familial .level-tag { background: var(--light-green); color: var(--green); }
+.level-card.community .level-tag { background: var(--light-amber); color: #92400E; }
+.level-card.systemic .level-tag { background: var(--light-rose); color: var(--rose); }
+.level-card h4 { font-size: 16px; font-weight: 700; color: var(--dark-teal); margin-bottom: 10px; }
+.level-card ul { margin: 0 0 0 18px; }
+.level-card li { font-size: 13.5px; color: var(--text-light); line-height: 1.55; margin-bottom: 4px; }
+
+/* ── Glossary ── */
+.sidebar-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 16px 16px 8px; }
+.sidebar-extras { padding: 4px 0 12px; }
+.sidebar-extras .nav-item { font-size: 13px; opacity: 0.85; }
+.sidebar-extras .nav-item .dot { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.25); }
+.sidebar-extras .nav-item.active .dot { background: rgba(142,182,220,0.3); border-color: var(--light-teal); }
+.glossary-search {
+  width: 100%; padding: 12px 14px; border: 2px solid var(--grey); border-radius: 10px;
+  font-family: inherit; font-size: 14px; margin-bottom: 20px; transition: border-color 0.2s;
+}
+.glossary-search:focus { outline: none; border-color: var(--teal); }
+.glossary-grid { display: grid; gap: 12px; }
+.glossary-term {
+  background: var(--white); border: 1px solid var(--grey); border-left: 3px solid var(--teal);
+  border-radius: 10px; padding: 14px 18px;
+}
+.glossary-term.hidden { display: none; }
+.glossary-term .term-name {
+  font-weight: 700; color: var(--dark-teal); font-size: 15px; margin-bottom: 4px;
+}
+.glossary-term .term-def { font-size: 14px; color: var(--text); line-height: 1.6; }
 
 /* ── Welcome page ── */
 .welcome-hero {
@@ -375,6 +494,18 @@ li { margin-bottom: 8px; }
   <li>Recognize that climate change is both an environmental and a relational crisis, including from Indigenous perspectives.</li>
 </ul>
 
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Opening Reflection</h4>
+    <p class="prompt-text">Before we begin, take a moment to notice where you are right now. What drew you to this course? When you think about climate change, what feelings come up — even subtly? There are no right answers; this is just a starting point for the work ahead.</p>
+    <textarea id="openingReflection-0" placeholder="Write a few sentences in response..." oninput="checkOpeningReflection(0)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="openingSubmit-0" disabled onclick="submitOpeningReflection(0)">Submit &amp; Continue</button>
+      <p class="opening-status" id="openingStatus-0"><span class="pending">Your response is private and saved locally — submitting unlocks the rest of the module's progression.</span></p>
+    </div>
+  </div>
+</div>
+
 <div class="info-box amber">
   <h4>Important Note</h4>
   <p>Engaging with topics related to mental health, climate change, and injustice can be distressing and take an emotional toll. Please pace yourself, take breaks as needed, and practice self-care. You do not need to complete this course in one sitting — your progress will be saved.</p>
@@ -417,6 +548,18 @@ li { margin-bottom: 8px; }
   </ul>
 </div>
 
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Closing Reflection</h4>
+    <p class="prompt-text">What is one idea from this module — about climate change, planetary health, or Indigenous perspectives — that you want to carry into the rest of the course? What would you like to keep paying attention to?</p>
+    <textarea id="closingReflection-0" placeholder="Your reflections are private..." oninput="checkClosingReflection(0)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="closingSubmit-0" disabled onclick="submitClosingReflection(0)">Submit &amp; Continue</button>
+      <p class="opening-status" id="closingStatus-0"><span class="pending">Your response is private — submitting completes the module's reflection requirement.</span></p>
+    </div>
+  </div>
+</div>
+
 <div class="quiz" id="quiz-0">
   <div class="quiz-header">Knowledge Check — Module 1</div>
   <div class="quiz-body">
@@ -453,10 +596,9 @@ li { margin-bottom: 8px; }
 </div>
 
 <div class="module-nav">
-  <span></span>
   <div>
     <button class="btn btn-primary disabled" id="nextBtn-0" disabled onclick="goToModule(1)">Next: Climate Emotions →</button>
-    <p class="requirement-note" id="reqNote-0"><span class="req-pending">✦ Pass the knowledge check with 100% accuracy to continue</span></p>
+    <p class="requirement-note" id="reqNote-0"><span class="req-pending">✦ Submit both reflections and pass the knowledge check to continue</span></p>
   </div>
 </div>
 </div>
@@ -478,10 +620,41 @@ li { margin-bottom: 8px; }
   <li>Recognize that emotional responses to climate change are natural, meaningful signals — not pathology.</li>
 </ul>
 
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Opening Reflection</h4>
+    <p class="prompt-text">Think back to a recent moment when climate or environmental news affected you. What did you notice in your body, your thoughts, or your mood? Try to describe it in a few sentences before we name and explore the emotions together.</p>
+    <textarea id="openingReflection-1" placeholder="Describe what surfaced — physical sensations, passing thoughts, mood shifts..." oninput="checkOpeningReflection(1)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="openingSubmit-1" disabled onclick="submitOpeningReflection(1)">Submit &amp; Continue</button>
+      <p class="opening-status" id="openingStatus-1"><span class="pending">Your response is private — submitting unlocks the rest of the module's progression.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="info-box amber">
+  <h4>A Note on Trauma-Informed Care</h4>
+  <p>This module names emotions some readers carry personally. We approach this work through a <strong>trauma-informed lens</strong> — recognizing that distress about climate change is often layered onto other experiences of loss, displacement, or harm. Six widely-used principles guide trauma-informed practice:</p>
+  <ul style="margin-top:6px;">
+    <li><strong>Safety</strong> — physical and emotional safety for everyone in the space.</li>
+    <li><strong>Trustworthiness &amp; transparency</strong> — clarity about what to expect and why.</li>
+    <li><strong>Peer support</strong> — drawing on shared experience to reduce isolation.</li>
+    <li><strong>Collaboration &amp; mutuality</strong> — flattening hierarchies in helping relationships.</li>
+    <li><strong>Empowerment, voice, and choice</strong> — supporting people's agency in their own healing.</li>
+    <li><strong>Cultural, historical, and gender considerations</strong> — recognizing how identity and history shape experience and access.</li>
+  </ul>
+  <p style="margin-top:8px;">Carry these principles with you through the rest of the course — they apply to how you engage your own emotions, and to how you support others.</p>
+</div>
+
 <h2>Emotions, Wellbeing, and Mental Health</h2>
 <p>Before exploring specific climate emotions, it is important to understand what we mean by emotions and how they relate to mental health and wellbeing. Our understanding of health has evolved considerably over time — from the biomedical model (which focused narrowly on the absence of disease) to the World Health Organization's 1948 definition of health as "complete physical, mental, and social wellbeing." George Engel's biopsychosocial model (1977) further expanded this, recognizing that biological, psychological, and social factors are all essential to health.</p>
 <p>Many Indigenous health systems have long conceptualized health as a balance among physical, mental, emotional, and spiritual dimensions — inseparable from relationships with land, community, and the living world.</p>
 <p>Emotions are meaningful signals about the state of our relationships with the world around us. They should not be viewed as problems to be managed or eliminated, but as important information that can guide action and connection.</p>
+
+<h2>How We Understand Emotions: A Brief Theoretical Note</h2>
+<p>There is no single, settled scientific account of what emotions <em>are</em>. For a long time, basic-emotion theories assumed a small set of universal feelings — fear, anger, sadness, joy, disgust, surprise — each with its own characteristic facial expression, physiology, and brain signature. Other traditions instead emphasized cognitive appraisal (how we interpret a situation), social and cultural context (how the people and norms around us shape what we feel), or developmental history. Each of these perspectives captured something real about emotion, but none captured everything.</p>
+<p>More recent work — most prominently Lisa Feldman Barrett's <strong>theory of constructed emotion</strong> — argues that emotions are not pre-wired reflexes triggered by events but are actively <em>constructed</em> in the moment. The brain draws on bodily sensations, prior experience, language, and cultural concepts to predict what is happening and assemble an emotional experience that fits. On this view, two people facing the same wildfire smoke can construct quite different emotions — one grief, another rage, another a numb resolve — depending on what their body, history, and culture make available to them.</p>
+<p>This is not the final word; the science continues to evolve. The takeaway for this course is more modest: <strong>climate emotions are real, meaningful, and variable</strong>. They are not universal templates that look the same in everyone, and they are not symptoms to be eliminated. Holding this nuance lightly will help you make sense of why people in similar circumstances — including yourself across different days — can feel very different things, and why no single response will fit everyone.</p>
 
 <h2>Emotions vs. Mental Health Conditions</h2>
 <div class="info-box green">
@@ -491,82 +664,113 @@ li { margin-bottom: 8px; }
   <p>This course intentionally focuses on emotions to avoid pathologizing healthy responses to genuine threats.</p>
 </div>
 
+<div class="resource-link">
+  <div class="rl-icon">⌕</div>
+  <div class="rl-body">
+    <div class="rl-hook">Wondering where your own response sits on this spectrum?</div>
+    <div class="rl-desc">MHCCA's brief, confidential screening tool can help you locate your climate-related distress and decide whether to reach out for further support.</div>
+    <a href="https://mhcca.ca/screening-tool" target="_blank" rel="noopener noreferrer">Open the MHCCA screening tool</a>
+  </div>
+</div>
+
 <h2>The Spectrum of Climate Emotions</h2>
-<p>Research has identified a broad spectrum of emotional responses to climate change. Explore each of the nine categories below:</p>
+<p>Researchers and practitioners have mapped a broad spectrum of emotional responses to climate change. The wheel below organizes them into nine overlapping categories. Click any wedge to read what each emotion <em>is</em>. Beneath the wheel, a separate guide walks through how each one tends to <em>show up</em> in everyday life and how to <em>respond</em> — for yourself and for someone you support.</p>
+
+<div class="emotions-wheel-wrap">
+  <svg class="emotions-wheel" id="emotionsWheel" viewBox="-180 -180 360 360" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive climate emotions wheel"></svg>
+  <div class="wheel-detail" id="wheelDetail" aria-live="polite">
+    <p class="wd-default">Click any wedge of the wheel to read what that emotion <em>is</em>. Then scroll to the detailed list below to explore how it shows up in everyday life and how to respond — for yourself or for someone you support.</p>
+  </div>
+</div>
+
+<h3 style="margin-top:32px;">How These Emotions Show Up — and How to Respond</h3>
+<p style="font-size:14px;color:var(--text-light);">For each category, expand the panel to see <strong>how it tends to manifest</strong> (in the body, thoughts, and behaviour), <strong>what helps for yourself</strong>, and <strong>what helps when supporting someone else</strong>.</p>
 
 <div class="accordion" id="emotionsAccordion">
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">1. Worry and Anxiety <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p>Climate worry is a natural emotional response to the perceived threat of climate change — a signal that something important is at stake. At manageable levels, worry motivates information-seeking, preparedness, and advocacy. It can fuel constructive engagement with the issue.</p>
-      <p>However, when worry becomes chronic and overwhelming, it can cross into anxiety that interferes with daily functioning, sleep, concentration, and relationships. The distinction matters: worry in proportion to the threat is adaptive and should be validated, not dismissed. Climate anxiety that persists and impairs functioning may benefit from professional support.</p>
+      <p><strong>How it shows up:</strong> circling thoughts about news headlines, trouble sleeping after climate stories, restlessness or chest tightness, compulsive doomscrolling, irritability with people who seem unconcerned, difficulty concentrating on long-term plans, "what-if" loops about the future.</p>
+      <p><strong>What helps for yourself:</strong> name the feeling (worry is information, not weakness), bound your news intake (set times rather than scrolling continuously), pair worry with one concrete action — however small — to convert helplessness into agency, use grounding techniques when worry escalates into panic.</p>
+      <p><strong>What helps when supporting others:</strong> validate first ("it makes sense to feel this way"), don't reassure with platitudes, ask what they need (information, distraction, a walk, problem-solving) before offering it, share that they are not alone in this — naming the experience reduces shame.</p>
     </div></div>
   </div>
   <div class="accordion-item">
-    <div class="accordion-header" onclick="toggleAccordion(this)">2. Pre-Traumatic and Post-Traumatic Stress <span class="arrow">▼</span></div>
+    <div class="accordion-header" onclick="toggleAccordion(this)">2. Anticipatory Stress and Trauma Responses <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p>Climate-related stress operates on two timelines. <strong>Post-traumatic stress</strong> follows direct experience of climate disasters — wildfires, floods, hurricanes — and can include flashbacks, hypervigilance, nightmares, and emotional numbness.</p>
-      <p><strong>Pre-traumatic stress</strong>, a newer concept in climate psychology, refers to the anticipatory dread of climate catastrophes that have not yet occurred but feel inevitable. Both forms can coexist, and both reflect the reality that climate change poses genuine threats to safety and stability.</p>
+      <p><strong>How it shows up:</strong> hypervigilance during weather events, intrusive memories or images, nightmares, startle reactions, emotional numbness, avoidance of places or news that bring up the trauma, dread about an event that hasn't yet happened, somatic symptoms (gut tension, headaches, chronic fatigue).</p>
+      <p><strong>What helps for yourself:</strong> grounding techniques (5-4-3-2-1 senses, slow breathing, cold water on hands), routines that reinforce safety, gentle exposure rather than full avoidance, professional support if symptoms persist beyond a few weeks or interfere with daily life — trauma responds well to evidence-based therapy.</p>
+      <p><strong>What helps when supporting others:</strong> create predictability and choice, avoid pressuring them to "talk about it," be present without fixing, recognize anniversary effects of past disasters, gently encourage professional support when appropriate without forcing it.</p>
     </div></div>
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">3. Grief and Solastalgia <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p>Climate grief encompasses mourning for losses already experienced and those anticipated — the loss of species, landscapes, ways of life, and futures once taken for granted. <strong>Solastalgia</strong>, a term coined by philosopher Glenn Albrecht, describes the distress caused by environmental change in one's home environment — a kind of homesickness experienced while still at home.</p>
-      <p>Unlike traditional grief, climate grief has no clear endpoint; the losses are ongoing and often ambiguous, making it difficult to process through conventional mourning.</p>
+      <p><strong>How it shows up:</strong> sudden waves of sadness triggered by familiar landscapes, mourning species or seasons that have changed, a homesickness experienced while still at home, ambiguous grief that has no closure, withdrawal from places once loved, tearfulness around environmental news, a sense of "phantom limb" for what has been lost.</p>
+      <p><strong>What helps for yourself:</strong> name the loss out loud (climate grief is rarely socially sanctioned, so naming it matters), ritualize where possible — write, walk, photograph, plant — give yourself permission to grieve without a "fix," join a climate grief circle or community of others who get it.</p>
+      <p><strong>What helps when supporting others:</strong> resist the urge to silver-line; sit with the loss as you would any bereavement, acknowledge the legitimacy of grieving non-human beings or places, mark losses ceremonially (a planting, a gathering, a moment of silence), check in around anniversaries and seasonal markers.</p>
     </div></div>
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">4. Guilt and Shame <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p>Climate <strong>guilt</strong> centres on actions taken or not taken — carbon footprints, consumption choices, perceived complicity in systems of harm. Climate <strong>shame</strong> is deeper and more identity-focused: a sense of being fundamentally flawed or part of a species that has failed the planet.</p>
-      <p>Both can motivate change at moderate levels, but when excessive, they become paralysing. It is important to recognize that structural forces — not just individual choices — drive climate change.</p>
+      <p><strong>How it shows up:</strong> rumination over past consumption choices, hyper-focus on personal carbon footprint, self-criticism that becomes paralysing, withdrawal from activities tied to identity, perfectionism about lifestyle changes, feeling that one is part of a "bad" species or generation, defensive responses when others raise climate topics.</p>
+      <p><strong>What helps for yourself:</strong> distinguish guilt (about an action) from shame (about the self) — guilt can motivate; shame more often paralyses, locate your contribution in proportion to structural drivers, redirect energy from rumination into one chosen action that aligns with your values, practise self-compassion explicitly.</p>
+      <p><strong>What helps when supporting others:</strong> avoid amplifying personal guilt as a motivator (it usually backfires), name structural responsibility alongside individual choice, model imperfection — share your own contradictions and how you live with them, redirect toward collective action rather than individual purity.</p>
     </div></div>
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">5. Anger and Rage <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p>Climate anger arises from witnessing injustice, inaction, and the gap between what is needed and what is being done. It often targets political leaders, corporations, and systems perceived as responsible for the crisis.</p>
-      <p>At its best, anger is a powerful catalyst for social change — fuelling protests, policy advocacy, and community organizing. At its worst, it can become corrosive, leading to interpersonal conflict, burnout, and despair. Understanding anger as a signal of moral engagement helps channel it constructively.</p>
+      <p><strong>How it shows up:</strong> heat or tightness in the chest when reading about inaction, snapping at family or colleagues, cynicism toward institutions, fantasies of confrontation, difficulty being present in everyday tasks because the wider injustice keeps intruding, burnout from sustained outrage, alienation from people who seem complacent.</p>
+      <p><strong>What helps for yourself:</strong> respect anger as a moral signal — it is telling you something important — channel it into structured action (organizing, advocacy, writing) rather than diffuse fuming, build in recovery so anger doesn't tip into burnout, separate moral clarity (the system is unjust) from interpersonal hostility (the cashier in front of you is not the system).</p>
+      <p><strong>What helps when supporting others:</strong> validate the anger without trying to defuse it, help them locate where the anger most accurately belongs (institutions, structures), connect them to organizing communities that can hold the energy, watch for signs of burnout and gently name them.</p>
     </div></div>
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">6. Isolation, Loneliness, and Alienation <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p>Many people report feeling profoundly alone in their climate concerns — unable to discuss their fears with family, friends, or colleagues who may be dismissive, disinterested, or overwhelmed themselves.</p>
-      <p>This isolation reflects an external condition (lack of social environments where climate emotions are acknowledged) rather than an internal failing. Social connection and community engagement are essential antidotes.</p>
+      <p><strong>How it shows up:</strong> feeling unable to bring up climate topics with family, friends, or colleagues, "climate silence" in social settings, a quiet sense that one is grieving alone, drifting away from people who seem disengaged, online overuse to find others who get it (sometimes helpful, sometimes corrosive), shame for caring "too much."</p>
+      <p><strong>What helps for yourself:</strong> seek out spaces — climate cafés, faith groups, peer circles — where the topic is welcomed, find one trusted person you can be honest with, recognize that the silence reflects a social condition (climate isn't part of normal small talk yet), don't take it as evidence that you are alone.</p>
+      <p><strong>What helps when supporting others:</strong> simply acknowledging climate concerns out loud breaks the silence, ask how they are doing about it specifically rather than waiting for them to raise it, share resources or local groups, model the conversation so others learn it's possible to have.</p>
     </div></div>
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">7. Denial and Disengagement <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p>Denial and disengagement serve as protective psychological mechanisms against overwhelming threat. Rather than viewing denial solely as a moral failure, it is useful to understand it as a coping response — the psyche's attempt to manage information that feels too threatening to absorb.</p>
-      <p>Sustained, supportive engagement rather than confrontation tends to be more effective in helping people move through denial.</p>
+      <p><strong>How it shows up:</strong> changing the subject when climate is raised, dismissive humour, intellectualizing without feeling, hyper-focus on solutions to avoid sitting with the problem, "I just can't think about that right now," disengagement after periods of intense engagement, sometimes outright rejection of the science.</p>
+      <p><strong>What helps for yourself:</strong> notice when avoidance is protective (it sometimes is, briefly) versus when it is calcifying, re-engage gently — through a person you trust, a story rather than statistics, or a small action — recognize that disengagement after prolonged intense engagement may signal burnout, not apathy.</p>
+      <p><strong>What helps when supporting others:</strong> avoid confrontation and information dumps — they tend to deepen denial, ask open questions about what they care about and connect from there, share your own emotional truth rather than facts, give time and follow up, recognize that movement is usually slow and non-linear.</p>
     </div></div>
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">8. Ecoparalysis and Fatalism <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p><strong>Ecoparalysis</strong> describes the feeling of being so overwhelmed by the scale and complexity of the climate crisis that one becomes unable to act. <strong>Fatalism</strong> — the belief that catastrophic outcomes are inevitable regardless of action — is a related response.</p>
-      <p>These responses are not signs of apathy; rather, they often emerge from deep caring that has been exhausted by a sense of helplessness. Providing concrete, achievable actions and fostering collective efficacy can help counter these feelings.</p>
+      <p><strong>How it shows up:</strong> "what's the point" thinking, abandoning previously held practices, doom-leaning humour, oscillation between bursts of action and total withdrawal, decision-fatigue around any climate-relevant choice, drift toward nihilistic communities online.</p>
+      <p><strong>What helps for yourself:</strong> shrink the unit of action — choose one tiny, achievable thing and do it, prioritize collective action over solo effort (collective efficacy is a known antidote to fatalism), limit prolonged exposure to doomist media voices, restore basic rest and nutrition; ecoparalysis often rides on top of physical depletion.</p>
+      <p><strong>What helps when supporting others:</strong> don't try to argue them into hope, do something small alongside them rather than urging them to act, share concrete examples of meaningful change — local, partial, honest — rather than abstract optimism, watch for signs that paralysis has tipped into clinical depression and gently support a path to professional help.</p>
     </div></div>
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">9. Hope and Resilience <span class="arrow">▼</span></div>
     <div class="accordion-body"><div class="accordion-body-inner">
-      <p>Hope in the climate context is not naive optimism or denial of the severity of the crisis. It is a realistic, grounded orientation toward the future that acknowledges difficulty while maintaining belief in the possibility of meaningful change.</p>
-      <p>Researchers have described several forms: <strong>radical hope</strong> (belief in a future good not yet imaginable), <strong>active hope</strong> (a participatory stance of engagement), and <strong>stubborn optimism</strong> (clear-eyed acceptance of facts alongside determined conviction that solutions exist). Hope sustains motivation, strengthens social bonds, and expands our capacity for creative problem-solving. It is both a feeling and a practice.</p>
+      <p><strong>How it shows up:</strong> renewed energy after time in community, capacity to hold difficulty alongside possibility, motivation that survives setbacks, willingness to engage in projects whose outcomes are uncertain, gratitude that coexists with grief, a felt sense that what one does matters even if it isn't enough on its own.</p>
+      <p><strong>What helps for yourself:</strong> treat hope as a practice rather than a mood — return to it deliberately, anchor it in concrete, witnessed change rather than vague optimism, surround yourself with people who model engaged hope, build in rest and joy; sustainable hope requires energy reserves.</p>
+      <p><strong>What helps when supporting others:</strong> don't impose hope on someone in grief or anger — let it emerge, share specific examples that honour both the reality and the possibility, celebrate small wins together, model that hope and despair can coexist without one cancelling the other.</p>
     </div></div>
   </div>
 </div>
 
-<div class="reflection">
+<div class="opening-reflection">
   <div class="info-box rose">
-    <h4>Personal Reflection</h4>
-    <p><em>Which of the nine emotions do you identify with most strongly? Has this changed over time? How have these emotions influenced your personal or professional life?</em></p>
+    <h4>Closing Reflection</h4>
+    <p class="prompt-text">Which of the nine emotions do you identify with most strongly? Has this changed over time? How have these emotions influenced your personal or professional life?</p>
+    <textarea id="closingReflection-1" placeholder="Your reflections are private and will not be shared..." oninput="checkClosingReflection(1)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="closingSubmit-1" disabled onclick="submitClosingReflection(1)">Submit &amp; Continue</button>
+      <p class="opening-status" id="closingStatus-1"><span class="pending">Your response is private — submitting completes the module's reflection requirement.</span></p>
+    </div>
   </div>
-  <textarea id="reflection-1" placeholder="Your reflections are private and will not be shared..." oninput="checkModuleRequirements(1)"></textarea>
-  <p class="save-note">Your reflection is saved locally in your browser as you type. <strong>A response is required to continue.</strong></p>
 </div>
 
 <div class="quiz" id="quiz-1">
@@ -621,10 +825,9 @@ li { margin-bottom: 8px; }
 </div>
 
 <div class="module-nav">
-  <button class="btn btn-secondary" onclick="goToModule(0)">← Previous</button>
   <div>
     <button class="btn btn-primary disabled" id="nextBtn-1" disabled onclick="goToModule(2)">Next: What Shapes Emotions →</button>
-    <p class="requirement-note" id="reqNote-1"><span class="req-pending">✦ Complete the reflection and pass the knowledge check with 100% to continue</span></p>
+    <p class="requirement-note" id="reqNote-1"><span class="req-pending">✦ Submit both reflections and pass the knowledge check to continue</span></p>
   </div>
 </div>
 </div>
@@ -647,6 +850,18 @@ li { margin-bottom: 8px; }
   <li>Recognize how marginalization and intersectionality shape climate-related mental health outcomes.</li>
 </ul>
 
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Opening Reflection</h4>
+    <p class="prompt-text">Consider the people in your life who feel climate change differently than you do — more intensely, less intensely, or just differently. What do you imagine accounts for that difference? Hold onto your guesses as we work through what shapes emotional responses.</p>
+    <textarea id="openingReflection-2" placeholder="Who comes to mind, and what factors might be at play?" oninput="checkOpeningReflection(2)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="openingSubmit-2" disabled onclick="submitOpeningReflection(2)">Submit &amp; Continue</button>
+      <p class="opening-status" id="openingStatus-2"><span class="pending">Your response is private — submitting unlocks the rest of the module's progression.</span></p>
+    </div>
+  </div>
+</div>
+
 <h2>Understanding the Causes of Climate Emotions</h2>
 <p>Climate emotions are not random reactions. They are functional responses to real threats — rising sea levels, extreme weather, environmental degradation, and social inequalities. The <strong>biopsychosocial model</strong> helps us understand that biological factors (such as genetic predisposition and physiological stress responses), psychological factors (such as personality, coping style, and cognitive appraisals), and social factors (such as community support, cultural context, and socioeconomic status) all interact to shape our emotional responses to climate change.</p>
 
@@ -661,8 +876,9 @@ li { margin-bottom: 8px; }
   <li>Access to green spaces and nature</li>
 </ul>
 
-<h2>Developmental and Lifespan Perspectives</h2>
-<p>Climate emotions evolve across the lifespan, shaped by the priorities and capacities of each developmental stage:</p>
+<h2>A Lifecourse Perspective</h2>
+<p>Climate emotions are not static — they shift across the arc of a life. Each developmental stage carries its own concerns (forming an identity, raising children, watching grandchildren grow up, witnessing decades of change), its own resources for coping, and its own constraints. The same wildfire season that registers as existential dread for a fifteen-year-old may register as grief for an eighty-year-old who remembers what the forest was, and as compounded caregiving fatigue for the forty-year-old between them. <strong>A lifecourse lens reminds us that climate emotion is shaped not only by what is happening now but by where someone is in their life and what they have already lived through.</strong></p>
+<p>Below is a brief sketch of how climate emotions can show up across four broad life stages. Real lives don't fit neatly into stages — these are starting points, not boxes.</p>
 
 <div class="tabs">
   <div class="tab-buttons">
@@ -672,24 +888,36 @@ li { margin-bottom: 8px; }
     <button class="tab-btn" onclick="switchTab(this, 'life-older')">Older Adults</button>
   </div>
   <div class="tab-panel active" id="life-child">
-    <p><strong>Children and Adolescents:</strong> Growing awareness of the climate crisis combined with limited agency can generate eco-anxiety. Emotions can channel into activism or despair depending on social support and opportunities for meaningful engagement. This age group often reports the highest levels of existential dread about their future due to climate change.</p>
+    <p><strong>Children and Adolescents — "What kind of future will I have?"</strong></p>
+    <p>Growing awareness of the climate crisis combined with limited agency can generate intense eco-anxiety and existential dread. Surveys consistently find that this age group reports the highest levels of climate-related distress. Without supportive adults and opportunities for meaningful engagement, that distress can curdle into despair; with them, it can channel into activism, creativity, and sustained moral concern. Schools, parents, and youth programs play an outsized role in shaping which trajectory emerges.</p>
   </div>
   <div class="tab-panel" id="life-young">
-    <p><strong>Early Adulthood:</strong> Climate emotions intersect with major life decisions around career, family, and lifestyle. Guilt and shame about carbon footprints are common. This is a critical period for emotional and social support, as young adults are forming the values and habits that will shape their lifelong engagement with climate issues.</p>
+    <p><strong>Early Adulthood — "Who am I becoming, and what world am I building into?"</strong></p>
+    <p>Climate emotions in this stage are entangled with formative life decisions: career choice, partnering, having children, where to live. Guilt and shame about carbon footprint are common, alongside grief for futures imagined and uncertainty about whether to bring children into a warming world. Identity is consolidating, which means the values and habits formed here often carry forward for decades. This is a critical period for connection — peer communities and trusted mentors can keep young adults from absorbing climate distress as personal failure.</p>
   </div>
   <div class="tab-panel" id="life-mid">
-    <p><strong>Midlife:</strong> Complex emotions blending grief for losses with frustration at slow change. Responsibilities for families and communities shape how climate distress is experienced and expressed. Midlife adults often draw on established social networks for resilience, but may also face compounding stressors from career, caregiving, and community obligations.</p>
+    <p><strong>Midlife — "What am I responsible for, and what am I leaving behind?"</strong></p>
+    <p>Climate emotions here often blend grief for losses already accumulating with frustration at the slow pace of change. Caregiving responsibilities (children, ageing parents, communities) shape how the emotions are felt and expressed. Midlife adults often have more established networks and influence to draw on, but they may also be the most stretched — career, caregiving, and community obligations stacking up under climate-amplified stress. Burnout is a real risk; sustainable engagement matters more than intensity.</p>
   </div>
   <div class="tab-panel" id="life-older">
-    <p><strong>Older Adults:</strong> Lived experience of environmental changes over decades can produce solastalgia. Older adults can serve as wisdom-keepers offering historical perspective, but may also face exclusion due to ageism in climate movements. Their intergenerational perspective can be a valuable resource for communities navigating climate grief.</p>
+    <p><strong>Older Adults — "I've watched this change. What can I pass on?"</strong></p>
+    <p>Decades of lived experience produce a particular form of climate grief — solastalgia for landscapes, species, and seasonal patterns that have shifted within a single lifetime. Older adults can serve as wisdom-keepers, offering historical perspective and intergenerational anchoring that younger people often lack. They may also face exclusion from climate movements through ageism or accessibility barriers. Honouring their witness, while making engagement physically and culturally accessible, is part of an intergenerational response.</p>
   </div>
 </div>
 
+<p style="font-size:14px;color:var(--text-light);margin-top:12px;"><em>These stages interact: a parent's climate worry is not separate from their child's; an elder's grief shapes the family's emotional climate. Intergenerational dialogue — children, parents, elders together — often metabolizes climate emotions better than any one generation can alone.</em></p>
+
 <h2>Population Impacts and Inequities</h2>
-<p>Climate change does not affect everyone equally. Marginalized communities — including Indigenous peoples, racialized communities, people living in poverty, persons with disabilities, and communities in the Global South — often bear the greatest burden of climate impacts while having contributed least to the crisis. These inequities compound existing health disparities and create additional layers of climate-related emotional distress.</p>
+<p>Climate change does not affect everyone equally. Marginalized communities — including Indigenous peoples, racialized communities, people living in poverty, persons with disabilities, gender-diverse people, and communities in the Global South — often bear the greatest burden of climate impacts while having contributed least to the crisis. These inequities compound existing health disparities and create additional layers of climate-related emotional distress. The emotions are not just bigger; they sit on top of histories of harm, displacement, and exclusion that long pre-date the climate crisis.</p>
 
 <h2>Intersectionality</h2>
-<p>Intersectionality, a concept developed by Kimberlé Crenshaw, highlights that overlapping social identities — including race, gender, socioeconomic status, disability, age, and geography — create unique experiences of both climate impacts and emotional responses. A person's climate emotions cannot be understood in isolation from the broader social structures that shape their lived experience.</p>
+<p><strong>Intersectionality</strong>, a concept developed by legal scholar Kimberlé Crenshaw, describes how overlapping systems of power — racism, sexism, classism, ableism, colonialism, heteronormativity — combine to produce experiences that cannot be explained by any single factor on its own. A person's climate emotions cannot be understood in isolation from the broader social structures that shape their lived experience.</p>
+<p>Two simple illustrations of how this plays out:</p>
+<ul>
+  <li><strong>An Indigenous woman in a coastal community</strong> may carry colonial dispossession of her people's land, gendered caregiving expectations during disasters, and economic constraints on her ability to relocate. Her climate grief is not three separate griefs added together — it is a single, compounded experience of land, gender, and economic harm at once.</li>
+  <li><strong>A disabled Black man in a heat-island neighbourhood</strong> may face mobility barriers to cooling centres, racial disinvestment in his neighbourhood's infrastructure, and medical systems that have historically not believed his pain. His climate distress is shaped by ableism, racism, and economic inequality moving together.</li>
+</ul>
+<p>Intersectionality does two things for climate-mental-health work. First, it sharpens our diagnosis: it tells us why generic interventions often fail communities at the margins. Second, it points to better solutions — culturally grounded, community-led, designed with rather than for the people most affected. Equity is not a side note in climate-mental-health practice; it is structural to whether our responses actually work.</p>
 
 <h3>Scenario Vignettes</h3>
 <p><em>Consider each person's experience and the factors shaping their climate emotions:</em></p>
@@ -720,6 +948,18 @@ li { margin-bottom: 8px; }
     <li>Climate emotions evolve across the lifespan, with each developmental stage presenting distinct challenges and strengths.</li>
     <li>Marginalization and intersectionality create compounded climate distress, requiring equity-centred approaches to support.</li>
   </ul>
+</div>
+
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Closing Reflection</h4>
+    <p class="prompt-text">Think about someone you know — or yourself — whose climate emotions are shaped by factors from this module (life stage, exposure, marginalization, or intersecting identities). What does that lens reveal that you hadn't considered before, and how might it change how you understand or support them?</p>
+    <textarea id="closingReflection-2" placeholder="Your reflections are private..." oninput="checkClosingReflection(2)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="closingSubmit-2" disabled onclick="submitClosingReflection(2)">Submit &amp; Continue</button>
+      <p class="opening-status" id="closingStatus-2"><span class="pending">Your response is private — submitting completes the module's reflection requirement.</span></p>
+    </div>
+  </div>
 </div>
 
 <div class="quiz" id="quiz-2">
@@ -766,10 +1006,9 @@ li { margin-bottom: 8px; }
 </div>
 
 <div class="module-nav">
-  <button class="btn btn-secondary" onclick="goToModule(1)">← Previous</button>
   <div>
     <button class="btn btn-primary disabled" id="nextBtn-2" disabled onclick="goToModule(3)">Next: Resilience &amp; Coping →</button>
-    <p class="requirement-note" id="reqNote-2"><span class="req-pending">✦ Pass the knowledge check with 100% accuracy to continue</span></p>
+    <p class="requirement-note" id="reqNote-2"><span class="req-pending">✦ Submit both reflections and pass the knowledge check to continue</span></p>
   </div>
 </div>
 </div>
@@ -788,8 +1027,21 @@ li { margin-bottom: 8px; }
 <ul>
   <li>Distinguish between adaptive and maladaptive responses to climate distress.</li>
   <li>Identify and apply three types of coping: problem-focused, emotion-focused, and meaning-focused.</li>
+  <li>Recognize that resilience is built across four levels — individual, organizational/familial, community, and systemic — and that no single level can carry the work alone.</li>
   <li>Describe the role of hope, validation, and practical skills in building climate resilience.</li>
 </ul>
+
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Opening Reflection</h4>
+    <p class="prompt-text">What do you currently do — intentionally or instinctively — when climate-related distress shows up for you? Note one thing that helps and one thing that doesn't. We'll examine why some responses sustain us while others wear us down.</p>
+    <textarea id="openingReflection-3" placeholder="One thing that helps... one thing that doesn't..." oninput="checkOpeningReflection(3)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="openingSubmit-3" disabled onclick="submitOpeningReflection(3)">Submit &amp; Continue</button>
+      <p class="opening-status" id="openingStatus-3"><span class="pending">Your response is private — submitting unlocks the rest of the module's progression.</span></p>
+    </div>
+  </div>
+</div>
 
 <h2>Adaptive vs. Maladaptive Responses</h2>
 <p>Not all responses to climate distress are equally helpful. The key distinction is between <strong>adaptive responses</strong> — which preserve wellbeing and foster meaningful action — and <strong>maladaptive responses</strong> — which lead to paralysis, avoidance, or destructive patterns. Importantly, the emotions themselves are not the problem; it is how we respond to them that matters.</p>
@@ -831,6 +1083,65 @@ li { margin-bottom: 8px; }
   <p>The most effective approach blends all three types flexibly. For example, a person might volunteer for a community resilience initiative (problem-focused), attend a climate grief support circle (emotion-focused), and view their work as part of a larger movement for justice (meaning-focused).</p>
 </div>
 
+<h2>Four Levels of Action</h2>
+<p>Coping with climate emotions is rarely a solo project. Sustainable resilience grows when action is happening at <strong>four interlocking levels</strong> at once — individual practices supported by close relationships, neighbours and peers, and the larger systems that shape our daily lives. Strategies at any one level have limits; the four levels together are what carry people over the long term.</p>
+
+<div class="levels-grid">
+  <div class="level-card individual">
+    <span class="level-tag">Individual</span>
+    <h4>What you do for yourself</h4>
+    <ul>
+      <li>Grounding, breathing, and mindfulness</li>
+      <li>Time in nature and movement</li>
+      <li>Personal limits on news and social media</li>
+      <li>Reflective practices — journaling, art, prayer</li>
+      <li>Naming and validating your own emotions</li>
+    </ul>
+  </div>
+  <div class="level-card familial">
+    <span class="level-tag">Organizational / Familial</span>
+    <h4>Households, teams, and small groups</h4>
+    <ul>
+      <li>Climate-informed conversations with family</li>
+      <li>Workplace policies that name climate distress</li>
+      <li>Trauma-informed practice in your team</li>
+      <li>Mutual care agreements with close people</li>
+      <li>Modelling honest, age-appropriate dialogue with children</li>
+    </ul>
+  </div>
+  <div class="level-card community">
+    <span class="level-tag">Community</span>
+    <h4>Neighbours, networks, and place</h4>
+    <ul>
+      <li>Climate cafés and grief circles</li>
+      <li>Mutual aid and emergency-readiness networks</li>
+      <li>Local restoration, gardening, and stewardship</li>
+      <li>Faith and cultural community gatherings</li>
+      <li>Peer-led skill shares and support groups</li>
+    </ul>
+  </div>
+  <div class="level-card systemic">
+    <span class="level-tag">Systemic / Structural</span>
+    <h4>Policies, institutions, and systems</h4>
+    <ul>
+      <li>Mental health funding for climate-affected regions</li>
+      <li>Equitable adaptation policy and just transitions</li>
+      <li>Health-system protocols for climate distress</li>
+      <li>Curriculum reform integrating climate &amp; emotions</li>
+      <li>Advocacy that names mental health in climate plans</li>
+    </ul>
+  </div>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">⌂</div>
+  <div class="rl-body">
+    <div class="rl-hook">Want a concrete starting place at the community level?</div>
+    <div class="rl-desc">MHCCA's "Building Resilient Neighbourhoods" guide offers practical steps for organizing readiness and support where you live.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/building-resilient-neighbourhoods-resources-and-guidance-for-readiness-and-resilience" target="_blank" rel="noopener noreferrer">Open the resilient neighbourhoods guide</a>
+  </div>
+</div>
+
 <h2>The Role of Hope</h2>
 <p>Hope is not a luxury in the climate context — it is a necessity. Researchers have described several important forms:</p>
 <ul>
@@ -852,6 +1163,15 @@ li { margin-bottom: 8px; }
   <button class="btn btn-primary" id="breathBtn" onclick="startBreathing()" style="margin-top:16px;">Start Exercise</button>
 </div>
 
+<div class="resource-link">
+  <div class="rl-icon">≈</div>
+  <div class="rl-body">
+    <div class="rl-hook">Want a wider toolkit of grounding techniques?</div>
+    <div class="rl-desc">MHCCA's grounding and presencing collection offers short, practical exercises for moments of overwhelm — many of them under three minutes.</div>
+    <a href="https://mhcca.ca/grounding-and-presencing-techniques" target="_blank" rel="noopener noreferrer">Browse grounding &amp; presencing techniques</a>
+  </div>
+</div>
+
 <h2>More Resilience Strategies</h2>
 <h3>Nature-Based Approaches</h3>
 <p>Engaging with natural environments — through forest bathing, gardening, outdoor recreation, or simply spending time near green spaces — supports emotional regulation and restores a sense of connectedness to the biosphere.</p>
@@ -862,24 +1182,65 @@ li { margin-bottom: 8px; }
 <h3>Social Connection and Community Engagement</h3>
 <p>Addressing climate emotions in community — through support groups, climate cafés, peer support networks, and collective action initiatives — counters isolation and builds collective efficacy.</p>
 
+<h2>Specific Therapeutic Approaches</h2>
+<p>For people whose climate distress crosses into clinical territory — chronic anxiety, traumatic stress, depression, or persistent functional impairment — several established therapeutic modalities have been adapted for climate-related concerns. None is a cure-all, and choice of approach depends on the person, the presenting symptoms, and the practitioner. The list below is meant as an orientation, not a prescription.</p>
+
+<ul>
+  <li><strong>Cognitive Behavioural Therapy (CBT)</strong> — examines and reframes the thought patterns that intensify climate distress (catastrophizing, all-or-nothing thinking, helplessness loops). Strong evidence base; widely available; effective for anxiety and depressive symptoms.</li>
+  <li><strong>Acceptance and Commitment Therapy (ACT)</strong> — particularly well-matched to climate distress, because it does not try to argue away difficult emotions. Instead it helps people accept the reality of what they feel, clarify values, and commit to action aligned with those values. Useful when the distress is, in some sense, accurate.</li>
+  <li><strong>Narrative therapy</strong> — separates the person from the problem and supports them to author a different relationship with climate experience. Helpful for grief, shame, and identity-level distress, and culturally adaptable.</li>
+  <li><strong>Ecotherapy and nature-based therapies</strong> — formal therapeutic work conducted in or with the natural world. Includes wilderness therapy, horticultural therapy, and forest-bathing protocols. Reconnects clients to the land that climate change is changing.</li>
+  <li><strong>Trauma-focused approaches (EMDR, trauma-focused CBT, somatic experiencing)</strong> — for clients with post-traumatic stress from direct climate disasters. Should be delivered by trauma-trained practitioners; cultural and historical context matters.</li>
+  <li><strong>Mindfulness-based therapies (MBCT, MBSR)</strong> — strengthen the capacity to be with difficult emotions without being overwhelmed by them. Often integrated with other approaches above.</li>
+  <li><strong>Group-based and community approaches</strong> — climate cafés, climate grief circles, the Work That Reconnects (Joanna Macy), and clinician-led groups all address the loneliness component of climate distress and build collective capacity for ongoing engagement.</li>
+  <li><strong>Psychoeducation and debriefing</strong> — structured information-sharing about climate emotions, often paired with reflective debriefing after disasters or activism, can reduce shame and normalize distress.</li>
+</ul>
+
+<div class="info-box teal">
+  <h4>Matching Approach to Need</h4>
+  <p>For most non-clinical climate distress, peer support, community engagement, and the resilience practices above are the right starting place. Therapeutic referral is appropriate when distress is persistent, impairs daily life, or involves trauma that hasn't resolved with time and social support. A culturally responsive, climate-literate practitioner is more important than a specific brand of therapy.</p>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">✚</div>
+  <div class="rl-body">
+    <div class="rl-hook">Want a deeper dive into the therapeutic landscape?</div>
+    <div class="rl-desc">MHCCA's overview of therapeutic approaches walks through the modalities above with examples and considerations for matching them to climate-related presentations.</div>
+    <a href="https://mhcca.ca/theraputic-approaches" target="_blank" rel="noopener noreferrer">See therapeutic approaches</a>
+  </div>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">♡</div>
+  <div class="rl-body">
+    <div class="rl-hook">Supporting someone else through their climate emotions?</div>
+    <div class="rl-desc">A short MHCCA guide on what helps — and what doesn't — when sitting with another person's climate distress. Useful for friends, parents, and colleagues, not just clinicians.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/supporting-others-through-their-climate-emotions" target="_blank" rel="noopener noreferrer">Read: supporting others through their climate emotions</a>
+  </div>
+</div>
+
 <div class="takeaways">
   <h3>Key Takeaways</h3>
   <ul>
     <li>Adaptive responses preserve wellbeing and foster action; the emotions themselves are not the problem — our responses to them are what matters.</li>
     <li>Effective coping blends problem-focused, emotion-focused, and meaning-focused strategies flexibly.</li>
+    <li>Sustainable resilience requires action at all four levels — individual, organizational/familial, community, and systemic — each reinforcing the others.</li>
     <li>Hope — in its radical, active, and stubborn forms — is essential for sustained climate engagement.</li>
     <li>Validation and acknowledgment of emotions are foundational to resilience.</li>
     <li>Practical skills including grounding, nature connection, somatic practices, and community engagement build resilience over time.</li>
   </ul>
 </div>
 
-<div class="reflection">
+<div class="opening-reflection">
   <div class="info-box rose">
-    <h4>Reflection Prompt</h4>
-    <p><em>Think about a time when you felt overwhelmed by climate-related information or emotions. Which type(s) of coping did you use? What is one concrete resilience practice you could incorporate into your life or professional work this week?</em></p>
+    <h4>Closing Reflection</h4>
+    <p class="prompt-text">Across the four levels of action — individual, organizational/familial, community, and systemic — which feels most natural to you, and which feels hardest to access? Name one concrete resilience practice you could try at one of those levels this week.</p>
+    <textarea id="closingReflection-3" placeholder="Your reflections are private..." oninput="checkClosingReflection(3)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="closingSubmit-3" disabled onclick="submitClosingReflection(3)">Submit &amp; Continue</button>
+      <p class="opening-status" id="closingStatus-3"><span class="pending">Your response is private — submitting completes the module's reflection requirement.</span></p>
+    </div>
   </div>
-  <textarea id="reflection-3" placeholder="Your reflections are private..." oninput="checkModuleRequirements(3)"></textarea>
-  <p class="save-note"><strong>A response is required to continue.</strong></p>
 </div>
 
 <div class="quiz" id="quiz-3">
@@ -934,10 +1295,9 @@ li { margin-bottom: 8px; }
 </div>
 
 <div class="module-nav">
-  <button class="btn btn-secondary" onclick="goToModule(2)">← Previous</button>
   <div>
     <button class="btn btn-primary disabled" id="nextBtn-3" disabled onclick="goToModule(4)">Next: Professional Roles →</button>
-    <p class="requirement-note" id="reqNote-3"><span class="req-pending">✦ Complete the reflection and pass the knowledge check with 100% to continue</span></p>
+    <p class="requirement-note" id="reqNote-3"><span class="req-pending">✦ Submit both reflections and pass the knowledge check to continue</span></p>
   </div>
 </div>
 </div>
@@ -958,7 +1318,20 @@ li { margin-bottom: 8px; }
   <li>Recognize the ethical responsibility of professionals across sectors to address climate-related mental health.</li>
   <li>Identify sector-specific strategies for integrating mental health awareness into climate work.</li>
   <li>Appreciate the importance of a whole-of-society approach to climate-mental health support.</li>
+  <li>Recognize that everyone — not only professionals — plays a role in supporting climate-mental health, often as a listening ear or a steady presence.</li>
 </ul>
+
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Opening Reflection</h4>
+    <p class="prompt-text">What is your role — professional, personal, or both — in the world right now? How might climate-related emotional wellbeing show up in that role, even if it isn't in your formal job description? You don't need to be a clinician to make a difference.</p>
+    <textarea id="openingReflection-4" placeholder="What roles do you hold, and where might climate emotions touch them?" oninput="checkOpeningReflection(4)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="openingSubmit-4" disabled onclick="submitOpeningReflection(4)">Submit &amp; Continue</button>
+      <p class="opening-status" id="openingStatus-4"><span class="pending">Your response is private — submitting unlocks the rest of the module's progression.</span></p>
+    </div>
+  </div>
+</div>
 
 <h2>Professional Responsibility in a Changing Climate</h2>
 <p>Climate change is no longer a distant or abstract issue — it is affecting the people and communities that professionals across all sectors serve. Integrating mental health awareness into professional practice is not optional; it is an ethical imperative.</p>
@@ -985,25 +1358,151 @@ li { margin-bottom: 8px; }
     <h4>Educators</h4>
     <p>Educators are essential in fostering climate literacy while addressing the emotional dimensions of climate change. Key strategies include integrating <strong>Social-Emotional Learning (SEL)</strong> with climate education, using age-appropriate approaches that honour developmental stages, and facilitating emotional expression through art, journaling, and group discussion.</p>
     <p>Experiential and place-based learning — such as tree planting, water conservation projects, and local ecosystem exploration — fosters direct emotional connection. Encouraging student engagement in climate movements builds agency and counters helplessness.</p>
+    <p style="margin-top:14px;"><strong>Concrete examples:</strong></p>
+    <ul style="font-size:14px;">
+      <li>A grade-school teacher running a weekly climate-action club where students channel eco-anxiety into a schoolyard pollinator garden.</li>
+      <li>A high-school counsellor pairing climate-literacy curriculum with structured reflection circles after extreme-weather events.</li>
+      <li>A university professor publishing on climate grief in Gen Z and bringing it into seminars on environmental psychology.</li>
+      <li>An outdoor educator organizing eco-therapy field trips that combine restoration work with reflective practice.</li>
+      <li>A school district adopting a trauma-informed response plan for wildfire- or flood-affected communities.</li>
+    </ul>
   </div>
   <div class="tab-panel" id="sec-health">
     <h4>Health and Social Care Providers</h4>
     <p>Health and social care providers are on the front lines of climate-related mental health challenges. Their role includes providing clinical interventions for climate distress (including eco-anxiety, trauma, and grief), integrating climate awareness into routine patient assessments, and delivering preventive care that builds resilience in vulnerable populations.</p>
     <p>Adopting trauma-informed approaches for communities affected by climate disasters and bridging equity gaps by ensuring underserved populations have access to culturally responsive mental health support is critical.</p>
+    <p style="margin-top:14px;"><strong>Concrete examples:</strong></p>
+    <ul style="font-size:14px;">
+      <li>A family physician adding a brief climate-distress check-in to routine mental-health screening for adolescent patients.</li>
+      <li>A social worker running group sessions for wildfire evacuees, integrating grief work and practical resettlement support.</li>
+      <li>A nurse advocating for heatwave preparedness protocols in elder-care facilities and home-care services.</li>
+      <li>A psychologist offering ACT-based therapy specifically for climate-related anxiety and grief.</li>
+      <li>A hospital embedding mental-health protocols into its emergency-response plan for climate disasters.</li>
+      <li>A community health worker connecting flood-displaced families to ongoing trauma-informed support, not just acute relief.</li>
+    </ul>
   </div>
   <div class="tab-panel" id="sec-media">
     <h4>News and Media Professionals</h4>
     <p>The way climate stories are told shapes public emotional and behavioural responses. Media professionals have a responsibility to balance urgency with solutions — avoiding both complacency and paralysing doom narratives.</p>
     <p>Key practices include framing climate stories to include constructive possibilities and community action, highlighting diverse voices and local impacts, promoting media literacy to combat misinformation, and being mindful of the emotional impact of repeated crisis imagery on audiences.</p>
+    <p style="margin-top:14px;"><strong>Concrete examples:</strong></p>
+    <ul style="font-size:14px;">
+      <li>A reporter covering local climate recovery projects with explicit emotional framing — naming what residents feel, not just what was damaged.</li>
+      <li>An editor offering trauma debriefs and peer support for journalists on disaster beats.</li>
+      <li>A local newsroom adopting solutions-journalism principles when covering climate impacts in nearby communities.</li>
+      <li>A producer giving sustained airtime to Indigenous and frontline voices rather than parachuting in only after disasters.</li>
+      <li>A documentary filmmaker pairing distressing imagery with concrete community responses, so viewers leave with both honesty and a doorway to act.</li>
+    </ul>
+    <div class="resource-link">
+      <div class="rl-icon">⌽</div>
+      <div class="rl-body">
+        <div class="rl-hook">Where do you (and your audience) go for climate facts you can trust?</div>
+        <div class="rl-desc">A short MHCCA primer on what makes a climate source reliable — and a curated list of go-to sources for verifying and citing.</div>
+        <a href="https://mhcca.ca/connecting-on-climate/reliable-sources-for-climate-information-why-they-matter-and-what-they-are" target="_blank" rel="noopener noreferrer">Reliable sources for climate information</a>
+      </div>
+    </div>
   </div>
   <div class="tab-panel" id="sec-spirit">
     <h4>Moral and Spiritual Leaders</h4>
     <p>Spiritual and faith communities provide essential spaces for connection, meaning-making, and emotional support. Moral and spiritual leaders can validate climate emotions within a framework of stewardship and interdependence, conduct rituals that process collective grief and celebrate resilience, build community bonds that strengthen collective efficacy, and connect spiritual values to concrete climate action and justice work.</p>
     <p>Their unique role lies in offering frameworks of meaning, hope, and purpose that sustain engagement over the long term.</p>
+    <p style="margin-top:14px;"><strong>Concrete examples:</strong></p>
+    <ul style="font-size:14px;">
+      <li>Indigenous elders leading healing ceremonies after land degradation or significant ecological loss.</li>
+      <li>A faith leader weaving climate themes into regular services — naming grief, gratitude, and collective responsibility from the pulpit.</li>
+      <li>An interfaith coalition launching a climate-compassion initiative that pairs ritual with community organizing.</li>
+      <li>A meditation teacher offering free climate grief circles that combine contemplative practice with shared reflection.</li>
+      <li>A chaplain integrating climate-related distress into their work with patients, students, or military families.</li>
+    </ul>
   </div>
   <div class="tab-panel" id="sec-policy">
     <h4>Policy and Decision-Makers</h4>
     <p>Policy and decision-makers have systemic-level responsibility for ensuring that mental health is integrated into climate adaptation and mitigation strategies. This includes creating legislative frameworks that embed mental health into climate policy, directing climate adaptation funding equitably to vulnerable and underserved communities, supporting grassroots participation in climate decision-making, and integrating mental health metrics into climate impact assessments.</p>
+    <p style="margin-top:14px;"><strong>Concrete examples:</strong></p>
+    <ul style="font-size:14px;">
+      <li>A municipal government launching a public campaign to destigmatize climate distress and signpost local supports.</li>
+      <li>A provincial ministry funding mental-health surge capacity in regions affected by repeated wildfire seasons.</li>
+      <li>A city council embedding mental-health metrics into its climate adaptation plan and reporting on them annually.</li>
+      <li>A federal program funding Indigenous-led land stewardship that explicitly includes wellbeing and cultural-continuity outcomes.</li>
+      <li>An MP or legislator championing just-transition legislation that pairs economic support with mental-health services for workers leaving high-emission industries.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Everyone Has a Role</h2>
+<p>The professional sectors above carry distinct responsibilities, but climate-mental health is not the exclusive territory of any one of them. <strong>Most of the support people receive when they're climate-distressed comes from non-professionals</strong> — from a friend who listens without rushing to fix, a parent who lets a child name their fear, a neighbour who checks in after the smoke clears. You do not need a clinical credential to make a meaningful difference. You need attention, willingness, and a few practical skills.</p>
+<p>If you are not in one of the sectors above, your role might look like:</p>
+<ul>
+  <li><strong>Being the listener</strong> when someone in your life raises climate worries — without minimizing, debating, or rushing to solutions.</li>
+  <li><strong>Naming what you see</strong> — saying out loud "this is hard" rather than letting climate distress stay invisible.</li>
+  <li><strong>Modelling honest conversation</strong> with children, partners, friends, and colleagues, including when you don't have answers.</li>
+  <li><strong>Showing up locally</strong> — block parties, mutual aid, planting days, neighbourhood emergency planning.</li>
+  <li><strong>Choosing your information diet</strong> carefully and pointing others toward credible sources.</li>
+</ul>
+
+<h3>A Pocket Toolkit for Climate Conversations</h3>
+<p>The following short MHCCA guides are written for everyone, not just professionals. Open whichever one feels most relevant to a conversation you're already in or one you've been avoiding:</p>
+
+<div class="resource-link">
+  <div class="rl-icon">⏱</div>
+  <div class="rl-body">
+    <div class="rl-hook">When is the right moment to talk about climate?</div>
+    <div class="rl-desc">Timing matters as much as content. A short read on reading the room — and your own readiness — before you open the conversation.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/when-to-have-climate-conversations" target="_blank" rel="noopener noreferrer">When to have climate conversations</a>
+  </div>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">▷</div>
+  <div class="rl-body">
+    <div class="rl-hook">Don't know how to start?</div>
+    <div class="rl-desc">A bank of low-stakes opening lines you can borrow — for friends, family, kids, or strangers in line at the grocery store.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/conversation-starters-for-talking-about-climate-change" target="_blank" rel="noopener noreferrer">Conversation starters</a>
+  </div>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">◉</div>
+  <div class="rl-body">
+    <div class="rl-hook">Speaking to someone whose values are different from yours?</div>
+    <div class="rl-desc">Climate conversations land best when they connect to what the other person already cares about. This guide helps you find that bridge.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/speaking-to-others-climate-values" target="_blank" rel="noopener noreferrer">Speaking to others' climate values</a>
+  </div>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">✓</div>
+  <div class="rl-body">
+    <div class="rl-hook">A short list of dos and don'ts.</div>
+    <div class="rl-desc">Hard-won lessons about what shuts a climate conversation down — and what keeps it open. Useful as a quick gut-check before a difficult chat.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/knowing-the-dos-and-donts-of-climate-conversations" target="_blank" rel="noopener noreferrer">Dos and don'ts of climate conversations</a>
+  </div>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">?</div>
+  <div class="rl-body">
+    <div class="rl-hook">Caught off-guard by a tough question?</div>
+    <div class="rl-desc">Common questions you'll hear about climate change — and considered, accurate answers you can adapt for your own voice.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/responding-to-common-questions-about-climate-change" target="_blank" rel="noopener noreferrer">Responding to common questions</a>
+  </div>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">◊</div>
+  <div class="rl-body">
+    <div class="rl-hook">The single skill that does the most work: listening.</div>
+    <div class="rl-desc">Active listening is what turns a conversation about climate from an argument into a moment of connection. Practical guidance for getting it right.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/how-to-use-active-listening-in-climate-conversations" target="_blank" rel="noopener noreferrer">Using active listening in climate conversations</a>
+  </div>
+</div>
+
+<div class="resource-link">
+  <div class="rl-icon">❝</div>
+  <div class="rl-body">
+    <div class="rl-hook">Telling — and hearing — climate stories.</div>
+    <div class="rl-desc">Personal narratives often move people in ways that data cannot. A short MHCCA guide on sharing your own climate experience and creating space for others to share theirs.</div>
+    <a href="https://mhcca.ca/connecting-on-climate/sharing-climate-narratives" target="_blank" rel="noopener noreferrer">Sharing climate narratives</a>
   </div>
 </div>
 
@@ -1011,7 +1510,34 @@ li { margin-bottom: 8px; }
 <p>Indigenous knowledge systems offer culturally grounded, relational, and time-tested approaches to environmental stewardship and community wellbeing. Any professional working at the intersection of climate and mental health should approach Indigenous knowledge with humility, recognizing the importance of cultural safety, reciprocity, and Indigenous leadership in shaping climate responses. Decolonial approaches that honour Indigenous epistemologies are essential for equitable and effective climate-mental health work.</p>
 
 <h2>Climate Justice</h2>
-<p>Climate justice recognizes that climate change disproportionately affects marginalized communities and that solutions must address underlying social inequalities. The emotional and mental health impacts of climate change cannot be separated from questions of justice, equity, and accountability. Supporting grassroots movements, advocating for just transitions, and centring affected communities in decision-making are all expressions of climate justice in practice.</p>
+<p>Climate justice begins from a simple observation: <strong>those who have contributed least to the climate crisis are bearing the most of its harms</strong>. Wealthier nations and industries built the bulk of the emissions that drive warming; low-income communities, the Global South, Indigenous nations, racialized communities, and people with disabilities live with the bulk of the consequences. Adequate responses to climate change cannot be separated from these inequities, and neither can the emotional and mental health impacts of the crisis.</p>
+
+<p>It is useful to think about climate justice through four overlapping lenses:</p>
+
+<div class="levels-grid">
+  <div class="level-card individual">
+    <span class="level-tag">Distributive</span>
+    <h4>Who carries which burdens?</h4>
+    <p style="font-size:13.5px;color:var(--text-light);line-height:1.55;">A fair sharing of climate burdens and benefits. Those who emitted the most should fund adaptation and mitigation in places that emitted the least. Distributive justice asks: who pays, who is protected, and who is left exposed?</p>
+  </div>
+  <div class="level-card familial">
+    <span class="level-tag">Procedural</span>
+    <h4>Who has a voice in decisions?</h4>
+    <p style="font-size:13.5px;color:var(--text-light);line-height:1.55;">Inclusive, meaningful participation in decision-making — not consultation as theatre. Policies should be co-created with the communities most affected, with real influence over outcomes, not imposed from above.</p>
+  </div>
+  <div class="level-card community">
+    <span class="level-tag">Restorative</span>
+    <h4>How is past harm repaired?</h4>
+    <p style="font-size:13.5px;color:var(--text-light);line-height:1.55;">Acknowledging and repairing historical and ecological harms — colonial dispossession, environmental racism, ecosystem degradation. Restoration takes the form of land back, reparations, ecological repair, and revival of cultural practices.</p>
+  </div>
+  <div class="level-card systemic">
+    <span class="level-tag">Intersectional</span>
+    <h4>How do oppressions stack?</h4>
+    <p style="font-size:13.5px;color:var(--text-light);line-height:1.55;">Recognizing that race, gender, class, disability, age, and colonial history compound. Climate justice must address the way these systems interact — not isolate one identity at a time.</p>
+  </div>
+</div>
+
+<p>In practice, climate justice shows up as Indigenous-led land stewardship, just-transition policies for workers in high-emission industries, climate reparations between nations, participatory budgeting for adaptation, and grassroots movements that hold power accountable. <strong>The mental health relevance is direct</strong>: communities denied procedural and distributive justice consistently carry heavier emotional burdens. Climate-mental-health support that ignores justice tends to pathologize understandable responses to genuine harm. Support that integrates justice — by centring affected communities, taking historical harm seriously, and addressing structural conditions — tends to be both more effective and more honest.</p>
 
 <h3>Case Study Reflection</h3>
 <div class="scenario-card" style="border-left-color:var(--teal)">
@@ -1020,9 +1546,16 @@ li { margin-bottom: 8px; }
   <p class="reflection-q">Consider this scenario from the perspective of your own professional sector. What is one concrete action you could take to support the mental health and emotional wellbeing of this community? How would you ensure that your approach is equitable and culturally responsive?</p>
 </div>
 
-<div class="reflection">
-  <textarea id="reflection-4" placeholder="Write your reflection here..." oninput="checkModuleRequirements(4)"></textarea>
-  <p class="save-note" style="margin-top:6px"><strong>A response is required to continue.</strong></p>
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Closing Reflection</h4>
+    <p class="prompt-text">You may not work in education, healthcare, media, spiritual leadership, or policy — but you do hold roles. What is one role you carry (parent, friend, neighbour, colleague, community member, or a sector role above) where someone could benefit from climate-emotional support, and what is one concrete next step you could take in that role?</p>
+    <textarea id="closingReflection-4" placeholder="Write your reflection here..." oninput="checkClosingReflection(4)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="closingSubmit-4" disabled onclick="submitClosingReflection(4)">Submit &amp; Continue</button>
+      <p class="opening-status" id="closingStatus-4"><span class="pending">Your response is private — submitting completes the module's reflection requirement.</span></p>
+    </div>
+  </div>
 </div>
 
 <div class="takeaways">
@@ -1030,6 +1563,7 @@ li { margin-bottom: 8px; }
   <ul>
     <li>Professionals across all sectors have an ethical duty to address climate-related mental health impacts.</li>
     <li>Each sector — education, health, media, spiritual leadership, and policy — has unique leverage points for supporting climate-mental health.</li>
+    <li>Climate-mental health support is not the exclusive territory of professionals — friends, family members, and neighbours often provide the most consistent and meaningful support.</li>
     <li>Indigenous knowledge systems and climate justice frameworks are essential for equitable, culturally responsive approaches.</li>
     <li>A whole-of-society approach, with cross-sector collaboration, is needed to address climate-mental health comprehensively.</li>
   </ul>
@@ -1079,10 +1613,9 @@ li { margin-bottom: 8px; }
 </div>
 
 <div class="module-nav">
-  <button class="btn btn-secondary" onclick="goToModule(3)">← Previous</button>
   <div>
     <button class="btn btn-primary disabled" id="nextBtn-4" disabled onclick="goToModule(5)">Next: Final Assessment →</button>
-    <p class="requirement-note" id="reqNote-4"><span class="req-pending">✦ Complete the reflection and pass the knowledge check with 100% to continue</span></p>
+    <p class="requirement-note" id="reqNote-4"><span class="req-pending">✦ Submit both reflections and pass the knowledge check to continue</span></p>
   </div>
 </div>
 </div>
@@ -1111,13 +1644,25 @@ li { margin-bottom: 8px; }
   <p>As you return to your work and your community, we invite you to carry this knowledge forward. Individual actions may not magically erase the impacts of climate change, but the collective work of informed, compassionate professionals across every sector can reduce harm and kindle hope. Together, our collective efforts truly can make a difference.</p>
 </div>
 
-<div class="reflection">
-  <div class="info-box rose">
-    <h4>Final Reflection</h4>
-    <p><em>What is one thing you have learned that has shifted your understanding of climate emotions? What is one concrete step you will take in your professional or personal life to apply what you have learned?</em></p>
+<div class="resource-link">
+  <div class="rl-icon">⌖</div>
+  <div class="rl-body">
+    <div class="rl-hook">Looking for a place to plug into existing work?</div>
+    <div class="rl-desc">MHCCA's initiatives library is a directory of climate and mental health projects you can join, learn from, or draw inspiration from for your own work.</div>
+    <a href="https://mhcca.ca/initatives-library" target="_blank" rel="noopener noreferrer">Browse the MHCCA initiatives library</a>
   </div>
-  <textarea id="reflection-5" placeholder="Your final reflection..." oninput="checkFinalReflection()"></textarea>
-  <p class="save-note"><strong>A response is required before submitting the final assessment.</strong></p>
+</div>
+
+<div class="opening-reflection">
+  <div class="info-box rose">
+    <h4>Closing Reflection</h4>
+    <p class="prompt-text">What is one thing you have learned that has shifted your understanding of climate emotions? What is one concrete step you will take in your professional or personal life to apply what you have learned?</p>
+    <textarea id="closingReflection-5" placeholder="Your closing reflection..." oninput="checkClosingReflection(5)"></textarea>
+    <div class="opening-actions">
+      <button class="btn btn-primary disabled" id="closingSubmit-5" disabled onclick="submitClosingReflection(5)">Submit Reflection</button>
+      <p class="opening-status" id="closingStatus-5"><span class="pending">Your response is private — submitting unlocks the final assessment below.</span></p>
+    </div>
+  </div>
 </div>
 
 <h2>Final Knowledge Assessment</h2>
@@ -1268,7 +1813,7 @@ li { margin-bottom: 8px; }
     </div>
     <div class="quiz-actions">
       <button class="btn btn-success disabled" id="finalSubmitBtn" disabled onclick="checkFinalAssessment()">Submit Final Assessment</button>
-      <p class="requirement-note" id="finalReflectionNote"><span class="req-pending">✦ Complete the final reflection above before submitting</span></p>
+      <p class="requirement-note" id="finalReflectionNote"><span class="req-pending">✦ Submit the closing reflection above before submitting the assessment</span></p>
       <div class="quiz-retry" id="quizRetry-5"><button class="btn btn-secondary" onclick="retryQuiz(5)">Try Again</button></div>
     </div>
     <div class="quiz-result" id="quizResult-5"></div>
@@ -1276,7 +1821,7 @@ li { margin-bottom: 8px; }
 </div>
 
 <div class="certificate" id="certificate">
-  <img class="cert-logo" src="MHCCA_logo.png" alt="MHCCA — Mental Health and Climate Change Alliance" style="width:220px;margin:0 auto 16px;display:block;">
+  <img class="cert-logo" src="MHCCA%20Certificate%20Logo.webp" alt="MHCCA — Mental Health and Climate Change Alliance" style="width:220px;margin:0 auto 16px;display:block;">
   <h2>Certificate of Completion</h2>
   <div class="cert-line"></div>
   <p>This certifies that</p>
@@ -1288,8 +1833,80 @@ li { margin-bottom: 8px; }
   <button id="downloadCertBtn" class="btn btn-primary" onclick="downloadCertificate()" style="margin-top:24px;display:none;">⬇ Download Certificate (PDF)</button>
 </div>
 
-<div class="module-nav">
-  <button class="btn btn-secondary" onclick="goToModule(4)">← Previous</button>
+</div>
+</div>
+
+<!-- ═══════════════ GLOSSARY ═══════════════ -->
+<div class="module-page" id="page-glossary">
+<div class="module-header">
+  <span class="module-tag">Reference</span>
+  <h1>Glossary of Key Terms</h1>
+  <p class="time">Available anytime — return to any module from the sidebar</p>
+</div>
+<div class="module-body">
+
+<p>This glossary collects the key terms used across the course. Use the search box to filter, or scroll to browse. You can return to a module at any time from the sidebar on the left.</p>
+
+<input type="search" class="glossary-search" id="glossarySearch" placeholder="Search terms (e.g., solastalgia, hope, intersectionality)..." oninput="filterGlossary()">
+
+<div class="glossary-grid" id="glossaryGrid">
+
+  <div class="glossary-term"><div class="term-name">Active Hope</div><div class="term-def">A practised, participatory stance toward the future — described by Joanna Macy — grounded in awareness, gratitude, and creative collaboration. Distinct from passive optimism: hope as something we do, not something we wait for.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Adaptive coping</div><div class="term-def">Responses to climate distress that preserve wellbeing and sustain meaningful action — for example, seeking support, channelling anxiety into advocacy, or maintaining emotional regulation while staying engaged.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Biopsychosocial model</div><div class="term-def">A framework (George Engel, 1977) recognizing that biological, psychological, and social factors interact to shape health, illness, and emotional experience. Used in this course to explain why climate emotions vary so widely between people.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Climate anxiety (eco-anxiety)</div><div class="term-def">Persistent, often chronic worry about climate change that can interfere with daily functioning when severe. Distinct from climate worry, which is a proportionate, motivating response to a real threat.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Climate emotions</div><div class="term-def">The full spectrum of emotional responses people have to climate change — including worry, grief, guilt, anger, isolation, denial, ecoparalysis, and hope. Treated in this course as meaningful signals, not pathology.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Climate grief</div><div class="term-def">Mourning for losses experienced or anticipated due to climate change — including species, landscapes, ways of life, and futures once taken for granted. Often ambiguous and ongoing, without a clear endpoint.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Climate justice</div><div class="term-def">The recognition that climate change disproportionately harms marginalized communities and that adequate solutions must address underlying social, economic, and political inequalities.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Cultural safety</div><div class="term-def">An approach to engaging with people across cultural difference — particularly with Indigenous communities — that centres reciprocity, humility, and the leadership of those whose knowledge and lives are involved. More than cultural awareness; it shifts power.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Ecoparalysis</div><div class="term-def">The inability to act in the face of the climate crisis, caused by overwhelm rather than apathy. Often emerges from deep caring exhausted by helplessness; counter-acted by concrete, achievable actions and collective efficacy.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Emotion-focused coping</div><div class="term-def">Strategies aimed at regulating emotional responses when an external situation feels difficult to change — including therapy, mindfulness, time in nature, and seeking comfort from trusted relationships.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Ethics of Care</div><div class="term-def">A moral framework (Carol Gilligan) emphasizing relational interdependence and the obligation to care for those affected by harm. Used in this course to ground professional responsibility for climate-mental health.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Fatalism</div><div class="term-def">The belief that catastrophic outcomes are inevitable regardless of action. Like ecoparalysis, often stems from caring that has been exhausted; not the same as apathy or denial.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Indigenous Knowledge Systems</div><div class="term-def">Time-tested, place-based, and relational knowledge held by Indigenous peoples about land, community, and wellbeing. From many Indigenous perspectives, climate change is a relational crisis — a disruption in human-land-non-human relationships.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Intersectionality</div><div class="term-def">A framework (Kimberlé Crenshaw) for understanding how overlapping social identities — race, gender, class, disability, age, geography — create distinct experiences of both climate impacts and emotional responses.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Maladaptive coping</div><div class="term-def">Responses that lead to paralysis, avoidance, or destructive patterns — including chronic denial, suppression of emotions, isolation, catastrophizing without action, and nihilism. Not the same as the underlying emotion; the response is what becomes maladaptive.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Meaning-focused coping</div><div class="term-def">Coping that finds purpose and significance in adversity — for instance, framing activism as a moral calling, drawing on values, or anchoring action in intergenerational responsibility.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Planetary health</div><div class="term-def">A framework that bridges environmental science, public health, and other disciplines to recognize that human wellbeing is inseparable from the health of natural systems.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Anticipatory stress</div><div class="term-def">A forward-looking dread of climate disasters that have not yet occurred but feel inevitable. Often co-occurs with acute stress and trauma responses in people already directly affected by climate events. An emotional response to genuine threat — not a clinical diagnosis.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Problem-focused coping</div><div class="term-def">Direct action to address the source of stress — preparing one's home, joining adaptation efforts, lobbying for policy change, or shifting personal practices. Most effective when the stressor is at least partly within one's control.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Radical Hope</div><div class="term-def">A stance (Jonathan Lear) of believing in a future good that we cannot yet fully imagine. Particularly relevant in conditions of cultural or ecological devastation.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Resilience</div><div class="term-def">The capacity to maintain functioning, wellbeing, and engagement under sustained stress or after acute loss. Not the absence of distress but the capacity to move with it; built across individual, organizational, community, and systemic levels.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Solastalgia</div><div class="term-def">A term coined by philosopher Glenn Albrecht for the distress caused by environmental change in one's home environment — a homesickness experienced while still at home.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Stubborn Optimism</div><div class="term-def">A stance (Christiana Figueres) combining clear-eyed acceptance of the facts with a determined conviction that solutions exist. Distinguished from naive optimism by its honesty about difficulty.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Trauma-informed care</div><div class="term-def">An approach guided by six principles — safety; trustworthiness and transparency; peer support; collaboration and mutuality; empowerment, voice, and choice; and attention to cultural, historical, and gender considerations. Recognizes that climate distress is often layered onto prior experiences of harm.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Validation</div><div class="term-def">Acknowledging that another person's emotions make sense given their circumstances, without trying to fix or dismiss them. A foundation of resilience because it reduces isolation and creates psychological safety.</div></div>
+
+  <div class="glossary-term"><div class="term-name">Whole-of-society approach</div><div class="term-def">A framing (UNDRR) recognizing that no single sector — clinical, governmental, or grassroots — can address climate-mental health alone. Effective response requires cross-sector engagement at multiple levels.</div></div>
+
+</div>
+
+<div class="module-nav" style="margin-top:32px;">
+  <button class="btn btn-secondary" onclick="returnFromGlossary()">← Return to Course</button>
   <span></span>
 </div>
 </div>
@@ -1326,6 +1943,18 @@ function buildNav() {
     }
     nav.appendChild(div);
   });
+  // ── Glossary lives below the module list, separated by a divider ──
+  const divider = document.createElement('div');
+  divider.className = 'sidebar-divider';
+  nav.appendChild(divider);
+  const extras = document.createElement('div');
+  extras.className = 'sidebar-extras';
+  const gloss = document.createElement('div');
+  gloss.className = 'nav-item' + (currentModule === 'glossary' ? ' active' : '');
+  gloss.innerHTML = '<span class="dot">A</span><span>Glossary of Key Terms</span>';
+  gloss.onclick = goToGlossary;
+  extras.appendChild(gloss);
+  nav.appendChild(extras);
 }
 
 function updateProgress() {
@@ -1335,18 +1964,64 @@ function updateProgress() {
 }
 
 // ─── Module requirement tracking ───
-const quizPassed = {};       // moduleIdx -> true if 100% achieved
-const reflectionDone = {};   // moduleIdx -> true if reflection text entered
-// Which modules have reflections (textarea IDs: reflection-1, reflection-3, reflection-4, reflection-5)
-const modulesWithReflection = { 1: true, 3: true, 4: true, 5: true };
+const quizPassed = {};               // moduleIdx -> true if 100% achieved
+const openingReflectionDone = {};    // moduleIdx -> true if opening reflection submitted
+const closingReflectionDone = {};    // moduleIdx -> true if closing reflection submitted
+// Modules 1–5 (idx 0–4) have BOTH opening and closing reflections.
+// Module 6 (idx 5) has only a closing reflection — it's the final assessment module.
+const modulesWithOpening = { 0: true, 1: true, 2: true, 3: true, 4: true };
+const modulesWithClosing = { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true };
 
-function checkModuleRequirements(moduleIdx) {
-  // Check reflection
-  const textarea = document.getElementById('reflection-' + moduleIdx);
-  if (textarea) {
-    reflectionDone[moduleIdx] = textarea.value.trim().length > 0;
+// ─── Reflection helpers (shared pattern: type-checked submit button) ───
+function _toggleSubmitOnInput(prefix, moduleIdx, doneMap) {
+  const ta = document.getElementById(prefix + 'Reflection-' + moduleIdx);
+  const btn = document.getElementById(prefix + 'Submit-' + moduleIdx);
+  if (!ta || !btn) return;
+  if (doneMap[moduleIdx]) return; // already submitted; lock stays
+  if (ta.value.trim().length > 0) {
+    btn.classList.remove('disabled');
+    btn.disabled = false;
+  } else {
+    btn.classList.add('disabled');
+    btn.disabled = true;
   }
+  saveProgress();
+}
+
+function _markSubmitted(prefix, moduleIdx, doneMap, finalLabel, statusMsg) {
+  const ta = document.getElementById(prefix + 'Reflection-' + moduleIdx);
+  const btn = document.getElementById(prefix + 'Submit-' + moduleIdx);
+  const status = document.getElementById(prefix + 'Status-' + moduleIdx);
+  if (!ta || !ta.value.trim()) return;
+  doneMap[moduleIdx] = true;
+  ta.disabled = true;
+  if (btn) {
+    btn.disabled = true;
+    btn.classList.add('disabled');
+    btn.textContent = finalLabel;
+  }
+  if (status) status.innerHTML = '<span class="submitted">✓ Submitted — your response has been saved.</span>';
+}
+
+// ─── Opening reflection (top-of-module gated submit) ───
+function checkOpeningReflection(moduleIdx) {
+  _toggleSubmitOnInput('opening', moduleIdx, openingReflectionDone);
+}
+function submitOpeningReflection(moduleIdx) {
+  _markSubmitted('opening', moduleIdx, openingReflectionDone, 'Submitted ✓', null);
   updateNextButton(moduleIdx);
+  if (moduleIdx === 5) checkFinalReflection(); // refresh final-assessment gating
+  saveProgress();
+}
+
+// ─── Closing reflection (end-of-module gated submit) ───
+function checkClosingReflection(moduleIdx) {
+  _toggleSubmitOnInput('closing', moduleIdx, closingReflectionDone);
+}
+function submitClosingReflection(moduleIdx) {
+  _markSubmitted('closing', moduleIdx, closingReflectionDone, 'Submitted ✓', null);
+  updateNextButton(moduleIdx);
+  if (moduleIdx === 5) checkFinalReflection(); // refresh final-assessment gating
   saveProgress();
 }
 
@@ -1355,11 +2030,13 @@ function updateNextButton(moduleIdx) {
   const note = document.getElementById('reqNote-' + moduleIdx);
   if (!btn) return;
 
-  const needsReflection = modulesWithReflection[moduleIdx] || false;
+  const needsOpening = modulesWithOpening[moduleIdx] || false;
+  const needsClosing = modulesWithClosing[moduleIdx] || false;
   const quizOk = quizPassed[moduleIdx] || false;
-  const reflectionOk = !needsReflection || (reflectionDone[moduleIdx] || false);
+  const openingOk = !needsOpening || (openingReflectionDone[moduleIdx] || false);
+  const closingOk = !needsClosing || (closingReflectionDone[moduleIdx] || false);
 
-  if (quizOk && reflectionOk) {
+  if (quizOk && openingOk && closingOk) {
     btn.classList.remove('disabled');
     btn.disabled = false;
     if (note) note.innerHTML = '<span class="req-check">&#10003; All requirements met — you may continue</span>';
@@ -1368,38 +2045,47 @@ function updateNextButton(moduleIdx) {
     btn.disabled = true;
     if (note) {
       const parts = [];
+      if (!openingOk) parts.push('submit the opening reflection');
       if (!quizOk) parts.push('pass the knowledge check with 100%');
-      if (!reflectionOk) parts.push('complete the reflection');
+      if (!closingOk) parts.push('submit the closing reflection');
       note.innerHTML = '<span class="req-pending">&#10022; Please ' + parts.join(' and ') + ' to continue</span>';
     }
   }
 }
 
 function checkFinalReflection() {
-  const textarea = document.getElementById('reflection-5');
+  // Gates the Final Assessment submit button.
+  // Only the closing reflection of Module 6 is required (no opening reflection in Module 6).
   const btn = document.getElementById('finalSubmitBtn');
   const note = document.getElementById('finalReflectionNote');
-  if (textarea && textarea.value.trim().length > 0) {
-    reflectionDone[5] = true;
+  if (!btn) return;
+  const closingOk = closingReflectionDone[5] || false;
+  if (closingOk) {
     btn.classList.remove('disabled');
     btn.disabled = false;
-    if (note) note.innerHTML = '<span class="req-check">&#10003; Reflection complete — you may submit</span>';
+    if (note) note.innerHTML = '<span class="req-check">&#10003; Reflection complete — you may submit the assessment</span>';
   } else {
-    reflectionDone[5] = false;
     btn.classList.add('disabled');
     btn.disabled = true;
-    if (note) note.innerHTML = '<span class="req-pending">&#10022; Complete the final reflection above before submitting</span>';
+    if (note) note.innerHTML = '<span class="req-pending">&#10022; Submit the closing reflection above before submitting the assessment</span>';
   }
   saveProgress();
 }
 
 // ─── Navigation ───
+let lastNonGlossaryModule = -1; // remember where to return when leaving the glossary
+
 function goToModule(idx) {
-  // Mark previous as completed if moving forward
-  if (currentModule >= 0 && idx > currentModule) {
-    completed.add(currentModule);
+  // Mark previous module as completed if moving forward — fall back to
+  // lastNonGlossaryModule so a detour through the glossary can't skip the mark.
+  var prev = (typeof currentModule === 'number' && currentModule >= 0)
+    ? currentModule
+    : (typeof lastNonGlossaryModule === 'number' && lastNonGlossaryModule >= 0 ? lastNonGlossaryModule : -1);
+  if (prev >= 0 && idx > prev) {
+    completed.add(prev);
   }
   currentModule = idx;
+  lastNonGlossaryModule = idx;
   // Hide all pages
   document.querySelectorAll('.module-page').forEach(p => p.classList.remove('active'));
   // Show target
@@ -1412,6 +2098,44 @@ function goToModule(idx) {
   saveProgress();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   closeSidebar();
+}
+
+function goToGlossary() {
+  // Remember where we were so the Return button can take us back
+  if (typeof currentModule === 'number' && currentModule >= 0) {
+    lastNonGlossaryModule = currentModule;
+  }
+  currentModule = 'glossary';
+  document.querySelectorAll('.module-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-welcome').classList.remove('active');
+  const target = document.getElementById('page-glossary');
+  if (target) target.classList.add('active');
+  buildNav();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  closeSidebar();
+}
+
+function returnFromGlossary() {
+  if (typeof lastNonGlossaryModule === 'number' && lastNonGlossaryModule >= 0) {
+    goToModule(lastNonGlossaryModule);
+  } else {
+    // Fallback: return to welcome
+    document.querySelectorAll('.module-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-welcome').classList.add('active');
+    currentModule = -1;
+    buildNav();
+  }
+}
+
+function filterGlossary() {
+  const q = (document.getElementById('glossarySearch').value || '').trim().toLowerCase();
+  const terms = document.querySelectorAll('#glossaryGrid .glossary-term');
+  terms.forEach(function(t) {
+    if (!q) { t.classList.remove('hidden'); return; }
+    const txt = t.textContent.toLowerCase();
+    if (txt.indexOf(q) === -1) t.classList.add('hidden');
+    else t.classList.remove('hidden');
+  });
 }
 
 // ─── Sidebar mobile ───
@@ -1520,9 +2244,9 @@ function retryQuiz(moduleIdx) {
 
 // ─── Final assessment ───
 function checkFinalAssessment() {
-  // Check that final reflection is done
-  if (!reflectionDone[5]) {
-    alert('Please complete the final reflection before submitting the assessment.');
+  // Check that closing reflection has been submitted
+  if (!closingReflectionDone[5]) {
+    alert('Please submit the closing reflection before submitting the assessment.');
     return;
   }
   const quiz = document.getElementById('quiz-5');
@@ -1572,6 +2296,109 @@ function checkFinalAssessment() {
     result.innerHTML = `You scored ${correct}/${total} (${pct}%). You need 100% (20/20) to earn your certificate. Review the feedback above and try again.`;
     if (retryDiv) retryDiv.classList.add('show');
   }
+}
+
+// ─── Climate emotions wheel ───
+// `label` = short word that fits inside the wedge; `name` = full category title shown in detail panel.
+const wheelData = [
+  { key: 'worry', label: 'Worry', name: 'Worry & Anxiety', tags: ['climate worry', 'eco-anxiety', 'persistent unease'], color: '#3B82B6',
+    body: '<p>Climate worry is a natural response to perceived threat — a signal that something important is at stake. At manageable levels it motivates information-seeking, preparedness, and advocacy.</p><p>When worry becomes chronic and overwhelming, it can cross into anxiety that interferes with sleep, concentration, and relationships. Worry in proportion to the threat is adaptive; persistent impairment may benefit from professional support.</p>' },
+  { key: 'stress', label: 'Stress', name: 'Anticipatory Stress and Trauma', tags: ['acute stress', 'anticipatory dread', 'trauma responses'], color: '#1D4ED8',
+    body: '<p>Climate-related stress operates on two timelines. <strong>Trauma responses</strong> can follow direct experience of a climate disaster — wildfires, floods, hurricanes — and may show up as flashbacks, hypervigilance, nightmares, restlessness, or emotional numbness.</p><p><strong>Anticipatory stress</strong> is the dread of disasters that have not yet occurred but feel inevitable. Both can coexist; both reflect genuine threats. These are emotional responses to real circumstances, not clinical diagnoses — though when they persist or impair daily functioning, professional support can help.</p>' },
+  { key: 'grief', label: 'Grief', name: 'Grief & Solastalgia', tags: ['mourning', 'solastalgia', 'ambiguous loss'], color: '#7C3AED',
+    body: '<p>Climate grief encompasses mourning for losses already experienced and those anticipated — species, landscapes, ways of life, and futures once taken for granted.</p><p><strong>Solastalgia</strong> (Glenn Albrecht) describes the distress of environmental change in one\'s home environment — a homesickness experienced while still at home. Unlike traditional grief, climate grief has no clear endpoint; the losses are ongoing and ambiguous.</p>' },
+  { key: 'guilt', label: 'Guilt', name: 'Guilt & Shame', tags: ['self-blame', 'moral injury', 'identity-level shame'], color: '#BE185D',
+    body: '<p>Climate <strong>guilt</strong> centres on actions taken or not taken — carbon footprints, consumption choices, perceived complicity in systems of harm.</p><p>Climate <strong>shame</strong> is deeper and more identity-focused: a sense of being fundamentally flawed or part of a species that has failed the planet. Both can motivate change at moderate levels but become paralysing when excessive. Structural forces — not just individual choices — drive climate change.</p>' },
+  { key: 'anger', label: 'Anger', name: 'Anger & Rage', tags: ['moral outrage', 'frustration', 'righteous anger'], color: '#DC2626',
+    body: '<p>Climate anger arises from witnessing injustice, inaction, and the gap between what is needed and what is being done. It often targets political leaders, corporations, and systems perceived as responsible for the crisis.</p><p>At its best, anger is a powerful catalyst for social change — fuelling protests, policy advocacy, and community organizing. At its worst, it becomes corrosive — leading to interpersonal conflict, burnout, and despair.</p>' },
+  { key: 'isolation', label: 'Lonely', name: 'Isolation & Loneliness', tags: ['alienation', 'invisibility', 'climate silence'], color: '#D97706',
+    body: '<p>Many people report feeling profoundly alone in their climate concerns — unable to discuss their fears with family, friends, or colleagues who may be dismissive, disinterested, or overwhelmed themselves.</p><p>This isolation reflects an external condition (lack of social environments where climate emotions are acknowledged) rather than an internal failing. Social connection and community engagement are essential antidotes.</p>' },
+  { key: 'denial', label: 'Denial', name: 'Denial & Disengagement', tags: ['avoidance', 'numbing', 'distancing', 'system justification'], color: '#92400E',
+    body: '<p>Denial and disengagement serve as protective psychological mechanisms against overwhelming threat. Rather than viewing denial solely as moral failure, it is useful to understand it as a coping response — the psyche\'s attempt to manage information that feels too threatening to absorb.</p><p>Several mechanisms can reinforce denial: <strong>cognitive dissonance</strong> (avoiding information that conflicts with current behaviour), <strong>motivated reasoning</strong> (seeking out evidence that confirms what we already believe), and <strong>system justification</strong> (defending the status quo even when it harms us). Sustained, supportive engagement rather than confrontation tends to be more effective in helping people move through denial.</p>' },
+  { key: 'paralysis', label: 'Stuck', name: 'Ecoparalysis & Fatalism', tags: ['overwhelm', 'helplessness', 'doomism'], color: '#4B5563',
+    body: '<p><strong>Ecoparalysis</strong> describes feeling so overwhelmed by the scale and complexity of the climate crisis that one becomes unable to act. <strong>Fatalism</strong> — the belief that catastrophic outcomes are inevitable regardless of action — is a related response.</p><p>These are not signs of apathy; they often emerge from deep caring exhausted by a sense of helplessness. Concrete, achievable actions and collective efficacy help counter these feelings.</p>' },
+  { key: 'hope', label: 'Hope', name: 'Hope & Resilience', tags: ['radical hope', 'active hope', 'stubborn optimism'], color: '#059669',
+    body: '<p>Climate hope is not naive optimism or denial of the severity of the crisis. It is a realistic, grounded orientation toward the future that acknowledges difficulty while maintaining belief in the possibility of meaningful change.</p><p>Researchers describe several forms: <strong>radical hope</strong>, <strong>active hope</strong>, and <strong>stubborn optimism</strong>. Hope sustains motivation, strengthens social bonds, and expands creative problem-solving. It is both a feeling and a practice.</p>' },
+];
+
+function describeArc(cx, cy, rOuter, rInner, startAngle, endAngle) {
+  // Angles in degrees, 0 = top (12 o'clock), increasing clockwise.
+  const toRad = a => (a - 90) * Math.PI / 180;
+  const x1o = cx + rOuter * Math.cos(toRad(startAngle));
+  const y1o = cy + rOuter * Math.sin(toRad(startAngle));
+  const x2o = cx + rOuter * Math.cos(toRad(endAngle));
+  const y2o = cy + rOuter * Math.sin(toRad(endAngle));
+  const x1i = cx + rInner * Math.cos(toRad(startAngle));
+  const y1i = cy + rInner * Math.sin(toRad(startAngle));
+  const x2i = cx + rInner * Math.cos(toRad(endAngle));
+  const y2i = cy + rInner * Math.sin(toRad(endAngle));
+  const largeArc = (endAngle - startAngle) > 180 ? 1 : 0;
+  return [
+    'M', x1o, y1o,
+    'A', rOuter, rOuter, 0, largeArc, 1, x2o, y2o,
+    'L', x2i, y2i,
+    'A', rInner, rInner, 0, largeArc, 0, x1i, y1i,
+    'Z'
+  ].join(' ');
+}
+
+function buildEmotionsWheel() {
+  const svg = document.getElementById('emotionsWheel');
+  if (!svg) return;
+  const n = wheelData.length;
+  const segAngle = 360 / n;
+  const cx = 0, cy = 0, rOuter = 160, rInner = 60;
+  const lr = (rOuter + rInner) / 2; // radial midpoint for label
+  let html = '';
+  wheelData.forEach((d, i) => {
+    const start = i * segAngle - 90;
+    const end = (i + 1) * segAngle - 90;
+    const path = describeArc(cx, cy, rOuter, rInner, start, end);
+    html += '<path class="seg" data-key="' + d.key + '" d="' + path + '" fill="' + d.color + '" stroke="#fff" stroke-width="2"/>';
+    // Use the SAME (a-90) convention as the wedges so labels actually sit on the wedge bisector.
+    const midAngle = (start + end) / 2;
+    const labelRad = (midAngle - 90) * Math.PI / 180;
+    const lx = cx + lr * Math.cos(labelRad);
+    const ly = cy + lr * Math.sin(labelRad);
+    html += '<text class="seg-label" text-anchor="middle" x="' + lx.toFixed(2) + '" y="' + (ly + 4).toFixed(2) + '" pointer-events="none">' + d.label + '</text>';
+  });
+  // Inner hub
+  html += '<circle cx="0" cy="0" r="' + rInner + '" fill="#fff" stroke="#E5E7EB" stroke-width="1.5"/>';
+  html += '<text class="hub-label" x="0" y="-4">Climate</text>';
+  html += '<text class="hub-label" x="0" y="12">Emotions</text>';
+  svg.innerHTML = html;
+  // Wire click + keyboard handlers
+  svg.querySelectorAll('.seg').forEach(seg => {
+    seg.setAttribute('tabindex', '0');
+    seg.setAttribute('role', 'button');
+    const activate = () => {
+      const key = seg.getAttribute('data-key');
+      const wasActive = seg.classList.contains('active');
+      svg.querySelectorAll('.seg').forEach(s => { s.classList.remove('active'); s.classList.remove('any-active'); });
+      if (!wasActive) {
+        seg.classList.add('active');
+        svg.querySelectorAll('.seg').forEach(s => { if (s !== seg) s.classList.add('any-active'); });
+        showWheelDetail(key);
+      } else {
+        showWheelDetail(null);
+      }
+    };
+    seg.addEventListener('click', activate);
+    seg.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  });
+}
+
+function showWheelDetail(key) {
+  const detail = document.getElementById('wheelDetail');
+  if (!detail) return;
+  if (!key) {
+    detail.innerHTML = '<p class="wd-default">Click any wedge of the wheel to read what that emotion <em>is</em>. Then scroll to the detailed list below to explore how it shows up in everyday life and how to respond — for yourself or for someone you support.</p>';
+    return;
+  }
+  const d = wheelData.find(x => x.key === key);
+  if (!d) return;
+  const tags = d.tags.map(t => '<span class="wheel-tag">' + t + '</span>').join('');
+  detail.innerHTML = '<h4>' + d.name + '</h4><div class="wheel-tags">' + tags + '</div>' + d.body;
 }
 
 // ─── Breathing exercise ───
@@ -1624,21 +2451,158 @@ function startBreathing() {
 }
 
 // ─── Certificate PDF Download ───
-function loadImageAsDataURL(src) {
-  return new Promise(function(resolve, reject) {
-    var img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = function() {
-      var canvas = document.createElement('canvas');
-      canvas.width = img.naturalWidth;
-      canvas.height = img.naturalHeight;
-      var ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      resolve({ dataUrl: canvas.toDataURL('image/png'), width: img.naturalWidth, height: img.naturalHeight });
-    };
-    img.onerror = function() { reject(new Error('Could not load logo image.')); };
-    img.src = src;
+// Try several strategies to get the MHCCA logo as a data URL — some fail when the
+// page is opened from file:// because canvas operations on local images can throw
+// a SecurityError. We cascade through strategies and fall back to a text-only
+// certificate header if none succeeds. The PDF is always generated.
+// Detect image format from a data URL prefix and return a jsPDF-friendly token.
+function _detectFormatFromDataUrl(dataUrl) {
+  if (!dataUrl) return 'PNG';
+  if (dataUrl.indexOf('data:image/webp') === 0) return 'WEBP';
+  if (dataUrl.indexOf('data:image/jpeg') === 0 || dataUrl.indexOf('data:image/jpg') === 0) return 'JPEG';
+  if (dataUrl.indexOf('data:image/gif') === 0) return 'GIF';
+  return 'PNG';
+}
+
+function getLogoDataUrl() {
+  // The certificate logo is now a WebP file: "MHCCA Certificate Logo.webp".
+  // We URL-encode the spaces for fetch; the on-page <img> already does this.
+  var LOGO_URL = 'MHCCA%20Certificate%20Logo.webp';
+  return new Promise(function(resolve) {
+    // Strategy A: use the on-page <img class="cert-logo"> (already loaded in the DOM).
+    // Drawing it to a canvas re-encodes as PNG, which sidesteps any WebP-encoder issues
+    // in jsPDF and is the most reliable path when canvas operations are permitted.
+    function tryFromDom() {
+      try {
+        var imgEl = document.querySelector('.cert-logo');
+        if (!imgEl || !imgEl.complete || !imgEl.naturalWidth) return null;
+        var canvas = document.createElement('canvas');
+        canvas.width = imgEl.naturalWidth;
+        canvas.height = imgEl.naturalHeight;
+        canvas.getContext('2d').drawImage(imgEl, 0, 0);
+        return { dataUrl: canvas.toDataURL('image/png'), format: 'PNG', width: imgEl.naturalWidth, height: imgEl.naturalHeight };
+      } catch (e) { return null; }
+    }
+    // Strategy B: fetch the file and convert to data URL via FileReader (preserves WEBP).
+    function tryFromFetch() {
+      return fetch(LOGO_URL)
+        .then(function(r) { if (!r.ok) throw new Error('fetch failed'); return r.blob(); })
+        .then(function(blob) {
+          return new Promise(function(res, rej) {
+            var fr = new FileReader();
+            fr.onload = function() { res(fr.result); };
+            fr.onerror = rej;
+            fr.readAsDataURL(blob);
+          });
+        })
+        .then(function(dataUrl) {
+          return new Promise(function(res) {
+            var probe = new Image();
+            probe.onload = function() { res({ dataUrl: dataUrl, format: _detectFormatFromDataUrl(dataUrl), width: probe.naturalWidth, height: probe.naturalHeight }); };
+            probe.onerror = function() { res({ dataUrl: dataUrl, format: _detectFormatFromDataUrl(dataUrl), width: 1000, height: 280 }); };
+            probe.src = dataUrl;
+          });
+        })
+        .catch(function() { return null; });
+    }
+    var fromDom = tryFromDom();
+    if (fromDom) { resolve(fromDom); return; }
+    tryFromFetch().then(function(result) { resolve(result); });
   });
+}
+
+function buildCertificatePdf(logoData) {
+  var jsPDF = window.jspdf.jsPDF;
+  var pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+  var pw = 297, ph = 210, cx = pw / 2;
+
+  // Outer + inner border
+  pdf.setDrawColor(20, 112, 175);
+  pdf.setLineWidth(1.5);
+  pdf.roundedRect(15, 12, pw - 30, ph - 24, 6, 6, 'S');
+  pdf.setDrawColor(58, 150, 199);
+  pdf.setLineWidth(0.5);
+  pdf.roundedRect(19, 16, pw - 38, ph - 32, 4, 4, 'S');
+
+  // Logo (or text-based MHCCA banner if logo unavailable)
+  var contentY;
+  if (logoData && logoData.dataUrl) {
+    try {
+      var aspect = logoData.width / logoData.height;
+      var logoW = 90;
+      var logoH = logoW / aspect;
+      var logoX = cx - logoW / 2;
+      var logoY = 24;
+      pdf.addImage(logoData.dataUrl, logoData.format || 'PNG', logoX, logoY, logoW, logoH);
+      contentY = logoY + logoH + 10;
+    } catch (e) {
+      // addImage may also throw on some platforms; fall back to text banner
+      logoData = null;
+    }
+  }
+  if (!logoData || !logoData.dataUrl) {
+    // Text-based MHCCA banner as visual fallback
+    pdf.setTextColor(13, 90, 140);
+    pdf.setFontSize(20);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('MHCCA', cx, 36, { align: 'center' });
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    pdf.setTextColor(100, 100, 100);
+    pdf.text('Mental Health and Climate Change Alliance', cx, 44, { align: 'center' });
+    contentY = 60;
+  }
+
+  // Certificate title
+  pdf.setTextColor(13, 90, 140);
+  pdf.setFontSize(26);
+  pdf.setFont('helvetica', 'bold');
+  pdf.text('Certificate of Completion', cx, contentY, { align: 'center' });
+
+  // Decorative line
+  pdf.setDrawColor(58, 150, 199);
+  pdf.setLineWidth(1);
+  pdf.line(cx - 20, contentY + 6, cx + 20, contentY + 6);
+
+  // This certifies that
+  pdf.setTextColor(100, 100, 100);
+  pdf.setFontSize(12);
+  pdf.setFont('helvetica', 'normal');
+  pdf.text('This certifies that', cx, contentY + 18, { align: 'center' });
+
+  // Learner name
+  var learnerName = document.getElementById('certName').textContent;
+  pdf.setTextColor(13, 90, 140);
+  pdf.setFontSize(24);
+  pdf.setFont('helvetica', 'bold');
+  pdf.text(learnerName, cx, contentY + 32, { align: 'center' });
+
+  // has successfully completed
+  pdf.setTextColor(100, 100, 100);
+  pdf.setFontSize(12);
+  pdf.setFont('helvetica', 'normal');
+  pdf.text('has successfully completed', cx, contentY + 44, { align: 'center' });
+
+  // Course title
+  pdf.setTextColor(13, 90, 140);
+  pdf.setFontSize(16);
+  pdf.setFont('helvetica', 'bold');
+  pdf.text('Understanding Climate Emotions:', cx, contentY + 56, { align: 'center' });
+  pdf.text('A Professional Development Course', cx, contentY + 64, { align: 'center' });
+
+  // Offered by
+  pdf.setTextColor(100, 100, 100);
+  pdf.setFontSize(11);
+  pdf.setFont('helvetica', 'normal');
+  pdf.text('A two-hour online course offered by the', cx, contentY + 78, { align: 'center' });
+  pdf.text('Mental Health and Climate Change Alliance (MHCCA)', cx, contentY + 85, { align: 'center' });
+
+  // Date
+  var dateText = document.getElementById('certDate').textContent;
+  pdf.setFontSize(11);
+  pdf.text('Date of Completion: ' + dateText, cx, contentY + 100, { align: 'center' });
+
+  return { pdf: pdf, fileName: 'MHCCA_Certificate_' + learnerName.replace(/\s+/g, '_') + '.pdf' };
 }
 
 function downloadCertificate() {
@@ -1654,89 +2618,22 @@ function downloadCertificate() {
     return;
   }
 
-  // Load the actual MHCCA logo, then build the PDF
-  loadImageAsDataURL('MHCCA_logo.png').then(function(logoData) {
-    var jsPDF = window.jspdf.jsPDF;
-    var pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-    var pw = 297, ph = 210, cx = pw / 2;
-
-    // ── Background gradient border ──
-    pdf.setDrawColor(20, 112, 175);
-    pdf.setLineWidth(1.5);
-    pdf.roundedRect(15, 12, pw - 30, ph - 24, 6, 6, 'S');
-    pdf.setDrawColor(58, 150, 199);
-    pdf.setLineWidth(0.5);
-    pdf.roundedRect(19, 16, pw - 38, ph - 32, 4, 4, 'S');
-
-    // ── Actual MHCCA logo ──
-    var logoAspect = logoData.width / logoData.height;
-    var logoW = 90;
-    var logoH = logoW / logoAspect;
-    var logoX = cx - logoW / 2;
-    var logoY = 24;
-    pdf.addImage(logoData.dataUrl, 'PNG', logoX, logoY, logoW, logoH);
-
-    // ── Certificate title ──
-    var contentY = logoY + logoH + 10;
-    pdf.setTextColor(13, 90, 140);
-    pdf.setFontSize(26);
-    pdf.setFont('helvetica', 'bold');
-    pdf.text('Certificate of Completion', cx, contentY, { align: 'center' });
-
-    // Decorative line
-    pdf.setDrawColor(58, 150, 199);
-    pdf.setLineWidth(1);
-    pdf.line(cx - 20, contentY + 6, cx + 20, contentY + 6);
-
-    // ── This certifies that ──
-    pdf.setTextColor(100, 100, 100);
-    pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'normal');
-    pdf.text('This certifies that', cx, contentY + 18, { align: 'center' });
-
-    // ── Learner name ──
-    var learnerName = document.getElementById('certName').textContent;
-    pdf.setTextColor(13, 90, 140);
-    pdf.setFontSize(24);
-    pdf.setFont('helvetica', 'bold');
-    pdf.text(learnerName, cx, contentY + 32, { align: 'center' });
-
-    // ── has successfully completed ──
-    pdf.setTextColor(100, 100, 100);
-    pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'normal');
-    pdf.text('has successfully completed', cx, contentY + 44, { align: 'center' });
-
-    // ── Course title ──
-    pdf.setTextColor(13, 90, 140);
-    pdf.setFontSize(16);
-    pdf.setFont('helvetica', 'bold');
-    pdf.text('Understanding Climate Emotions:', cx, contentY + 56, { align: 'center' });
-    pdf.text('A Professional Development Course', cx, contentY + 64, { align: 'center' });
-
-    // ── Offered by ──
-    pdf.setTextColor(100, 100, 100);
-    pdf.setFontSize(11);
-    pdf.setFont('helvetica', 'normal');
-    pdf.text('A two-hour online course offered by the', cx, contentY + 78, { align: 'center' });
-    pdf.text('Mental Health and Climate Change Alliance (MHCCA)', cx, contentY + 85, { align: 'center' });
-
-    // ── Date ──
-    var dateText = document.getElementById('certDate').textContent;
-    pdf.setFontSize(11);
-    pdf.text('Date of Completion: ' + dateText, cx, contentY + 100, { align: 'center' });
-
-    // ── Save ──
-    var fileName = 'MHCCA_Certificate_' + learnerName.replace(/\s+/g, '_') + '.pdf';
-    pdf.save(fileName);
-
+  getLogoDataUrl().then(function(logoData) {
+    try {
+      var built = buildCertificatePdf(logoData);
+      built.pdf.save(built.fileName);
+    } catch (err) {
+      console.error('PDF generation error:', err);
+      // Last-resort retry without logo
+      try {
+        var built2 = buildCertificatePdf(null);
+        built2.pdf.save(built2.fileName);
+      } catch (err2) {
+        alert('There was an error generating the PDF: ' + err2.message);
+      }
+    }
     btn.textContent = originalText;
     btn.disabled = false;
-  }).catch(function(err) {
-    console.error('PDF generation error:', err);
-    btn.textContent = originalText;
-    btn.disabled = false;
-    alert('There was an error generating the PDF: ' + err.message);
   });
 }
 
@@ -1750,18 +2647,27 @@ function saveProgress() {
     document.querySelectorAll('input[type="radio"]:checked').forEach(function(r) {
       quizAnswers[r.name] = r.value;
     });
-    // Collect reflection text
-    var reflections = {};
-    document.querySelectorAll('textarea[id^="reflection-"]').forEach(function(ta) {
-      if (ta.value.trim()) reflections[ta.id] = ta.value;
+    // Collect opening reflection text
+    var openings = {};
+    document.querySelectorAll('textarea[id^="openingReflection-"]').forEach(function(ta) {
+      if (ta.value.trim()) openings[ta.id] = ta.value;
     });
+    // Collect closing reflection text
+    var closings = {};
+    document.querySelectorAll('textarea[id^="closingReflection-"]').forEach(function(ta) {
+      if (ta.value.trim()) closings[ta.id] = ta.value;
+    });
+    var savedCurrent = (typeof currentModule === 'number') ? currentModule
+                       : (typeof lastNonGlossaryModule === 'number' ? lastNonGlossaryModule : -1);
     var state = {
-      currentModule: currentModule,
+      currentModule: savedCurrent,
       completed: Array.from(completed),
       quizPassed: Object.assign({}, quizPassed),
-      reflectionDone: Object.assign({}, reflectionDone),
+      openingReflectionDone: Object.assign({}, openingReflectionDone),
+      closingReflectionDone: Object.assign({}, closingReflectionDone),
       quizAnswers: quizAnswers,
-      reflections: reflections,
+      openings: openings,
+      closings: closings,
       certName: document.getElementById('certName').textContent,
       certDate: document.getElementById('certDate').textContent,
       savedAt: new Date().toISOString()
@@ -1788,19 +2694,69 @@ function loadProgress() {
         quizPassed[k] = state.quizPassed[k];
       });
     }
-    // Restore reflection done state
-    if (state.reflectionDone) {
+    // Restore opening reflection done state
+    if (state.openingReflectionDone) {
+      Object.keys(state.openingReflectionDone).forEach(function(k) {
+        openingReflectionDone[k] = state.openingReflectionDone[k];
+      });
+    }
+    // Restore closing reflection done state (with legacy migration from old reflectionDone)
+    if (state.closingReflectionDone) {
+      Object.keys(state.closingReflectionDone).forEach(function(k) {
+        closingReflectionDone[k] = state.closingReflectionDone[k];
+      });
+    } else if (state.reflectionDone) {
+      // Migrate older saves: reflectionDone was the closing-reflection map.
       Object.keys(state.reflectionDone).forEach(function(k) {
-        reflectionDone[k] = state.reflectionDone[k];
+        closingReflectionDone[k] = state.reflectionDone[k];
       });
     }
-    // Restore reflection text
-    if (state.reflections) {
-      Object.keys(state.reflections).forEach(function(id) {
+    // Restore opening reflection text
+    if (state.openings) {
+      Object.keys(state.openings).forEach(function(id) {
         var ta = document.getElementById(id);
-        if (ta) ta.value = state.reflections[id];
+        if (ta) ta.value = state.openings[id];
       });
     }
+    // Restore closing reflection text (with legacy migration from old reflection-N IDs)
+    if (state.closings) {
+      Object.keys(state.closings).forEach(function(id) {
+        var ta = document.getElementById(id);
+        if (ta) ta.value = state.closings[id];
+      });
+    }
+    if (state.reflections) {
+      // Older saves used IDs like reflection-1 / reflection-3 etc. Map them onto closingReflection-N.
+      Object.keys(state.reflections).forEach(function(id) {
+        var m = id.match(/^reflection-(\d+)$/);
+        if (m) {
+          var newTa = document.getElementById('closingReflection-' + m[1]);
+          if (newTa && !newTa.value) newTa.value = state.reflections[id];
+        }
+      });
+    }
+    // Lock submitted opening reflections
+    Object.keys(openingReflectionDone).forEach(function(k) {
+      if (openingReflectionDone[k]) {
+        var ta = document.getElementById('openingReflection-' + k);
+        var btn = document.getElementById('openingSubmit-' + k);
+        var status = document.getElementById('openingStatus-' + k);
+        if (ta) ta.disabled = true;
+        if (btn) { btn.disabled = true; btn.classList.add('disabled'); btn.textContent = 'Submitted ✓'; }
+        if (status) status.innerHTML = '<span class="submitted">✓ Submitted — your response has been saved.</span>';
+      }
+    });
+    // Lock submitted closing reflections
+    Object.keys(closingReflectionDone).forEach(function(k) {
+      if (closingReflectionDone[k]) {
+        var ta = document.getElementById('closingReflection-' + k);
+        var btn = document.getElementById('closingSubmit-' + k);
+        var status = document.getElementById('closingStatus-' + k);
+        if (ta) ta.disabled = true;
+        if (btn) { btn.disabled = true; btn.classList.add('disabled'); btn.textContent = 'Submitted ✓'; }
+        if (status) status.innerHTML = '<span class="submitted">✓ Submitted — your response has been saved.</span>';
+      }
+    });
     // Restore quiz answers and lock passed quizzes
     if (state.quizAnswers) {
       Object.keys(state.quizAnswers).forEach(function(name) {
@@ -1857,6 +2813,7 @@ function loadProgress() {
 }
 
 // ─── Init ───
+buildEmotionsWheel();
 loadProgress();
 buildNav();
 updateProgress();
