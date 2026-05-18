@@ -267,6 +267,12 @@ When climate distress crosses into clinical territory — chronic anxiety, traum
 
 ---
 
+## SLIDE 43b — Ten Principles for Climate Mental Health
+
+Before we close the module, I want to anchor everything we've just covered in a recent synthesis from the literature. In their 2024 evidence review for the Mental Health and Climate Change Alliance, Higgs, Palmer-Fluevog, and Card identified ten principles for climate-mental-health work. They run from accurate climate literacy, through emotional diversity and inspired optimism, into social connection, nature bonding, and expanded coping repertoires, and out to climate justice, trauma-informed and culturally safe practice, community-led adaptation, and a collective-responsibility orientation. You'll recognize these as the threads we have been weaving through the module — and through the course as a whole. Hold them as a checklist for your own practice, and as a guide whenever you're supporting someone else.
+
+---
+
 ## SLIDE 44 — Module 4 Takeaways
 
 Five things to carry forward from this module. First, adaptive responses preserve wellbeing and foster action; the emotions themselves are not the problem — our responses to them are. Second, effective coping blends problem-focused, emotion-focused, and meaning-focused strategies, flexibly. Third, sustainable resilience requires action at all four levels — individual, organizational or familial, community, and systemic. Fourth, hope — radical, active, stubborn — is essential for sustained engagement. And fifth, validation is foundational. From there, practical skills like grounding, nature, somatic practices, and community engagement are what build resilience over time.
