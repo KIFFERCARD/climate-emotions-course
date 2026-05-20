@@ -645,6 +645,28 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
   .mobile-toggle { display: flex; align-items: center; justify-content: center; }
   .av-fullscreen { height: calc(100vh - 70px); min-height: 460px; }
 }
+
+/* ── In-text citations ── */
+.cite { color: var(--teal); text-decoration: none; border-bottom: 1px dotted var(--teal); font-weight: 600; white-space: nowrap; }
+.cite:hover { color: var(--dark-teal); border-bottom-style: solid; background: var(--very-light-teal); }
+.wiki-link { color: var(--teal); text-decoration: none; border-bottom: 1px dotted var(--teal); }
+.wiki-link:hover { color: var(--dark-teal); border-bottom-style: solid; }
+
+/* ── References section ── */
+.references-section {
+  margin-top: 32px; padding: 24px 28px; background: #FAFBFC;
+  border: 1px solid #E5E9F0; border-radius: 12px;
+}
+.references-section h2 { font-size: 22px; color: var(--dark-teal); margin-bottom: 6px; }
+.references-section p.refs-note { font-size: 13.5px; color: var(--text-light); font-style: italic; margin-bottom: 14px; }
+.references-section ul.refs-list { list-style: none; padding: 0; margin: 0; }
+.references-section ul.refs-list li {
+  font-size: 13.5px; line-height: 1.55; padding: 7px 0;
+  border-bottom: 1px dashed #E5E9F0; color: var(--text);
+}
+.references-section ul.refs-list li:last-child { border-bottom: none; }
+.references-section ul.refs-list a { color: var(--teal); text-decoration: none; word-break: break-word; }
+.references-section ul.refs-list a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -879,8 +901,8 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <li><strong>Closing Reflections and Final Assessment</strong> — what to carry forward, and a 23-question knowledge check.</li>
     </ol>
 
-    <h2>What Is Climate Change?</h2>
-    <p>Climate change refers to long-term alterations in temperature, precipitation, and other atmospheric conditions. It is primarily driven by human activities such as burning fossil fuels and deforestation, which release greenhouse gas emissions into the atmosphere, trapping heat from the sun and causing warming. Understanding the multifaceted impacts of climate change is essential for making connections to how a changing climate affects our physical, mental, and emotional health and wellbeing.</p>
+    <h2>What Is <a class="wiki-link" href="https://en.wikipedia.org/wiki/Climate_change" target="_blank" rel="noopener noreferrer">Climate Change</a>?</h2>
+    <p>Climate change refers to long-term alterations in temperature, precipitation, and other atmospheric conditions. It is primarily driven by human activities such as burning fossil fuels and deforestation, which release greenhouse gas emissions into the atmosphere, trapping heat from the sun and causing warming. The scientific consensus that current warming is human-caused is summarized in the IPCC Sixth Assessment Synthesis Report (IPCC, <a class="cite" href="https://doi.org/10.59327/IPCC/AR6-9789291691647" target="_blank" rel="noopener noreferrer">2023</a>). Understanding the multifaceted impacts of climate change is essential for making connections to how a changing climate affects our physical, mental, and emotional health and wellbeing.</p>
 
     <h3>Impacts of Climate Change</h3>
     <p><em>Click each card to reveal the impact:</em></p>
@@ -895,8 +917,8 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front">Infrastructure Damage</div><div class="flip-card-back">Roads, bridges, utilities, and housing are impacted by extreme weather, disrupting daily life and essential services.</div></div></div>
     </div>
 
-    <h2>Planetary Health</h2>
-    <p>Planetary health is a framework that bridges disciplines together — from earth sciences and ecology to psychology and public health. It emphasizes that human wellbeing is deeply connected to the health of the environment. When natural systems are compromised, it affects the building blocks of human health, including clean air, safe water, healthy food, and stable living conditions. Climate change is one of nine critical planetary boundaries we need to maintain to ensure our planet remains a stable and safe home for humanity. We are currently exceeding several of these boundaries, highlighting the urgent need for collective action.</p>
+    <h2><a class="wiki-link" href="https://en.wikipedia.org/wiki/Planetary_health" target="_blank" rel="noopener noreferrer">Planetary Health</a></h2>
+    <p>Planetary health is a framework that bridges disciplines together — from earth sciences and ecology to psychology and public health. Articulated in the Rockefeller Foundation–Lancet Commission report by Whitmee and colleagues (<a class="cite" href="https://doi.org/10.1016/S0140-6736(15)60901-1" target="_blank" rel="noopener noreferrer">2015</a>), it emphasizes that human wellbeing is deeply connected to the health of the environment. When natural systems are compromised, it affects the building blocks of human health, including clean air, safe water, healthy food, and stable living conditions. Climate change is one of nine critical <a class="wiki-link" href="https://en.wikipedia.org/wiki/Planetary_boundaries" target="_blank" rel="noopener noreferrer">planetary boundaries</a> first proposed by Rockström and colleagues (<a class="cite" href="https://doi.org/10.1038/461472a" target="_blank" rel="noopener noreferrer">2009</a>) that we need to maintain to ensure our planet remains a stable and safe home for humanity. The most recent assessment by Richardson and colleagues (<a class="cite" href="https://doi.org/10.1126/sciadv.adh2458" target="_blank" rel="noopener noreferrer">2023</a>) finds that six of nine boundaries have now been transgressed, highlighting the urgent need for collective action.</p>
 
     <figure style="margin:20px 0;">
       <img src="images/planetary-boundaries.jpg" alt="Planetary boundaries framework showing progression from 2009 (3 boundaries crossed) to 2015 (4 crossed) to 2023 (6 crossed) to 2025 (7 crossed)" style="width:100%;max-width:100%;height:auto;display:block;border-radius:8px;">
@@ -911,8 +933,8 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     </div>
 
     <h2>Indigenous Perspectives</h2>
-    <p>Indigenous ways of knowing offer essential perspectives on what is unfolding. From many Indigenous perspectives, climate change is not only a scientific or ecological crisis but also a reflection of disrupted relationships between humans and, in turn, their relationships with the land and non-human relations. It represents a profound imbalance in our responsibilities to the natural world.</p>
-    <p>Where Western frameworks may focus on emissions and temperatures, Indigenous teachings often speak to the spiritual, ethical, and relational consequences of living out of harmony with Creation. The call to address climate change, from this view, is also a call to renew our relationships with land, with each other, and with future generations. This relational lens helps expand our understanding of climate health as inseparable from social and emotional wellbeing.</p>
+    <p>Indigenous ways of knowing offer essential perspectives on what is unfolding. From many Indigenous perspectives, climate change is not only a scientific or ecological crisis but also a reflection of disrupted relationships between humans and, in turn, their relationships with the land and non-human relations. As Whyte (<a class="cite" href="https://doi.org/10.1215/00138282-55.1-2.153" target="_blank" rel="noopener noreferrer">2017</a>) argues, climate change can be understood as an intensification of colonial harms already enacted on Indigenous lands and peoples. It represents a profound imbalance in our responsibilities to the natural world.</p>
+    <p>Where Western frameworks may focus on emissions and temperatures, Indigenous teachings often speak to the spiritual, ethical, and relational consequences of living out of harmony with Creation. Cunsolo and Ellis (<a class="cite" href="https://doi.org/10.1038/s41558-018-0092-2" target="_blank" rel="noopener noreferrer">2018</a>), drawing on work with Inuit communities in Labrador, describe ecological grief as a mental health response to climate-driven environmental loss — a finding that helps anchor the more abstract idea of "relational crisis" in lived community experience. The call to address climate change, from this view, is also a call to renew our relationships with land, with each other, and with future generations. This relational lens helps expand our understanding of climate health as inseparable from social and emotional wellbeing.</p>
 
     <div class="takeaways">
       <h3>Key Takeaways</h3>
@@ -920,6 +942,19 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
         <li>Climate change involves long-term shifts in atmospheric conditions driven primarily by human activities, with widespread impacts on the environment, ecosystems, and human health.</li>
         <li>Planetary health frames human wellbeing as inseparable from environmental health.</li>
         <li>Indigenous perspectives situate climate change as a relational crisis — a breakdown in relationships between humans, land, and non-human relations — and point toward relational approaches to healing.</li>
+      </ul>
+    </div>
+
+    <div class="references-section">
+      <h2>References — Module 1</h2>
+      <p class="refs-note">Click any citation in the module to jump to the source. All links open in a new tab.</p>
+      <ul class="refs-list">
+        <li>Cunsolo, A., &amp; Ellis, N. R. (2018). Ecological grief as a mental health response to climate change-related loss. <em>Nature Climate Change, 8</em>(4), 275–281. <a href="https://doi.org/10.1038/s41558-018-0092-2" target="_blank" rel="noopener noreferrer">https://doi.org/10.1038/s41558-018-0092-2</a></li>
+        <li>IPCC. (2023). <em>Climate Change 2023: Synthesis Report</em>. Contribution of Working Groups I, II and III to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change. IPCC, Geneva. <a href="https://doi.org/10.59327/IPCC/AR6-9789291691647" target="_blank" rel="noopener noreferrer">https://doi.org/10.59327/IPCC/AR6-9789291691647</a></li>
+        <li>Richardson, K., Steffen, W., Lucht, W., et al. (2023). Earth beyond six of nine planetary boundaries. <em>Science Advances, 9</em>(37), eadh2458. <a href="https://doi.org/10.1126/sciadv.adh2458" target="_blank" rel="noopener noreferrer">https://doi.org/10.1126/sciadv.adh2458</a></li>
+        <li>Rockström, J., Steffen, W., Noone, K., et al. (2009). A safe operating space for humanity. <em>Nature, 461</em>(7263), 472–475. <a href="https://doi.org/10.1038/461472a" target="_blank" rel="noopener noreferrer">https://doi.org/10.1038/461472a</a></li>
+        <li>Whitmee, S., Haines, A., Beyrer, C., et al. (2015). Safeguarding human health in the Anthropocene epoch: report of The Rockefeller Foundation–Lancet Commission on planetary health. <em>The Lancet, 386</em>(10007), 1973–2028. <a href="https://doi.org/10.1016/S0140-6736(15)60901-1" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/S0140-6736(15)60901-1</a></li>
+        <li>Whyte, K. (2017). Indigenous Climate Change Studies: Indigenizing Futures, Decolonizing the Anthropocene. <em>English Language Notes, 55</em>(1–2), 153–162. <a href="https://doi.org/10.1215/00138282-55.1-2.153" target="_blank" rel="noopener noreferrer">https://doi.org/10.1215/00138282-55.1-2.153</a></li>
       </ul>
     </div>
 
@@ -1124,7 +1159,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
             <div>
               <span class="av-tag">3 of 9</span>
               <h2 style="font-size:26px;margin-top:4px;">Grief and Solastalgia</h2>
-              <p style="font-size:13.5px;font-style:italic;">Solastalgia: homesickness-like distress when one's home environment changes (Glenn Albrecht).</p>
+              <p style="font-size:13.5px;font-style:italic;"><a class="wiki-link" href="https://en.wikipedia.org/wiki/Solastalgia" target="_blank" rel="noopener noreferrer">Solastalgia</a>: homesickness-like distress when one's home environment changes (Albrecht et al., <a class="cite" href="https://doi.org/10.1080/10398560701701288" target="_blank" rel="noopener noreferrer">2007</a>).</p>
               <p style="font-size:13.5px;font-style:italic;color:var(--text-light);margin-top:2px;">Example: walking past the dry creek where you swam as a child and feeling the throat-catch of loss.</p>
               <h3>How it shows up</h3>
               <p style="font-size:14.5px;">Waves of sadness triggered by familiar places, mourning lost species and seasons, ambiguous grief without closure.</p>
@@ -1301,7 +1336,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
 
     <div class="info-box amber">
       <h4>A Note on Trauma-Informed Care</h4>
-      <p>This module names emotions some readers carry personally. We approach this work through a <strong>trauma-informed lens</strong> — recognizing that distress about climate change is often layered onto other experiences of loss, displacement, or harm. Six widely-used principles guide trauma-informed practice:</p>
+      <p>This module names emotions some readers carry personally. We approach this work through a <strong><a class="wiki-link" href="https://en.wikipedia.org/wiki/Trauma-informed_care" target="_blank" rel="noopener noreferrer">trauma-informed lens</a></strong> — recognizing that distress about climate change is often layered onto other experiences of loss, displacement, or harm. Six widely-used principles from SAMHSA (<a class="cite" href="https://library.samhsa.gov/product/samhsas-concept-trauma-and-guidance-trauma-informed-approach/sma14-4884" target="_blank" rel="noopener noreferrer">2014</a>) guide trauma-informed practice:</p>
       <ul style="margin-top:6px;">
         <li><strong>Safety</strong> — physical and emotional safety for everyone in the space.</li>
         <li><strong>Trustworthiness &amp; transparency</strong> — clarity about what to expect and why.</li>
@@ -1314,13 +1349,13 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     </div>
 
     <h2>Emotions, Wellbeing, and Mental Health</h2>
-    <p>Before exploring specific climate emotions, it is important to understand what we mean by emotions and how they relate to mental health and wellbeing. Our understanding of health has evolved considerably over time — from the biomedical model (which focused narrowly on the absence of disease) to the World Health Organization's 1948 definition of health as "complete physical, mental, and social wellbeing." George Engel's biopsychosocial model (1977) further expanded this, recognizing that biological, psychological, and social factors are all essential to health.</p>
+    <p>Before exploring specific climate emotions, it is important to understand what we mean by emotions and how they relate to mental health and wellbeing. Our understanding of health has evolved considerably over time — from the biomedical model (which focused narrowly on the absence of disease) to the World Health Organization's <a class="cite" href="https://www.who.int/about/governance/constitution" target="_blank" rel="noopener noreferrer">1948</a> definition of health as "complete physical, mental, and social wellbeing." <a class="wiki-link" href="https://en.wikipedia.org/wiki/George_L._Engel" target="_blank" rel="noopener noreferrer">George Engel</a>'s <a class="wiki-link" href="https://en.wikipedia.org/wiki/Biopsychosocial_model" target="_blank" rel="noopener noreferrer">biopsychosocial model</a> (<a class="cite" href="https://doi.org/10.1126/science.847460" target="_blank" rel="noopener noreferrer">1977</a>) further expanded this, recognizing that biological, psychological, and social factors are all essential to health.</p>
     <p>Many Indigenous health systems have long conceptualized health as a balance among physical, mental, emotional, and spiritual dimensions — inseparable from relationships with land, community, and the living world.</p>
     <p>Emotions are meaningful signals about the state of our relationships with the world around us. They should not be viewed as problems to be managed or eliminated, but as important information that can guide action and connection.</p>
 
     <h2>How We Understand Emotions: A Brief Theoretical Note</h2>
     <p>There is no single, settled scientific account of what emotions <em>are</em>. For a long time, basic-emotion theories assumed a small set of universal feelings — fear, anger, sadness, joy, disgust, surprise — each with its own characteristic facial expression, physiology, and brain signature. Other traditions instead emphasized cognitive appraisal (how we interpret a situation), social and cultural context (how the people and norms around us shape what we feel), or developmental history. Each of these perspectives captured something real about emotion, but none captured everything.</p>
-    <p>More recent work — most prominently Lisa Feldman Barrett's <strong>theory of constructed emotion</strong> — argues that emotions are not pre-wired reflexes triggered by events but are actively <em>constructed</em> in the moment. The brain draws on bodily sensations, prior experience, language, and cultural concepts to predict what is happening and assemble an emotional experience that fits. On this view, two people facing the same wildfire smoke can construct quite different emotions — one grief, another rage, another a numb resolve — depending on what their body, history, and culture make available to them.</p>
+    <p>More recent work — most prominently <a class="wiki-link" href="https://en.wikipedia.org/wiki/Lisa_Feldman_Barrett" target="_blank" rel="noopener noreferrer">Lisa Feldman Barrett</a>'s <strong><a class="wiki-link" href="https://en.wikipedia.org/wiki/Theory_of_constructed_emotion" target="_blank" rel="noopener noreferrer">theory of constructed emotion</a></strong> (Barrett, <a class="cite" href="https://doi.org/10.1093/scan/nsw154" target="_blank" rel="noopener noreferrer">2017</a>) — argues that emotions are not pre-wired reflexes triggered by events but are actively <em>constructed</em> in the moment. The brain draws on bodily sensations, prior experience, language, and cultural concepts to predict what is happening and assemble an emotional experience that fits. On this view, two people facing the same wildfire smoke can construct quite different emotions — one grief, another rage, another a numb resolve — depending on what their body, history, and culture make available to them.</p>
     <p>This is not the final word; the science continues to evolve. The takeaway for this course is more modest: <strong>climate emotions are real, meaningful, and variable</strong>. They are not universal templates that look the same in everyone, and they are not symptoms to be eliminated. Holding this nuance lightly will help you make sense of why people in similar circumstances — including yourself across different days — can feel very different things, and why no single response will fit everyone.</p>
 
     <h2>Emotions vs. Mental Health Conditions</h2>
@@ -1341,7 +1376,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     </div>
 
     <h2>The Spectrum of Climate Emotions</h2>
-    <p>Researchers and practitioners have mapped a broad spectrum of emotional responses to climate change. The wheel below organizes them into nine overlapping categories. Click any wedge to read what each emotion <em>is</em>. Beneath the wheel, a separate guide walks through how each one tends to <em>show up</em> in everyday life and how to <em>respond</em> — for yourself and for someone you support.</p>
+    <p>Researchers and practitioners have mapped a broad spectrum of emotional responses to climate change — see, for example, Pihkala's (<a class="cite" href="https://doi.org/10.3389/fclim.2021.738154" target="_blank" rel="noopener noreferrer">2022</a>) taxonomy of climate emotions and Ojala and colleagues' (<a class="cite" href="https://doi.org/10.1146/annurev-environ-012220-022716" target="_blank" rel="noopener noreferrer">2021</a>) narrative review. The wheel below organizes them into nine overlapping categories. Click any wedge to read what each emotion <em>is</em>. Beneath the wheel, a separate guide walks through how each one tends to <em>show up</em> in everyday life and how to <em>respond</em> — for yourself and for someone you support.</p>
 
     <div class="emotions-wheel-wrap">
       <svg class="emotions-wheel" id="emotionsWheel" viewBox="-180 -180 360 360" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive climate emotions wheel"></svg>
@@ -1377,6 +1412,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">1. Worry and Anxiety <span class="arrow">▼</span></div>
         <div class="accordion-body"><div class="accordion-body-inner">
+          <p style="font-size:13.5px;color:var(--text-light);font-style:italic;">See Clayton &amp; Karazsia (<a class="cite" href="https://doi.org/10.1016/j.jenvp.2020.101434" target="_blank" rel="noopener noreferrer">2020</a>) for the most-cited validated measure of climate change anxiety, and Hickman and colleagues' (<a class="cite" href="https://doi.org/10.1016/S2542-5196(21)00278-3" target="_blank" rel="noopener noreferrer">2021</a>) 10-country survey of young people for the scope of the experience. The broader concept of <a class="wiki-link" href="https://en.wikipedia.org/wiki/Eco-anxiety" target="_blank" rel="noopener noreferrer">eco-anxiety</a> is reviewed in Pihkala (<a class="cite" href="https://doi.org/10.3390/su12197836" target="_blank" rel="noopener noreferrer">2020</a>).</p>
           <p><strong>How it shows up:</strong> circling thoughts about news headlines, trouble sleeping after climate stories, restlessness or chest tightness, compulsive doomscrolling, irritability with people who seem unconcerned, difficulty concentrating on long-term plans, "what-if" loops about the future.</p>
           <p><strong>What helps for yourself:</strong> name the feeling (worry is information, not weakness), bound your news intake (set times rather than scrolling continuously), pair worry with one concrete action — however small — to convert helplessness into agency, use grounding techniques when worry escalates into panic.</p>
           <p><strong>What helps when supporting others:</strong> validate first ("it makes sense to feel this way"), don't reassure with platitudes, ask what they need (information, distraction, a walk, problem-solving) before offering it, share that they are not alone in this — naming the experience reduces shame.</p>
@@ -1393,6 +1429,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">3. Grief and Solastalgia <span class="arrow">▼</span></div>
         <div class="accordion-body"><div class="accordion-body-inner">
+          <p style="font-size:13.5px;color:var(--text-light);font-style:italic;"><a class="wiki-link" href="https://en.wikipedia.org/wiki/Solastalgia" target="_blank" rel="noopener noreferrer">Solastalgia</a> was coined by Australian philosopher <a class="wiki-link" href="https://en.wikipedia.org/wiki/Glenn_Albrecht" target="_blank" rel="noopener noreferrer">Glenn Albrecht</a> and colleagues (<a class="cite" href="https://doi.org/10.1080/10398560701701288" target="_blank" rel="noopener noreferrer">2007</a>). Cunsolo and Ellis (<a class="cite" href="https://doi.org/10.1038/s41558-018-0092-2" target="_blank" rel="noopener noreferrer">2018</a>) describe ecological grief as a mental health response to climate-related loss.</p>
           <p><strong>How it shows up:</strong> sudden waves of sadness triggered by familiar landscapes, mourning species or seasons that have changed, a homesickness experienced while still at home, ambiguous grief that has no closure, withdrawal from places once loved, tearfulness around environmental news, a sense of "phantom limb" for what has been lost.</p>
           <p><strong>What helps for yourself:</strong> name the loss out loud (climate grief is rarely socially sanctioned, so naming it matters), ritualize where possible — write, walk, photograph, plant — give yourself permission to grieve without a "fix," join a climate grief circle or community of others who get it.</p>
           <p><strong>What helps when supporting others:</strong> resist the urge to silver-line; sit with the loss as you would any bereavement, acknowledge the legitimacy of grieving non-human beings or places, mark losses ceremonially (a planting, a gathering, a moment of silence), check in around anniversaries and seasonal markers.</p>
@@ -1425,6 +1462,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">7. Denial and Disengagement <span class="arrow">▼</span></div>
         <div class="accordion-body"><div class="accordion-body-inner">
+          <p style="font-size:13.5px;color:var(--text-light);font-style:italic;">Norgaard (<a class="cite" href="https://doi.org/10.7551/mitpress/9780262015448.001.0001" target="_blank" rel="noopener noreferrer">2011</a>) reframes denial as a socially organized response to overwhelming threat rather than a moral failing; Stoknes (<a class="cite" href="https://doi.org/10.1016/j.erss.2014.03.007" target="_blank" rel="noopener noreferrer">2014</a>) analyses the "psychological climate paradox" of caring without acting.</p>
           <p><strong>How it shows up:</strong> changing the subject when climate is raised, dismissive humour, intellectualizing without feeling, hyper-focus on solutions to avoid sitting with the problem, "I just can't think about that right now," disengagement after periods of intense engagement, sometimes outright rejection of the science.</p>
           <p><strong>What helps for yourself:</strong> notice when avoidance is protective (it sometimes is, briefly) versus when it is calcifying, re-engage gently — through a person you trust, a story rather than statistics, or a small action — recognize that disengagement after prolonged intense engagement may signal burnout, not apathy.</p>
           <p><strong>What helps when supporting others:</strong> avoid confrontation and information dumps — they tend to deepen denial, ask open questions about what they care about and connect from there, share your own emotional truth rather than facts, give time and follow up, recognize that movement is usually slow and non-linear.</p>
@@ -1433,6 +1471,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">8. Ecoparalysis and Fatalism <span class="arrow">▼</span></div>
         <div class="accordion-body"><div class="accordion-body-inner">
+          <p style="font-size:13.5px;color:var(--text-light);font-style:italic;">Searle &amp; Gow (<a class="cite" href="https://doi.org/10.1108/17568691011089891" target="_blank" rel="noopener noreferrer">2010</a>) document the link between climate worry and immobilizing distress; Pihkala (<a class="cite" href="https://doi.org/10.3389/fclim.2021.738154" target="_blank" rel="noopener noreferrer">2022</a>) situates ecoparalysis within the wider taxonomy of climate emotions.</p>
           <p><strong>How it shows up:</strong> "what's the point" thinking, abandoning previously held practices, doom-leaning humour, oscillation between bursts of action and total withdrawal, decision-fatigue around any climate-relevant choice, drift toward nihilistic communities online.</p>
           <p><strong>What helps for yourself:</strong> shrink the unit of action — choose one tiny, achievable thing and do it, prioritize collective action over solo effort (collective efficacy is a known antidote to fatalism), limit prolonged exposure to doomist media voices, restore basic rest and nutrition; ecoparalysis often rides on top of physical depletion.</p>
           <p><strong>What helps when supporting others:</strong> don't try to argue them into hope, do something small alongside them rather than urging them to act, share concrete examples of meaningful change — local, partial, honest — rather than abstract optimism, watch for signs that paralysis has tipped into clinical depression and gently support a path to professional help.</p>
@@ -1441,11 +1480,35 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">9. Hope and Resilience <span class="arrow">▼</span></div>
         <div class="accordion-body"><div class="accordion-body-inner">
+          <p style="font-size:13.5px;color:var(--text-light);font-style:italic;">Ojala (<a class="cite" href="https://doi.org/10.1080/13504622.2011.637157" target="_blank" rel="noopener noreferrer">2012</a>) finds that constructive hope — rather than denial-based hope — predicts sustained climate engagement in young people; see also Ojala (<a class="cite" href="https://doi.org/10.3390/su5052191" target="_blank" rel="noopener noreferrer">2013</a>) on meaning-focused coping.</p>
           <p><strong>How it shows up:</strong> renewed energy after time in community, capacity to hold difficulty alongside possibility, motivation that survives setbacks, willingness to engage in projects whose outcomes are uncertain, gratitude that coexists with grief, a felt sense that what one does matters even if it isn't enough on its own.</p>
           <p><strong>What helps for yourself:</strong> treat hope as a practice rather than a mood — return to it deliberately, anchor it in concrete, witnessed change rather than vague optimism, surround yourself with people who model engaged hope, build in rest and joy; sustainable hope requires energy reserves.</p>
           <p><strong>What helps when supporting others:</strong> don't impose hope on someone in grief or anger — let it emerge, share specific examples that honour both the reality and the possibility, celebrate small wins together, model that hope and despair can coexist without one cancelling the other.</p>
         </div></div>
       </div>
+    </div>
+
+    <div class="references-section">
+      <h2>References — Module 2</h2>
+      <p class="refs-note">Click any citation in the module to jump to the source. All links open in a new tab.</p>
+      <ul class="refs-list">
+        <li>Albrecht, G., Sartore, G.-M., Connor, L., et al. (2007). Solastalgia: The distress caused by environmental change. <em>Australasian Psychiatry, 15</em>(sup1), S95–S98. <a href="https://doi.org/10.1080/10398560701701288" target="_blank" rel="noopener noreferrer">https://doi.org/10.1080/10398560701701288</a></li>
+        <li>Barrett, L. F. (2017). The theory of constructed emotion: An active inference account of interoception and categorization. <em>Social Cognitive and Affective Neuroscience, 12</em>(1), 1–23. <a href="https://doi.org/10.1093/scan/nsw154" target="_blank" rel="noopener noreferrer">https://doi.org/10.1093/scan/nsw154</a></li>
+        <li>Clayton, S., &amp; Karazsia, B. T. (2020). Development and validation of a measure of climate change anxiety. <em>Journal of Environmental Psychology, 69</em>, 101434. <a href="https://doi.org/10.1016/j.jenvp.2020.101434" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.jenvp.2020.101434</a></li>
+        <li>Cunsolo, A., &amp; Ellis, N. R. (2018). Ecological grief as a mental health response to climate change-related loss. <em>Nature Climate Change, 8</em>(4), 275–281. <a href="https://doi.org/10.1038/s41558-018-0092-2" target="_blank" rel="noopener noreferrer">https://doi.org/10.1038/s41558-018-0092-2</a></li>
+        <li>Engel, G. L. (1977). The need for a new medical model: A challenge for biomedicine. <em>Science, 196</em>(4286), 129–136. <a href="https://doi.org/10.1126/science.847460" target="_blank" rel="noopener noreferrer">https://doi.org/10.1126/science.847460</a></li>
+        <li>Hickman, C., Marks, E., Pihkala, P., et al. (2021). Climate anxiety in children and young people and their beliefs about government responses to climate change: A global survey. <em>The Lancet Planetary Health, 5</em>(12), e863–e873. <a href="https://doi.org/10.1016/S2542-5196(21)00278-3" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/S2542-5196(21)00278-3</a></li>
+        <li>Norgaard, K. M. (2011). <em>Living in Denial: Climate Change, Emotions, and Everyday Life</em>. MIT Press. <a href="https://doi.org/10.7551/mitpress/9780262015448.001.0001" target="_blank" rel="noopener noreferrer">https://doi.org/10.7551/mitpress/9780262015448.001.0001</a></li>
+        <li>Ojala, M. (2012). Hope and climate change: The importance of hope for environmental engagement among young people. <em>Environmental Education Research, 18</em>(5), 625–642. <a href="https://doi.org/10.1080/13504622.2011.637157" target="_blank" rel="noopener noreferrer">https://doi.org/10.1080/13504622.2011.637157</a></li>
+        <li>Ojala, M. (2013). Coping with climate change among adolescents: Implications for subjective well-being and environmental engagement. <em>Sustainability, 5</em>(5), 2191–2209. <a href="https://doi.org/10.3390/su5052191" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/su5052191</a></li>
+        <li>Ojala, M., Cunsolo, A., Ogunbode, C. A., &amp; Middleton, J. (2021). Anxiety, worry, and grief in a time of environmental and climate crisis: A narrative review. <em>Annual Review of Environment and Resources, 46</em>, 35–58. <a href="https://doi.org/10.1146/annurev-environ-012220-022716" target="_blank" rel="noopener noreferrer">https://doi.org/10.1146/annurev-environ-012220-022716</a></li>
+        <li>Pihkala, P. (2020). Anxiety and the ecological crisis: An analysis of eco-anxiety and climate anxiety. <em>Sustainability, 12</em>(19), 7836. <a href="https://doi.org/10.3390/su12197836" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/su12197836</a></li>
+        <li>Pihkala, P. (2022). Toward a taxonomy of climate emotions. <em>Frontiers in Climate, 3</em>, 738154. <a href="https://doi.org/10.3389/fclim.2021.738154" target="_blank" rel="noopener noreferrer">https://doi.org/10.3389/fclim.2021.738154</a></li>
+        <li>SAMHSA. (2014). <em>SAMHSA's Concept of Trauma and Guidance for a Trauma-Informed Approach</em> (HHS Publication No. SMA 14-4884). Rockville, MD: Substance Abuse and Mental Health Services Administration. <a href="https://library.samhsa.gov/product/samhsas-concept-trauma-and-guidance-trauma-informed-approach/sma14-4884" target="_blank" rel="noopener noreferrer">https://library.samhsa.gov/product/samhsas-concept-trauma-and-guidance-trauma-informed-approach/sma14-4884</a></li>
+        <li>Searle, K., &amp; Gow, K. (2010). Do concerns about climate change lead to distress? <em>International Journal of Climate Change Strategies and Management, 2</em>(4), 362–379. <a href="https://doi.org/10.1108/17568691011089891" target="_blank" rel="noopener noreferrer">https://doi.org/10.1108/17568691011089891</a></li>
+        <li>Stoknes, P. E. (2014). Rethinking climate communications and the "psychological climate paradox." <em>Energy Research &amp; Social Science, 1</em>, 161–170. <a href="https://doi.org/10.1016/j.erss.2014.03.007" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.erss.2014.03.007</a></li>
+        <li>World Health Organization. (1948). <em>Constitution of the World Health Organization</em>. Geneva: WHO. <a href="https://www.who.int/about/governance/constitution" target="_blank" rel="noopener noreferrer">https://www.who.int/about/governance/constitution</a></li>
+      </ul>
     </div>
 
     <div class="opening-reflection">
@@ -1672,10 +1735,10 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     </div>
 
     <h2>Understanding the Causes of Climate Emotions</h2>
-    <p>Climate emotions are not random reactions. They are functional responses to real threats — rising sea levels, extreme weather, environmental degradation, and social inequalities. The <strong>biopsychosocial model</strong> helps us understand that biological factors (such as genetic predisposition and physiological stress responses), psychological factors (such as personality, coping style, and cognitive appraisals), and social factors (such as community support, cultural context, and socioeconomic status) all interact to shape our emotional responses to climate change.</p>
+    <p>Climate emotions are not random reactions. They are functional responses to real threats — rising sea levels, extreme weather, environmental degradation, and social inequalities. Doherty and Clayton (<a class="cite" href="https://doi.org/10.1037/a0023141" target="_blank" rel="noopener noreferrer">2011</a>) provide a foundational psychological account. The <strong><a class="wiki-link" href="https://en.wikipedia.org/wiki/Biopsychosocial_model" target="_blank" rel="noopener noreferrer">biopsychosocial model</a></strong> helps us understand that biological factors (such as genetic predisposition and physiological stress responses), psychological factors (such as personality, coping style, and cognitive appraisals), and social factors (such as community support, cultural context, and socioeconomic status) all interact to shape our emotional responses to climate change.</p>
 
     <h2>Social and Environmental Drivers</h2>
-    <p>Direct exposure to climate-related events — such as wildfires, floods, hurricanes, and extreme heat — is one of the most significant drivers of climate distress. However, indirect exposure through media consumption, anticipatory worry about future events, and awareness of environmental degradation also contribute substantially. Key factors include:</p>
+    <p>Direct exposure to climate-related events — such as wildfires, floods, hurricanes, and extreme heat — is one of the most significant drivers of climate distress (Berry, Bowen, &amp; Kjellstrom, <a class="cite" href="https://doi.org/10.1007/s00038-009-0112-0" target="_blank" rel="noopener noreferrer">2010</a>). However, indirect exposure through media consumption, anticipatory worry about future events, and awareness of environmental degradation also contribute substantially. Key factors include:</p>
     <ul>
       <li>Geographic vulnerability (living in flood zones, fire-prone areas, or heat islands)</li>
       <li>Socioeconomic status and access to resources for adaptation</li>
@@ -1685,8 +1748,8 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <li>Access to green spaces and nature</li>
     </ul>
 
-    <h2>A Lifecourse Perspective</h2>
-    <p>Climate emotions are not static — they shift across the arc of a life. Each developmental stage carries its own concerns (forming an identity, raising children, watching grandchildren grow up, witnessing decades of change), its own resources for coping, and its own constraints. The same wildfire season that registers as existential dread for a fifteen-year-old may register as grief for an eighty-year-old who remembers what the forest was, and as compounded caregiving fatigue for the forty-year-old between them. <strong>A lifecourse lens reminds us that climate emotion is shaped not only by what is happening now but by where someone is in their life and what they have already lived through.</strong></p>
+    <h2>A <a class="wiki-link" href="https://en.wikipedia.org/wiki/Life_course_approach" target="_blank" rel="noopener noreferrer">Lifecourse</a> Perspective</h2>
+    <p>Climate emotions are not static — they shift across the arc of a life. Each developmental stage carries its own concerns (forming an identity, raising children, watching grandchildren grow up, witnessing decades of change), its own resources for coping, and its own constraints. The same wildfire season that registers as existential dread for a fifteen-year-old may register as grief for an eighty-year-old who remembers what the forest was, and as compounded caregiving fatigue for the forty-year-old between them. Sanson, Van Hoorn, &amp; Burke (<a class="cite" href="https://doi.org/10.1111/cdep.12342" target="_blank" rel="noopener noreferrer">2019</a>) and Léger-Goodes and colleagues (<a class="cite" href="https://doi.org/10.3389/fpsyg.2022.872544" target="_blank" rel="noopener noreferrer">2022</a>) document the particular weight of climate distress in children and youth. <strong>A lifecourse lens reminds us that climate emotion is shaped not only by what is happening now but by where someone is in their life and what they have already lived through.</strong></p>
     <p>Below is a brief sketch of how climate emotions can show up across four broad life stages. Real lives don't fit neatly into stages — these are starting points, not boxes.</p>
 
     <div class="tabs">
@@ -1721,10 +1784,10 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     <p style="font-size:14px;color:var(--text-light);margin-top:12px;"><em>These stages interact: a parent's climate worry is not separate from their child's; an elder's grief shapes the family's emotional climate. Intergenerational dialogue — children, parents, elders together — often metabolizes climate emotions better than any one generation can alone.</em></p>
 
     <h2>Population Impacts and Inequities</h2>
-    <p>Climate change does not affect everyone equally. Marginalized communities — including Indigenous peoples, racialized communities, people living in poverty, persons with disabilities, gender-diverse people, and communities in the Global South — often bear the greatest burden of climate impacts while having contributed least to the crisis. These inequities compound existing health disparities and create additional layers of climate-related emotional distress. The emotions are not just bigger; they sit on top of histories of harm, displacement, and exclusion that long pre-date the climate crisis.</p>
+    <p>Climate change does not affect everyone equally. Marginalized communities — including Indigenous peoples, racialized communities, people living in poverty, persons with disabilities, gender-diverse people, and communities in the Global South — often bear the greatest burden of climate impacts while having contributed least to the crisis. Berberian, Gonzalez, &amp; Cushing (<a class="cite" href="https://doi.org/10.1007/s40572-022-00360-w" target="_blank" rel="noopener noreferrer">2022</a>) review the racial disparities in climate-related health effects in the United States, and Middleton and colleagues (<a class="cite" href="https://doi.org/10.1088/1748-9326/ab68a9" target="_blank" rel="noopener noreferrer">2020</a>) summarize the global literature on Indigenous mental health in a changing climate. These inequities compound existing health disparities and create additional layers of climate-related emotional distress. The emotions are not just bigger; they sit on top of histories of harm, displacement, and exclusion (see <a class="wiki-link" href="https://en.wikipedia.org/wiki/Environmental_racism" target="_blank" rel="noopener noreferrer">environmental racism</a>) that long pre-date the climate crisis.</p>
 
-    <h2>Intersectionality</h2>
-    <p><strong>Intersectionality</strong>, a concept developed by legal scholar Kimberlé Crenshaw, describes how overlapping systems of power — racism, sexism, classism, ableism, colonialism, heteronormativity — combine to produce experiences that cannot be explained by any single factor on its own. A person's climate emotions cannot be understood in isolation from the broader social structures that shape their lived experience.</p>
+    <h2><a class="wiki-link" href="https://en.wikipedia.org/wiki/Intersectionality" target="_blank" rel="noopener noreferrer">Intersectionality</a></h2>
+    <p><strong>Intersectionality</strong>, a concept developed by legal scholar <a class="wiki-link" href="https://en.wikipedia.org/wiki/Kimberl%C3%A9_Crenshaw" target="_blank" rel="noopener noreferrer">Kimberlé Crenshaw</a> (<a class="cite" href="https://chicagounbound.uchicago.edu/uclf/vol1989/iss1/8/" target="_blank" rel="noopener noreferrer">1989</a>; <a class="cite" href="https://doi.org/10.2307/1229039" target="_blank" rel="noopener noreferrer">1991</a>), describes how overlapping systems of power — racism, sexism, classism, ableism, colonialism, heteronormativity — combine to produce experiences that cannot be explained by any single factor on its own. A person's climate emotions cannot be understood in isolation from the broader social structures that shape their lived experience.</p>
 
     <div class="info-box teal">
       <h4>What Are "Intersecting Identities"?</h4>
@@ -1768,6 +1831,21 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
         <li>Direct and indirect exposure to climate impacts, social support, and access to resources all influence emotional responses.</li>
         <li>Climate emotions evolve across the lifespan, with each developmental stage presenting distinct challenges and strengths.</li>
         <li>Marginalization and intersectionality create compounded climate distress, requiring equity-centred approaches to support.</li>
+      </ul>
+    </div>
+
+    <div class="references-section">
+      <h2>References — Module 3</h2>
+      <p class="refs-note">Click any citation in the module to jump to the source. All links open in a new tab.</p>
+      <ul class="refs-list">
+        <li>Berberian, A. G., Gonzalez, D. J. X., &amp; Cushing, L. J. (2022). Racial disparities in climate change-related health effects in the United States. <em>Current Environmental Health Reports, 9</em>(3), 451–464. <a href="https://doi.org/10.1007/s40572-022-00360-w" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s40572-022-00360-w</a></li>
+        <li>Berry, H. L., Bowen, K., &amp; Kjellstrom, T. (2010). Climate change and mental health: A causal pathways framework. <em>International Journal of Public Health, 55</em>(2), 123–132. <a href="https://doi.org/10.1007/s00038-009-0112-0" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s00038-009-0112-0</a></li>
+        <li>Crenshaw, K. (1989). Demarginalizing the intersection of race and sex: A Black feminist critique of antidiscrimination doctrine, feminist theory and antiracist politics. <em>University of Chicago Legal Forum, 1989</em>(1), Article 8, 139–167. <a href="https://chicagounbound.uchicago.edu/uclf/vol1989/iss1/8/" target="_blank" rel="noopener noreferrer">https://chicagounbound.uchicago.edu/uclf/vol1989/iss1/8/</a></li>
+        <li>Crenshaw, K. (1991). Mapping the margins: Intersectionality, identity politics, and violence against women of color. <em>Stanford Law Review, 43</em>(6), 1241–1299. <a href="https://doi.org/10.2307/1229039" target="_blank" rel="noopener noreferrer">https://doi.org/10.2307/1229039</a></li>
+        <li>Doherty, T. J., &amp; Clayton, S. (2011). The psychological impacts of global climate change. <em>American Psychologist, 66</em>(4), 265–276. <a href="https://doi.org/10.1037/a0023141" target="_blank" rel="noopener noreferrer">https://doi.org/10.1037/a0023141</a></li>
+        <li>Léger-Goodes, T., Malboeuf-Hurtubise, C., Mastine, T., Généreux, M., Paradis, P.-O., &amp; Camden, C. (2022). Eco-anxiety in children: A scoping review of the mental health impacts of the awareness of climate change. <em>Frontiers in Psychology, 13</em>, 872544. <a href="https://doi.org/10.3389/fpsyg.2022.872544" target="_blank" rel="noopener noreferrer">https://doi.org/10.3389/fpsyg.2022.872544</a></li>
+        <li>Middleton, J., Cunsolo, A., Jones-Bitton, A., Wright, C. J., &amp; Harper, S. L. (2020). Indigenous mental health in a changing climate: A systematic scoping review of the global literature. <em>Environmental Research Letters, 15</em>(5), 053001. <a href="https://doi.org/10.1088/1748-9326/ab68a9" target="_blank" rel="noopener noreferrer">https://doi.org/10.1088/1748-9326/ab68a9</a></li>
+        <li>Sanson, A. V., Van Hoorn, J., &amp; Burke, S. E. L. (2019). Responding to the impacts of the climate crisis on children and youth. <em>Child Development Perspectives, 13</em>(4), 201–207. <a href="https://doi.org/10.1111/cdep.12342" target="_blank" rel="noopener noreferrer">https://doi.org/10.1111/cdep.12342</a></li>
       </ul>
     </div>
 
@@ -1997,7 +2075,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     </div>
 
     <h2>Adaptive vs. Maladaptive Responses</h2>
-    <p>Not all responses to climate distress are equally helpful. The key distinction is between <strong>adaptive responses</strong> — which preserve wellbeing and foster meaningful action — and <strong>maladaptive responses</strong> — which lead to paralysis, avoidance, or destructive patterns. Importantly, the emotions themselves are not the problem; it is how we respond to them that matters.</p>
+    <p>Not all responses to climate distress are equally helpful. The key distinction is between <strong>adaptive responses</strong> — which preserve wellbeing and foster meaningful action — and <strong>maladaptive responses</strong> — which lead to paralysis, avoidance, or destructive patterns. This distinction draws on <a class="wiki-link" href="https://en.wikipedia.org/wiki/Richard_Lazarus" target="_blank" rel="noopener noreferrer">Lazarus</a> and Folkman's foundational stress and coping framework (Folkman &amp; Lazarus, <a class="cite" href="https://doi.org/10.1016/0277-9536(88)90395-4" target="_blank" rel="noopener noreferrer">1988</a>). Importantly, the emotions themselves are not the problem; it is how we respond to them that matters.</p>
     <p><strong>Adaptive responses</strong> include constructive problem-solving, seeking social support, channelling anxiety into advocacy, finding meaning in collective action, and practicing emotional regulation while maintaining engagement.</p>
     <p><strong>Maladaptive responses</strong> include chronic avoidance and denial, catastrophizing without action, suppressing emotions until burnout, isolating oneself, and engaging in nihilism or fatalism.</p>
 
@@ -2006,7 +2084,8 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <p>The balance between acknowledging the severity of the crisis and maintaining the capacity to act is at the heart of adaptive coping. Emotions are not obstacles to action — they are often the fuel for it, when channelled constructively.</p>
     </div>
 
-    <h2>Three Types of Coping</h2>
+    <h2>Three Types of <a class="wiki-link" href="https://en.wikipedia.org/wiki/Coping" target="_blank" rel="noopener noreferrer">Coping</a></h2>
+    <p style="font-size:14px;color:var(--text-light);">The problem-focused and emotion-focused distinction was developed by Lazarus and Folkman (<a class="cite" href="https://doi.org/10.1016/0277-9536(88)90395-4" target="_blank" rel="noopener noreferrer">1988</a>); meaning-focused coping was elaborated by Park (<a class="cite" href="https://doi.org/10.1037/a0018301" target="_blank" rel="noopener noreferrer">2010</a>). Ojala (<a class="cite" href="https://doi.org/10.3390/su5052191" target="_blank" rel="noopener noreferrer">2013</a>) has been particularly influential in applying these three modes to climate-related coping.</p>
 
     <div class="tabs">
       <div class="tab-buttons">
@@ -2026,8 +2105,8 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       </div>
       <div class="tab-panel" id="cope-meaning">
         <h4>Meaning-Focused Coping</h4>
-        <p>Finding purpose and significance in adversity. This might involve reframing activism as a moral calling, developing new skills related to sustainability, connecting climate action to one's values and identity, or deriving meaning from intergenerational responsibility.</p>
-        <p>Meaning-focused coping sustains engagement over the long term by connecting action to a larger sense of purpose.</p>
+        <p>Finding purpose and significance in adversity (Park, <a class="cite" href="https://doi.org/10.1037/a0018301" target="_blank" rel="noopener noreferrer">2010</a>). This might involve reframing activism as a moral calling, developing new skills related to sustainability, connecting climate action to one's values and identity, or deriving meaning from intergenerational responsibility.</p>
+        <p>Meaning-focused coping sustains engagement over the long term by connecting action to a larger sense of purpose (Ojala, <a class="cite" href="https://doi.org/10.3390/su5052191" target="_blank" rel="noopener noreferrer">2013</a>).</p>
       </div>
     </div>
 
@@ -2108,11 +2187,12 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     <h2>The Role of Hope</h2>
     <p>Hope is not a luxury in the climate context — it is a necessity. Researchers have described several important forms:</p>
     <ul>
-      <li><strong>Radical Hope</strong> (Jonathan Lear): Belief in a future good that we cannot yet fully imagine.</li>
-      <li><strong>Active Hope</strong> (Joanna Macy): A participatory stance — not waiting for hope to arrive, but practising it through awareness, gratitude, and creative collaboration.</li>
-      <li><strong>Stubborn Optimism</strong> (Christiana Figueres): Clear-eyed acceptance of the facts alongside determined conviction that solutions exist.</li>
-      <li><strong>Hope Theory</strong> (C.R. Snyder): Goal-setting, pathway thinking, and agency thinking as structured approaches to cultivating hope.</li>
+      <li><strong>Radical Hope</strong> (<a class="wiki-link" href="https://en.wikipedia.org/wiki/Jonathan_Lear" target="_blank" rel="noopener noreferrer">Jonathan Lear</a>, <a class="cite" href="https://www.hup.harvard.edu/books/9780674027466" target="_blank" rel="noopener noreferrer">2006</a>): Belief in a future good that we cannot yet fully imagine.</li>
+      <li><strong>Active Hope</strong> (<a class="wiki-link" href="https://en.wikipedia.org/wiki/Joanna_Macy" target="_blank" rel="noopener noreferrer">Joanna Macy</a> &amp; Johnstone, <a class="cite" href="https://www.activehope.info/" target="_blank" rel="noopener noreferrer">2012</a>): A participatory stance — not waiting for hope to arrive, but practising it through awareness, gratitude, and creative collaboration.</li>
+      <li><strong>Stubborn Optimism</strong> (<a class="wiki-link" href="https://en.wikipedia.org/wiki/Christiana_Figueres" target="_blank" rel="noopener noreferrer">Christiana Figueres</a> &amp; Rivett-Carnac, <a class="cite" href="https://www.globaloptimism.com/christiana-figueres" target="_blank" rel="noopener noreferrer">2020</a>): Clear-eyed acceptance of the facts alongside determined conviction that solutions exist.</li>
+      <li><strong>Hope Theory</strong> (<a class="wiki-link" href="https://en.wikipedia.org/wiki/Charles_R._Snyder" target="_blank" rel="noopener noreferrer">C. R. Snyder</a>, <a class="cite" href="https://doi.org/10.1207/S15327965PLI1304_01" target="_blank" rel="noopener noreferrer">2002</a>): Goal-setting, pathway thinking, and agency thinking as structured approaches to cultivating hope.</li>
     </ul>
+    <p style="font-size:14px;color:var(--text-light);">Constructive, engagement-supporting hope in climate-aware young people has been studied empirically by Ojala (<a class="cite" href="https://doi.org/10.1080/13504622.2011.637157" target="_blank" rel="noopener noreferrer">2012</a>).</p>
 
     <h2>Acknowledging and Validating Climate Emotions</h2>
     <p>Before we can cope effectively, we must first acknowledge and validate what we are feeling. Validation — from therapists, peers, communities, and institutions — reduces isolation, builds trust, and creates the psychological safety needed for honest engagement.</p>
@@ -2227,16 +2307,16 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
 
     <h2>More Resilience Strategies</h2>
     <h3>Nature-Based Approaches</h3>
-    <p>Engaging with natural environments — through forest bathing, gardening, outdoor recreation, or simply spending time near green spaces — supports emotional regulation and restores a sense of connectedness to the biosphere.</p>
+    <p>Engaging with natural environments — through <a class="wiki-link" href="https://en.wikipedia.org/wiki/Shinrin-yoku" target="_blank" rel="noopener noreferrer">forest bathing</a>, gardening, outdoor recreation, or simply spending time near green spaces — supports emotional regulation and restores a sense of connectedness to the biosphere. Bratman, Hamilton, &amp; Daily (<a class="cite" href="https://doi.org/10.1111/j.1749-6632.2011.06400.x" target="_blank" rel="noopener noreferrer">2012</a>) and Hartig and colleagues (<a class="cite" href="https://doi.org/10.1146/annurev-publhealth-032013-182443" target="_blank" rel="noopener noreferrer">2014</a>) review the cognitive and mental-health benefits of nature contact; Hansen, Jones, &amp; Tocchini (<a class="cite" href="https://doi.org/10.3390/ijerph14080851" target="_blank" rel="noopener noreferrer">2017</a>) summarize the evidence on Shinrin-yoku (forest bathing) specifically.</p>
 
     <h3>Somatic and Movement-Based Practices</h3>
-    <p>Somatic practices — including yoga, tai chi, progressive muscle relaxation, and dance — help release tension, regulate the nervous system, and support emotional processing.</p>
+    <p>Somatic practices — including yoga, tai chi, progressive muscle relaxation, and dance — help release tension, regulate the nervous system, and support emotional processing. <a class="wiki-link" href="https://en.wikipedia.org/wiki/Polyvagal_theory" target="_blank" rel="noopener noreferrer">Polyvagal theory</a> (Porges, <a class="cite" href="https://doi.org/10.3949/ccjm.76.s2.17" target="_blank" rel="noopener noreferrer">2009</a>) offers one widely-used model for understanding why slow breathing and other body-based practices help shift the autonomic nervous system out of threat mode.</p>
 
     <h3>Social Connection and Community Engagement</h3>
     <p>Addressing climate emotions in community — through support groups, climate cafés, peer support networks, and collective action initiatives — counters isolation and builds collective efficacy.</p>
 
     <h2>Specific Therapeutic Approaches</h2>
-    <p>For people whose climate distress crosses into clinical territory — chronic anxiety, traumatic stress, depression, or persistent functional impairment — several established therapeutic modalities have been adapted for climate-related concerns. None is a cure-all, and choice of approach depends on the person, the presenting symptoms, and the practitioner. The cards below are meant as an orientation, not a prescription.</p>
+    <p>For people whose climate distress crosses into clinical territory — chronic anxiety, traumatic stress, depression, or persistent functional impairment — several established therapeutic modalities have been adapted for climate-related concerns. None is a cure-all, and choice of approach depends on the person, the presenting symptoms, and the practitioner. The cards below are meant as an orientation, not a prescription. Key foundational citations include Hayes and colleagues (<a class="cite" href="https://doi.org/10.1016/j.brat.2005.06.006" target="_blank" rel="noopener noreferrer">2006</a>) on <a class="wiki-link" href="https://en.wikipedia.org/wiki/Acceptance_and_commitment_therapy" target="_blank" rel="noopener noreferrer">ACT</a>, Shapiro (<a class="cite" href="https://doi.org/10.1002/jts.2490020207" target="_blank" rel="noopener noreferrer">1989</a>) on <a class="wiki-link" href="https://en.wikipedia.org/wiki/Eye_movement_desensitization_and_reprocessing" target="_blank" rel="noopener noreferrer">EMDR</a>, Kabat-Zinn (<a class="cite" href="https://doi.org/10.1016/0163-8343(82)90026-3" target="_blank" rel="noopener noreferrer">1982</a>) on <a class="wiki-link" href="https://en.wikipedia.org/wiki/Mindfulness-based_stress_reduction" target="_blank" rel="noopener noreferrer">MBSR</a>, and Bisson and colleagues' Cochrane review (<a class="cite" href="https://doi.org/10.1002/14651858.CD003388.pub4" target="_blank" rel="noopener noreferrer">2013</a>) of psychological therapies for PTSD.</p>
     <p style="font-size:14px;color:var(--text-light);"><em>Click each card to flip it and reveal what the approach offers.</em></p>
 
     <div class="therapy-grid">
@@ -2351,6 +2431,30 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
         <li>Validation and acknowledgment of emotions are foundational to resilience.</li>
         <li>Practical skills including grounding, nature connection, somatic practices, and community engagement build resilience over time.</li>
         <li>The <strong>ten principles for climate mental health</strong> (Higgs, Palmer-Fluevog &amp; Card, 2024) offer a synthesis to return to — covering literacy, emotional diversity, optimism, social and nature connection, expanded coping, justice, trauma-informed practice, community-led adaptation, and collective responsibility.</li>
+      </ul>
+    </div>
+
+    <div class="references-section">
+      <h2>References — Module 4</h2>
+      <p class="refs-note">Click any citation in the module to jump to the source. All links open in a new tab.</p>
+      <ul class="refs-list">
+        <li>Bisson, J. I., Roberts, N. P., Andrew, M., Cooper, R., &amp; Lewis, C. (2013). Psychological therapies for chronic post-traumatic stress disorder (PTSD) in adults. <em>Cochrane Database of Systematic Reviews</em>, 12, CD003388. <a href="https://doi.org/10.1002/14651858.CD003388.pub4" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/14651858.CD003388.pub4</a></li>
+        <li>Bratman, G. N., Hamilton, J. P., &amp; Daily, G. C. (2012). The impacts of nature experience on human cognitive function and mental health. <em>Annals of the New York Academy of Sciences, 1249</em>(1), 118–136. <a href="https://doi.org/10.1111/j.1749-6632.2011.06400.x" target="_blank" rel="noopener noreferrer">https://doi.org/10.1111/j.1749-6632.2011.06400.x</a></li>
+        <li>Figueres, C., &amp; Rivett-Carnac, T. (2020). <em>The Future We Choose: Surviving the Climate Crisis</em>. Knopf. <a href="https://www.globaloptimism.com/christiana-figueres" target="_blank" rel="noopener noreferrer">https://www.globaloptimism.com/christiana-figueres</a></li>
+        <li>Folkman, S., &amp; Lazarus, R. S. (1988). The relationship between coping and emotion: Implications for theory and research. <em>Social Science &amp; Medicine, 26</em>(3), 309–317. <a href="https://doi.org/10.1016/0277-9536(88)90395-4" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/0277-9536(88)90395-4</a></li>
+        <li>Hansen, M. M., Jones, R., &amp; Tocchini, K. (2017). Shinrin-yoku (forest bathing) and nature therapy: A state-of-the-art review. <em>International Journal of Environmental Research and Public Health, 14</em>(8), 851. <a href="https://doi.org/10.3390/ijerph14080851" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/ijerph14080851</a></li>
+        <li>Hartig, T., Mitchell, R., de Vries, S., &amp; Frumkin, H. (2014). Nature and health. <em>Annual Review of Public Health, 35</em>, 207–228. <a href="https://doi.org/10.1146/annurev-publhealth-032013-182443" target="_blank" rel="noopener noreferrer">https://doi.org/10.1146/annurev-publhealth-032013-182443</a></li>
+        <li>Hayes, S. C., Luoma, J. B., Bond, F. W., Masuda, A., &amp; Lillis, J. (2006). Acceptance and commitment therapy: Model, processes and outcomes. <em>Behaviour Research and Therapy, 44</em>(1), 1–25. <a href="https://doi.org/10.1016/j.brat.2005.06.006" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.brat.2005.06.006</a></li>
+        <li>Higgs, K. D., Palmer-Fluevog, A., &amp; Card, K. G. (2024). <em>Understanding the Mental Health Impacts of Climate Change and How to Address Them: A Review of Climate-Related Emotions and Corresponding Mental Health Approaches</em>. Mental Health and Climate Change Alliance. <a href="https://static1.squarespace.com/static/5ee04898a57c3c2169b94bdf/t/68839ea1230df108d200838b/1753456295138/MHCCA_Evidence+Synthesis.pdf" target="_blank" rel="noopener noreferrer">MHCCA Evidence Synthesis (PDF)</a></li>
+        <li>Kabat-Zinn, J. (1982). An outpatient program in behavioral medicine for chronic pain patients based on the practice of mindfulness meditation. <em>General Hospital Psychiatry, 4</em>(1), 33–47. <a href="https://doi.org/10.1016/0163-8343(82)90026-3" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/0163-8343(82)90026-3</a></li>
+        <li>Lear, J. (2006). <em>Radical Hope: Ethics in the Face of Cultural Devastation</em>. Harvard University Press. <a href="https://www.hup.harvard.edu/books/9780674027466" target="_blank" rel="noopener noreferrer">https://www.hup.harvard.edu/books/9780674027466</a></li>
+        <li>Macy, J., &amp; Johnstone, C. (2012). <em>Active Hope: How to Face the Mess We're In Without Going Crazy</em>. New World Library. <a href="https://www.activehope.info/" target="_blank" rel="noopener noreferrer">https://www.activehope.info/</a></li>
+        <li>Ojala, M. (2012). Hope and climate change: The importance of hope for environmental engagement among young people. <em>Environmental Education Research, 18</em>(5), 625–642. <a href="https://doi.org/10.1080/13504622.2011.637157" target="_blank" rel="noopener noreferrer">https://doi.org/10.1080/13504622.2011.637157</a></li>
+        <li>Ojala, M. (2013). Coping with climate change among adolescents: Implications for subjective well-being and environmental engagement. <em>Sustainability, 5</em>(5), 2191–2209. <a href="https://doi.org/10.3390/su5052191" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/su5052191</a></li>
+        <li>Park, C. L. (2010). Making sense of the meaning literature: An integrative review of meaning making and its effects on adjustment to stressful life events. <em>Psychological Bulletin, 136</em>(2), 257–301. <a href="https://doi.org/10.1037/a0018301" target="_blank" rel="noopener noreferrer">https://doi.org/10.1037/a0018301</a></li>
+        <li>Porges, S. W. (2009). The polyvagal theory: New insights into adaptive reactions of the autonomic nervous system. <em>Cleveland Clinic Journal of Medicine, 76</em>(Suppl 2), S86–S90. <a href="https://doi.org/10.3949/ccjm.76.s2.17" target="_blank" rel="noopener noreferrer">https://doi.org/10.3949/ccjm.76.s2.17</a></li>
+        <li>Shapiro, F. (1989). Efficacy of the eye movement desensitization procedure in the treatment of traumatic memories. <em>Journal of Traumatic Stress, 2</em>(2), 199–223. <a href="https://doi.org/10.1002/jts.2490020207" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/jts.2490020207</a></li>
+        <li>Snyder, C. R. (2002). Hope theory: Rainbows in the mind. <em>Psychological Inquiry, 13</em>(4), 249–275. <a href="https://doi.org/10.1207/S15327965PLI1304_01" target="_blank" rel="noopener noreferrer">https://doi.org/10.1207/S15327965PLI1304_01</a></li>
       </ul>
     </div>
 
@@ -2570,13 +2674,13 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     </div>
 
     <h2>Professional Responsibility in a Changing Climate</h2>
-    <p>Climate change is no longer a distant or abstract issue — it is affecting the people and communities that professionals across all sectors serve. Integrating mental health awareness into professional practice is not optional; it is an ethical imperative.</p>
+    <p>Climate change is no longer a distant or abstract issue — it is affecting the people and communities that professionals across all sectors serve. The <em>Lancet Countdown on Health and Climate Change</em> (Watts et al., <a class="cite" href="https://doi.org/10.1016/S0140-6736(20)32290-X" target="_blank" rel="noopener noreferrer">2021</a>; Romanello et al., <a class="cite" href="https://doi.org/10.1016/S0140-6736(22)01540-9" target="_blank" rel="noopener noreferrer">2022</a>) tracks the rapidly compounding health and mental-health impacts. Integrating mental health awareness into professional practice is not optional; it is an ethical imperative.</p>
     <p>Several ethical frameworks guide this responsibility:</p>
     <ul>
-      <li><strong>Ethics of Care</strong> (Carol Gilligan): Emphasizes relational interdependence and moral obligation to care for those affected by environmental change.</li>
+      <li><strong><a class="wiki-link" href="https://en.wikipedia.org/wiki/Ethics_of_care" target="_blank" rel="noopener noreferrer">Ethics of Care</a></strong> (<a class="wiki-link" href="https://en.wikipedia.org/wiki/Carol_Gilligan" target="_blank" rel="noopener noreferrer">Carol Gilligan</a>, <a class="cite" href="https://www.hup.harvard.edu/books/9780674970960" target="_blank" rel="noopener noreferrer">1982</a>): Emphasizes relational interdependence and moral obligation to care for those affected by environmental change.</li>
       <li><strong>Common Good Framework:</strong> Prioritizes communal wellbeing over individual or corporate interests.</li>
-      <li><strong>Whole-of-Society Approach</strong> (UNDRR): No single sector alone can address climate challenges. Engagement from government through grassroots organizations is essential.</li>
-      <li><strong>Systems Thinking</strong> (Peter Senge): Climate impacts ripple across multiple sectors, requiring interdisciplinary collaboration.</li>
+      <li><strong>Whole-of-Society Approach</strong> (<a class="wiki-link" href="https://en.wikipedia.org/wiki/Sendai_Framework_for_Disaster_Risk_Reduction" target="_blank" rel="noopener noreferrer">UNDRR Sendai Framework</a>, <a class="cite" href="https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030" target="_blank" rel="noopener noreferrer">2015</a>): No single sector alone can address climate challenges. Engagement from government through grassroots organizations is essential.</li>
+      <li><strong><a class="wiki-link" href="https://en.wikipedia.org/wiki/Systems_thinking" target="_blank" rel="noopener noreferrer">Systems Thinking</a></strong> (<a class="wiki-link" href="https://en.wikipedia.org/wiki/Peter_Senge" target="_blank" rel="noopener noreferrer">Peter Senge</a>, <a class="cite" href="https://en.wikipedia.org/wiki/The_Fifth_Discipline" target="_blank" rel="noopener noreferrer">1990</a>): Climate impacts ripple across multiple sectors, requiring interdisciplinary collaboration.</li>
     </ul>
 
     <h2>Sector-Specific Roles</h2>
@@ -2592,7 +2696,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       </div>
       <div class="tab-panel active" id="sec-edu">
         <h4>Educators</h4>
-        <p>Educators are essential in fostering climate literacy while addressing the emotional dimensions of climate change. Key strategies include integrating <strong>Social-Emotional Learning (SEL)</strong> with climate education, using age-appropriate approaches that honour developmental stages, and facilitating emotional expression through art, journaling, and group discussion.</p>
+        <p>Educators are essential in fostering climate literacy while addressing the emotional dimensions of climate change. Key strategies include integrating <strong><a class="wiki-link" href="https://en.wikipedia.org/wiki/Social%E2%80%93emotional_learning" target="_blank" rel="noopener noreferrer">Social-Emotional Learning (SEL)</a></strong> with climate education — a meta-analysis by Durlak and colleagues (<a class="cite" href="https://doi.org/10.1111/j.1467-8624.2010.01564.x" target="_blank" rel="noopener noreferrer">2011</a>) found that universal school-based SEL programs significantly improve students' social-emotional skills, attitudes, behaviour, and academic performance — using age-appropriate approaches that honour developmental stages, and facilitating emotional expression through art, journaling, and group discussion. Trauma-informed practice in schools, as outlined by Chafouleas and colleagues (<a class="cite" href="https://doi.org/10.1007/s12310-015-9166-8" target="_blank" rel="noopener noreferrer">2016</a>), provides a useful blueprint when working in communities affected by climate disasters.</p>
         <p>Experiential and place-based learning — such as tree planting, water conservation projects, and local ecosystem exploration — fosters direct emotional connection. Encouraging student engagement in climate movements builds agency and counters helplessness.</p>
         <p style="margin-top:14px;"><strong>Concrete examples:</strong></p>
         <ul style="font-size:14px;">
@@ -2619,7 +2723,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       </div>
       <div class="tab-panel" id="sec-media">
         <h4>News and Media Professionals</h4>
-        <p>The way climate stories are told shapes public emotional and behavioural responses. Media professionals have a responsibility to balance urgency with solutions — avoiding both complacency and paralysing doom narratives.</p>
+        <p>The way climate stories are told shapes public emotional and behavioural responses. Media professionals have a responsibility to balance urgency with solutions — avoiding both complacency and paralysing doom narratives. Moser (<a class="cite" href="https://doi.org/10.1002/wcc.403" target="_blank" rel="noopener noreferrer">2016</a>) provides a foundational review of effective climate communication research and practice; <a class="wiki-link" href="https://en.wikipedia.org/wiki/Solutions_journalism" target="_blank" rel="noopener noreferrer">solutions journalism</a> offers one well-developed framework for moving beyond doom narratives.</p>
         <p>Key practices include framing climate stories to include constructive possibilities and community action, highlighting diverse voices and local impacts, promoting media literacy to combat misinformation, and being mindful of the emotional impact of repeated crisis imagery on audiences.</p>
         <p style="margin-top:14px;"><strong>Concrete examples:</strong></p>
         <ul style="font-size:14px;">
@@ -2640,7 +2744,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       </div>
       <div class="tab-panel" id="sec-spirit">
         <h4>Moral and Spiritual Leaders</h4>
-        <p>Spiritual and faith communities provide essential spaces for connection, meaning-making, and emotional support. Moral and spiritual leaders can validate climate emotions within a framework of stewardship and interdependence, conduct rituals that process collective grief and celebrate resilience, build community bonds that strengthen collective efficacy, and connect spiritual values to concrete climate action and justice work.</p>
+        <p>Spiritual and faith communities provide essential spaces for connection, meaning-making, and emotional support. Major faith traditions have explicitly engaged the climate crisis — see, for example, Pope Francis's encyclical <em><a class="wiki-link" href="https://en.wikipedia.org/wiki/Laudato_si%27" target="_blank" rel="noopener noreferrer">Laudato si'</a></em> (<a class="cite" href="https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html" target="_blank" rel="noopener noreferrer">2015</a>). Moral and spiritual leaders can validate climate emotions within a framework of stewardship and interdependence, conduct rituals that process collective grief and celebrate resilience, build community bonds that strengthen collective efficacy, and connect spiritual values to concrete climate action and justice work.</p>
         <p>Their unique role lies in offering frameworks of meaning, hope, and purpose that sustain engagement over the long term.</p>
         <p style="margin-top:14px;"><strong>Concrete examples:</strong></p>
         <ul style="font-size:14px;">
@@ -2799,10 +2903,10 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     </div>
 
     <h2>Indigenous Knowledge Systems</h2>
-    <p>Indigenous knowledge systems offer culturally grounded, relational, and time-tested approaches to environmental stewardship and community wellbeing. Any professional working at the intersection of climate and mental health should approach Indigenous knowledge with humility, recognizing the importance of cultural safety, reciprocity, and Indigenous leadership in shaping climate responses. Decolonial approaches that honour Indigenous epistemologies are essential for equitable and effective climate-mental health work.</p>
+    <p>Indigenous knowledge systems offer culturally grounded, relational, and time-tested approaches to environmental stewardship and community wellbeing. As Whyte (<a class="cite" href="https://doi.org/10.1177/2514848618777621" target="_blank" rel="noopener noreferrer">2018</a>) argues, Indigenous peoples already hold extensive knowledge of inhabiting climate disruption — their ancestors lived through, and named, the "ancestral dystopia" of colonial environmental violence. Any professional working at the intersection of climate and mental health should approach Indigenous knowledge with humility, recognizing the importance of cultural safety, reciprocity, and Indigenous leadership in shaping climate responses (Middleton et al., <a class="cite" href="https://doi.org/10.1088/1748-9326/ab68a9" target="_blank" rel="noopener noreferrer">2020</a>). Decolonial approaches that honour Indigenous epistemologies are essential for equitable and effective climate-mental health work.</p>
 
-    <h2>Climate Justice</h2>
-    <p>Climate justice begins from a simple observation: <strong>those who have contributed least to the climate crisis are bearing the most of its harms</strong>. Wealthier nations and industries built the bulk of the emissions that drive warming; low-income communities, the Global South, Indigenous nations, racialized communities, and people with disabilities live with the bulk of the consequences. Adequate responses to climate change cannot be separated from these inequities, and neither can the emotional and mental health impacts of the crisis.</p>
+    <h2><a class="wiki-link" href="https://en.wikipedia.org/wiki/Climate_justice" target="_blank" rel="noopener noreferrer">Climate Justice</a></h2>
+    <p>Climate justice begins from a simple observation: <strong>those who have contributed least to the climate crisis are bearing the most of its harms</strong>. Wealthier nations and industries built the bulk of the emissions that drive warming; low-income communities, the Global South, Indigenous nations, racialized communities, and people with disabilities live with the bulk of the consequences (Schlosberg, <a class="cite" href="https://doi.org/10.1093/acprof:oso/9780199286294.001.0001" target="_blank" rel="noopener noreferrer">2007</a>). Adequate responses to climate change cannot be separated from these inequities, and neither can the emotional and mental health impacts of the crisis. The case for a <a class="wiki-link" href="https://en.wikipedia.org/wiki/Just_transition" target="_blank" rel="noopener noreferrer">just transition</a> connects worker, community, and ecological wellbeing within the same policy frame.</p>
 
     <p>It is useful to think about climate justice through four overlapping lenses:</p>
 
@@ -2836,6 +2940,25 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
       <h4>Case Study</h4>
       <p>A small coastal city is experiencing increasingly severe flooding. The community includes a mix of long-term residents, recent immigrants, Indigenous communities, and seasonal workers. Mental health services are limited, schools are struggling with rising student anxiety, local media coverage has been focused on property damage rather than human wellbeing, and faith communities are providing informal support but feel stretched thin. The city council is developing a new climate adaptation plan.</p>
       <p class="reflection-q">Consider this scenario from the perspective of your own professional sector. What is one concrete action you could take to support the mental health and emotional wellbeing of this community? How would you ensure that your approach is equitable and culturally responsive?</p>
+    </div>
+
+    <div class="references-section">
+      <h2>References — Module 5</h2>
+      <p class="refs-note">Click any citation in the module to jump to the source. All links open in a new tab.</p>
+      <ul class="refs-list">
+        <li>Chafouleas, S. M., Johnson, A. H., Overstreet, S., &amp; Santos, N. M. (2016). Toward a blueprint for trauma-informed service delivery in schools. <em>School Mental Health, 8</em>(1), 144–162. <a href="https://doi.org/10.1007/s12310-015-9166-8" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s12310-015-9166-8</a></li>
+        <li>Durlak, J. A., Weissberg, R. P., Dymnicki, A. B., Taylor, R. D., &amp; Schellinger, K. B. (2011). The impact of enhancing students' social and emotional learning: A meta-analysis of school-based universal interventions. <em>Child Development, 82</em>(1), 405–432. <a href="https://doi.org/10.1111/j.1467-8624.2010.01564.x" target="_blank" rel="noopener noreferrer">https://doi.org/10.1111/j.1467-8624.2010.01564.x</a></li>
+        <li>Francis (Pope). (2015). <em>Laudato si': On Care for Our Common Home</em>. Vatican City: Libreria Editrice Vaticana. <a href="https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html" target="_blank" rel="noopener noreferrer">https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html</a></li>
+        <li>Gilligan, C. (1982). <em>In a Different Voice: Psychological Theory and Women's Development</em>. Harvard University Press. <a href="https://www.hup.harvard.edu/books/9780674970960" target="_blank" rel="noopener noreferrer">https://www.hup.harvard.edu/books/9780674970960</a></li>
+        <li>Middleton, J., Cunsolo, A., Jones-Bitton, A., Wright, C. J., &amp; Harper, S. L. (2020). Indigenous mental health in a changing climate: A systematic scoping review of the global literature. <em>Environmental Research Letters, 15</em>(5), 053001. <a href="https://doi.org/10.1088/1748-9326/ab68a9" target="_blank" rel="noopener noreferrer">https://doi.org/10.1088/1748-9326/ab68a9</a></li>
+        <li>Moser, S. C. (2016). Reflections on climate change communication research and practice in the second decade of the 21st century: What more is there to say? <em>WIREs Climate Change, 7</em>(3), 345–369. <a href="https://doi.org/10.1002/wcc.403" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/wcc.403</a></li>
+        <li>Romanello, M., Di Napoli, C., Drummond, P., et al. (2022). The 2022 report of the Lancet Countdown on health and climate change: Health at the mercy of fossil fuels. <em>The Lancet, 400</em>(10363), 1619–1654. <a href="https://doi.org/10.1016/S0140-6736(22)01540-9" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/S0140-6736(22)01540-9</a></li>
+        <li>Schlosberg, D. (2007). <em>Defining Environmental Justice: Theories, Movements, and Nature</em>. Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780199286294.001.0001" target="_blank" rel="noopener noreferrer">https://doi.org/10.1093/acprof:oso/9780199286294.001.0001</a></li>
+        <li>Senge, P. M. (1990). <em>The Fifth Discipline: The Art and Practice of the Learning Organization</em>. Doubleday/Currency. <a href="https://en.wikipedia.org/wiki/The_Fifth_Discipline" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/The_Fifth_Discipline</a></li>
+        <li>UNDRR. (2015). <em>Sendai Framework for Disaster Risk Reduction 2015–2030</em>. UN Office for Disaster Risk Reduction. <a href="https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030" target="_blank" rel="noopener noreferrer">https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030</a></li>
+        <li>Watts, N., Amann, M., Arnell, N., et al. (2021). The 2020 report of The Lancet Countdown on health and climate change: Responding to converging crises. <em>The Lancet, 397</em>(10269), 129–170. <a href="https://doi.org/10.1016/S0140-6736(20)32290-X" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/S0140-6736(20)32290-X</a></li>
+        <li>Whyte, K. P. (2018). Indigenous science (fiction) for the Anthropocene: Ancestral dystopias and fantasies of climate change crises. <em>Environment and Planning E: Nature and Space, 1</em>(1–2), 224–242. <a href="https://doi.org/10.1177/2514848618777621" target="_blank" rel="noopener noreferrer">https://doi.org/10.1177/2514848618777621</a></li>
+      </ul>
     </div>
 
     <div class="opening-reflection">
