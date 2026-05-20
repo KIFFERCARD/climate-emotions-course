@@ -3406,10 +3406,13 @@ function buildNav() {
   nav.innerHTML = '';
   modules.forEach((m, i) => {
     const div = document.createElement('div');
-    const isAccessible = i === 0 || completed.has(i - 1) || completed.has(i) || i <= currentModule;
-    div.className = 'nav-item' + (completed.has(i) ? ' completed' : '') + (currentModule === i ? ' active' : '') + (!isAccessible ? ' locked' : '');
+    // All modules are freely navigable — sidebar lets learners preview any module.
+    // The .completed green check is still gated by reflections + knowledge check
+    // (handled in updateNextButton), and the certificate is still gated by the
+    // final assessment in module 5.
+    div.className = 'nav-item' + (completed.has(i) ? ' completed' : '') + (currentModule === i ? ' active' : '');
     div.innerHTML = '<span class="dot">' + (completed.has(i) ? '' : (i + 1)) + '</span><span>' + m.short + ': ' + m.title + '</span>';
-    if (isAccessible) div.onclick = () => goToModule(i);
+    div.onclick = () => goToModule(i);
     nav.appendChild(div);
   });
   // Glossary
@@ -3430,9 +3433,8 @@ function updateProgress() {
 }
 
 function goToModule(idx) {
-  const prev = (typeof currentModule === 'number' && currentModule >= 0) ? currentModule
-              : (typeof lastNonGlossaryModule === 'number' && lastNonGlossaryModule >= 0 ? lastNonGlossaryModule : -1);
-  if (prev >= 0 && idx > prev) completed.add(prev);
+  // Navigation alone no longer marks a module complete — completion is
+  // tracked by updateNextButton() once reflections + knowledge check are met.
   currentModule = idx;
   lastNonGlossaryModule = idx;
   document.querySelectorAll('.module-page').forEach(p => p.classList.remove('active'));
@@ -3744,13 +3746,24 @@ function submitClosingReflection(idx) {
 function updateNextButton(idx) {
   const btn = document.getElementById('nextBtn-' + idx);
   const note = document.getElementById('reqNote-' + idx);
-  if (!btn) return;
   const needsOpening = modulesWithOpening[idx] || false;
   const needsClosing = modulesWithClosing[idx] || false;
   const quizOk = quizPassed[idx] || false;
   const openingOk = !needsOpening || (openingReflectionDone[idx] || false);
   const closingOk = !needsClosing || (closingReflectionDone[idx] || false);
-  if (quizOk && openingOk && closingOk) {
+  const allMet = quizOk && openingOk && closingOk;
+  // Sync the green-check completion state for modules 0–4 to actual requirement
+  // satisfaction. (Module 5 completion is handled by checkFinalAssessment.)
+  if (idx !== 5) {
+    const wasCompleted = completed.has(idx);
+    if (allMet) completed.add(idx); else completed.delete(idx);
+    if (wasCompleted !== completed.has(idx)) {
+      updateProgress();
+      buildNav();
+    }
+  }
+  if (!btn) return;
+  if (allMet) {
     btn.classList.remove('disabled'); btn.disabled = false;
     if (note) note.innerHTML = '<span class="req-met">✓ All requirements met — you may continue</span>';
   } else {
