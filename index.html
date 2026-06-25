@@ -3397,6 +3397,10 @@ const modulesWithOpening = { 0: true, 1: true, 2: true, 3: true, 4: true };
 const modulesWithClosing = { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true };
 
 const STORAGE_KEY = 'mhcca_climate_emotions_av_progress';
+// Per-tab flag: persists across reloads within the same tab, but is absent in a
+// fresh tab. Used to show the home + intro pages on every new visit while still
+// letting a same-tab reload resume where the learner left off.
+const SESSION_KEY = 'mhcca_climate_emotions_session_active';
 
 // ─── AV Player state (per module) ───
 const avState = {
@@ -4105,7 +4109,11 @@ function loadProgress() {
         }
       });
     }
-    if (typeof s.currentModule === 'number' && s.currentModule >= 0) {
+    // Only jump back to the saved module within the same tab session. On a fresh
+    // tab the session flag is absent, so we leave the home page (#welcome) active
+    // and let the learner pass through the intro again. Progress data above is
+    // still restored either way, so the sidebar and certificate stay intact.
+    if (sessionStorage.getItem(SESSION_KEY) && typeof s.currentModule === 'number' && s.currentModule >= 0) {
       currentModule = s.currentModule;
       document.querySelectorAll('.module-page').forEach(p => p.classList.remove('active'));
       document.getElementById('welcome').classList.remove('active');
@@ -4246,6 +4254,10 @@ buildNav();
 buildChipsAll();
 buildEmotionsWheel();
 loadProgress();
+// Mark this tab as an active session so a same-tab reload resumes the saved
+// module. A brand-new tab won't have this set when loadProgress() runs above,
+// so it starts on the home + intro pages.
+try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
 updateProgress();
 // If a module was loaded from saved state, activate its AV
 if (typeof currentModule === 'number' && currentModule >= 0) {
