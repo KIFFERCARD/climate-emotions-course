@@ -29,14 +29,14 @@ h1,h2{font-family:var(--font-head);letter-spacing:-.01em;color:var(--ink-900);}
 a{color:var(--blue-600);}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
 .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.1) blur(10px);border-bottom:1px solid var(--line-soft);}
-.nav{display:flex;align-items:center;gap:18px;min-height:84px;flex-wrap:wrap;padding:8px 0;}
+.nav{display:flex;align-items:center;gap:18px;height:84px;}
 .brand{display:flex;align-items:center;gap:14px;}
-.brand .brand-logo{height:72px;width:auto;display:block;}
-.brand .brand-sub{font-family:var(--font-head);font-weight:500;font-size:.92rem;color:var(--ink-700);padding-left:12px;border-left:1px solid var(--line);letter-spacing:.01em;}
+.brand .brand-logo{height:85px;width:auto;display:block;}
+.brand .brand-sub{font-family:var(--font-head);font-weight:500;font-size:.82rem;color:var(--ink-700);padding-left:12px;border-left:1px solid var(--line);letter-spacing:.01em;}
 .nav-links{display:flex;gap:4px;align-items:center;margin-left:auto;flex-wrap:wrap;}
-.nav-links>a{color:var(--ink-700);padding:8px 12px;border-radius:var(--leaf-b);font-size:.94rem;font-weight:500;font-family:var(--font-head);text-decoration:none;transition:background .15s ease,color .15s ease;}
+.nav-links>a{color:var(--ink-700);padding:8px 11px;border-radius:8px;font-size:.93rem;font-weight:500;text-decoration:none;transition:background .15s ease,color .15s ease;}
 .nav-links>a:hover{background:var(--teal-50);color:var(--blue-700);}
-@media(max-width:560px){.brand .brand-logo{height:54px;}.brand .brand-sub{display:none;}}
+@media(max-width:560px){.brand .brand-logo{height:64px;}.brand .brand-sub{display:none;}}
 .page-hero{background:linear-gradient(118deg,#0d4a78 0%,#176f8c 47%,#2f7d4f 100%);padding:56px 0 64px;}
 .page-hero h1{color:#fff;font-weight:600;font-size:clamp(1.8rem,3.6vw,2.6rem);margin:0 0 8px;}
 .page-hero p{color:rgba(255,255,255,.9);margin:0;font-size:1.02rem;}
@@ -46,10 +46,21 @@ a{color:var(--blue-600);}
 .legal p,.legal li{font-size:1rem;color:var(--ink-700);}
 .legal ul{padding-left:22px;}
 .legal .card-note{background:#fff;border:1px solid var(--line);border-radius:var(--leaf-b);box-shadow:var(--shadow-sm);padding:18px 22px;margin:26px 0;}
-.site-footer{position:relative;background:var(--blue-700);color:rgba(255,255,255,.85);padding:44px 0 28px;font-size:.92rem;}
-.site-footer a{color:rgba(255,255,255,.85);}
+.site-footer{position:relative;background:var(--blue-700);color:rgba(255,255,255,.85);padding:52px 0 28px;font-size:.92rem;}
+.site-footer::before{content:"";position:absolute;left:0;top:0;width:100%;height:clamp(34px,4vw,62px);transform:translateY(-99%);pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C220,64 420,6 660,30 C900,54 1100,10 1440,38 L1440,64 L0,64 Z' fill='%230f527f'/%3E%3C/svg%3E") no-repeat;background-size:100% 100%;}
+.site-footer h5{font-family:var(--font-head);color:#fff;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin:0 0 12px;}
+.site-footer a{color:rgba(255,255,255,.8);display:block;padding:3px 0;text-decoration:none;}
 .site-footer a:hover{color:#fff;}
-.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:rgba(255,255,255,.75);}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:26px;}
+.footer-grid p{color:#bfe0f4;max-width:34ch;}
+.brand-logo-white{filter:brightness(0) invert(1);height:56px;width:auto;display:block;margin-bottom:14px;}
+.land-ack{border-top:1px solid rgba(255,255,255,.16);margin-top:30px;padding-top:22px;}
+.land-ack p{margin:0;font-size:.86rem;line-height:1.7;color:rgba(255,255,255,.78);font-style:italic;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.16);margin-top:34px;padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#8fb3b4;font-size:.84rem;}
+.footer-bottom a{display:inline;padding:0;color:rgba(255,255,255,.8);}
+.footer-legal{display:flex;gap:18px;}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -123,11 +134,42 @@ a{color:var(--blue-600);}
 </main>
 
 <footer class="site-footer">
-  <div class="wrap footer-bottom">
-    <span>&copy; Mental Health and Climate Change Alliance</span>
-    <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></span>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img class="brand-logo-white" src="MHCCA_logo.png" alt="Mental Health and Climate Change Alliance" />
+        <p>Open-access learning resources on the emotional dimensions of the climate crisis, developed by the Mental Health and Climate Change Alliance and contributors.</p>
+      </div>
+      <div>
+        <h5>Learn</h5>
+        <a href="course.html">The two-hour course</a>
+        <a href="curriculum.html">The full curriculum</a>
+        <a href="curriculum.html#contributors">Contributors</a>
+      </div>
+      <div>
+        <h5>Related resources</h5>
+        <a href="https://facilitation.mhcca.ca/" target="_blank" rel="noopener">Facilitation guide</a>
+        <a href="https://evaluation.mhcca.ca/" target="_blank" rel="noopener">Evaluation toolkit</a>
+        <a href="https://mhcca.ca/initatives-library" target="_blank" rel="noopener">Initiatives library</a>
+      </div>
+      <div>
+        <h5>MHCCA</h5>
+        <a href="https://mhcca.ca/" target="_blank" rel="noopener">MHCCA home</a>
+      </div>
+    </div>
+    <div class="land-ack">
+      <p>We acknowledge that we live, love, work, and play on the traditional territories of many Indigenous Nations. We honour the ancestral stewards of the lands on which we reside and extend our gratitude to them. Further, we are mindful of the profound impact that industrialization, colonization, and globalization have had on Indigenous Peoples, as well as the intergenerational trauma that these ongoing processes inflict on them. Informed by this recognition, we are committed to understanding and learning from the past, promoting reconciliation, truth, and healing in the present, and we strive for a future of equity, understanding, and harmony for and with all the peoples with whom we share this planet and its lands.</p>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span class="footer-year">2026</span> Mental Health and Climate Change Alliance.</span>
+      <span class="footer-legal">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of use</a>
+      </span>
+    </div>
   </div>
 </footer>
 
+<script>document.querySelectorAll('.footer-year').forEach(function(el){el.textContent = new Date().getFullYear();});</script>
 </body>
 </html>

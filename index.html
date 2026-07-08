@@ -63,14 +63,14 @@ img{max-width:100%;}
 
 /* ---- header ---- */
 .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.1) blur(10px);border-bottom:1px solid var(--line-soft);}
-.nav{display:flex;align-items:center;gap:18px;min-height:84px;flex-wrap:wrap;padding:8px 0;}
+.nav{display:flex;align-items:center;gap:18px;height:84px;}
 .brand{display:flex;align-items:center;gap:14px;font-family:var(--font-head);font-weight:700;font-size:1.04rem;color:var(--ink-900);text-decoration:none;}
-.brand .brand-logo{height:72px;width:auto;display:block;}
-.brand .brand-sub{font-family:var(--font-head);font-weight:500;font-size:.92rem;color:var(--ink-700);padding-left:12px;border-left:1px solid var(--line);letter-spacing:.01em;}
+.brand .brand-logo{height:85px;width:auto;display:block;}
+.brand .brand-sub{font-family:var(--font-head);font-weight:500;font-size:.82rem;color:var(--ink-700);padding-left:12px;border-left:1px solid var(--line);letter-spacing:.01em;}
 .nav-links{display:flex;gap:4px;align-items:center;margin-left:auto;flex-wrap:wrap;}
-.nav-links>a{color:var(--ink-700);padding:8px 12px;border-radius:var(--leaf-b);font-size:.94rem;font-weight:500;font-family:var(--font-head);text-decoration:none;transition:background .15s ease,color .15s ease;}
+.nav-links>a{color:var(--ink-700);padding:8px 11px;border-radius:8px;font-size:.93rem;font-weight:500;text-decoration:none;transition:background .15s ease,color .15s ease;}
 .nav-links>a:hover{background:var(--teal-50);color:var(--blue-700);}
-@media(max-width:560px){.brand .brand-logo{height:54px;}.brand .brand-sub{display:none;}}
+@media(max-width:560px){.brand .brand-logo{height:64px;}.brand .brand-sub{display:none;}}
 
 /* ---- eyebrow pill ---- */
 .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:var(--leaf-b);background:#fff;color:var(--blue-700);border:1px solid var(--teal-100);box-shadow:var(--shadow-sm);font-family:var(--font-head);font-weight:500;font-size:.82rem;}
@@ -180,8 +180,10 @@ img{max-width:100%;}
 .brand-logo-white{filter:brightness(0) invert(1);height:56px;width:auto;display:block;margin-bottom:14px;}
 .land-ack{border-top:1px solid rgba(255,255,255,.16);margin-top:30px;padding-top:22px;}
 .land-ack p{margin:0;font-size:.86rem;line-height:1.7;color:rgba(255,255,255,.78);font-style:italic;}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.16);margin-top:22px;padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:rgba(255,255,255,.7);}
-.footer-bottom a{display:inline;padding:0;text-decoration:underline;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.16);margin-top:34px;padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#8fb3b4;font-size:.84rem;}
+.footer-bottom a{display:inline;padding:0;text-decoration:none;color:rgba(255,255,255,.8);}
+.footer-bottom a:hover{color:#fff;}
+.footer-legal{display:flex;gap:18px;}
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr;}}
 </style>
@@ -378,11 +380,15 @@ img{max-width:100%;}
       <p>We acknowledge that we live, love, work, and play on the traditional territories of many Indigenous Nations. We honour the ancestral stewards of the lands on which we reside and extend our gratitude to them. Further, we are mindful of the profound impact that industrialization, colonization, and globalization have had on Indigenous Peoples, as well as the intergenerational trauma that these ongoing processes inflict on them. Informed by this recognition, we are committed to understanding and learning from the past, promoting reconciliation, truth, and healing in the present, and we strive for a future of equity, understanding, and harmony for and with all the peoples with whom we share this planet and its lands.</p>
     </div>
     <div class="footer-bottom">
-      <span>&copy; Mental Health and Climate Change Alliance</span>
-      <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></span>
+      <span>&copy; <span class="footer-year">2026</span> Mental Health and Climate Change Alliance.</span>
+      <span class="footer-legal">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of use</a>
+      </span>
     </div>
   </div>
 </footer>
 
+<script>document.querySelectorAll('.footer-year').forEach(function(el){el.textContent = new Date().getFullYear();});</script>
 </body>
 </html>
