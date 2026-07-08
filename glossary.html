@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary of Key Terms — Understanding Climate Emotions Curriculum</title>
+<link rel="icon" type="image/png" href="earth_logo.png">
+<link rel="shortcut icon" type="image/png" href="earth_logo.png">
+<link rel="apple-touch-icon" href="earth_logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #1470AF; --dark-teal: #0D5A8C; --light-teal: #8EB6DC; --very-light-teal: #E8F0F8;
+  --dark: #0A2540; --text: #333; --text-light: #555; --bg: #FFFFFF; --white: #fff;
+  --amber: #F59E0B; --light-amber: #FEF3C7; --green: #059669; --light-green: #D1FAE5;
+  --rose: #BE185D; --light-rose: #FCE7F3; --grey: #EAEAEE;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08); --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --sidebar-w: 300px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+/* ── Sidebar ── */
+.sidebar { position: fixed; top: 0; left: 0; width: var(--sidebar-w); height: 100vh;
+  background: linear-gradient(180deg, var(--dark-teal) 0%, #0A2540 100%);
+  color: #fff; z-index: 100; display: flex; flex-direction: column; transition: transform 0.3s ease; overflow: hidden; }
+.sidebar-header { padding: 20px 20px 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.sidebar-header img { width: 100%; max-width: 210px; margin-bottom: 10px; }
+.sidebar-header h2 { font-size: 14.5px; font-weight: 600; line-height: 1.4; opacity: 0.95; color: #fff; }
+.sidebar-header p { font-size: 11px; opacity: 0.6; margin-top: 4px; }
+.sidebar-nav { flex: 1; overflow-y: auto; padding: 8px 0 14px; }
+.sidebar-nav::-webkit-scrollbar { width: 4px; } .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 2px; }
+.nav-section { padding: 14px 20px 5px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+.nav-item { display: flex; align-items: center; gap: 10px; padding: 7px 20px; cursor: pointer;
+  transition: all 0.2s; font-size: 12.5px; color: rgba(255,255,255,0.72); border-left: 3px solid transparent; line-height: 1.35; }
+.nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-item.active { background: rgba(255,255,255,0.12); color: #fff; font-weight: 600; border-left-color: var(--light-teal); }
+.nav-item .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 9px; }
+.nav-item.active .dot { border-color: var(--light-teal); background: rgba(142,182,220,0.25); }
+.nav-item.visited .dot { background: var(--green); border-color: var(--green); }
+.nav-item.visited .dot::after { content: '✓'; color: #fff; font-weight: 700; font-size: 9px; }
+.sidebar-footer { padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 10.5px; line-height: 1.5; color: rgba(255,255,255,0.65); max-height: 240px; overflow-y: auto; }
+.sidebar-footer p { margin-bottom: 8px; } .sidebar-footer p:last-child { margin-bottom: 0; }
+.sidebar-footer a { color: rgba(255,255,255,0.85); text-decoration: underline; }
+.sidebar-footer a:hover { opacity: 0.85; }
+.course-link-btn { display: block; text-align: center; background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.22); color: #fff !important; padding: 8px 10px; border-radius: 8px;
+  font-size: 11.5px; font-weight: 600; text-decoration: none !important; margin-bottom: 10px; transition: background 0.2s; }
+.course-link-btn:hover { background: rgba(255,255,255,0.18); }
+
+/* ── Main ── */
+.main { margin-left: var(--sidebar-w); min-height: 100vh; }
+.module-page { display: none; }
+.module-page.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.module-banner { background: linear-gradient(135deg, var(--dark-teal) 0%, var(--teal) 100%);
+  color: #fff; padding: 26px 36px; position: relative; overflow: hidden; display: flex; align-items: center; gap: 18px; min-height: 96px; }
+.module-banner.has-photo { min-height: 190px; align-items: flex-end; padding-bottom: 22px; }
+.module-banner .banner-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.34; pointer-events: none; }
+.module-banner.has-photo::before { content:''; position:absolute; inset:0; background: linear-gradient(90deg, rgba(10,37,64,0.82) 0%, rgba(13,90,140,0.55) 100%); }
+.module-banner::after { content: ''; position: absolute; right: -40px; top: -40px; width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+.module-banner .module-tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 12px;
+  border-radius: 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; position: relative; z-index: 1; }
+.module-banner h1 { font-size: 22px; font-weight: 700; color: #fff; flex: 1; line-height: 1.3; position: relative; z-index: 1; }
+.photo-credit { position: absolute; right: 10px; bottom: 6px; font-size: 9.5px; color: rgba(255,255,255,0.55); z-index: 2; }
+.photo-credit a { color: rgba(255,255,255,0.65); }
+
+/* ── Content ── */
+.static-section { padding: 46px 48px 80px; max-width: 900px; margin: 0 auto; }
+.static-section h2 { font-size: 23px; color: var(--dark-teal); margin: 34px 0 14px; font-weight: 700; }
+.static-section h2:first-child { margin-top: 0; }
+.static-section h3 { font-size: 18px; color: var(--teal); margin: 22px 0 10px; font-weight: 600; }
+.static-section .h4 { font-size: 15.5px; color: var(--dark); margin: 18px 0 8px; font-weight: 700; }
+.static-section p { font-size: 15.5px; color: var(--text); margin-bottom: 15px; }
+.static-section ul, .static-section ol { margin: 0 0 16px 26px; padding-left: 0; }
+.static-section li { margin-bottom: 8px; font-size: 15.5px; color: var(--text); padding-left: 4px; }
+.static-section li ul, .static-section li ol { margin: 8px 0 4px 22px; }
+.li-cont { margin: 8px 0 0; font-size: 14.5px; }
+blockquote.bq { border-left: 4px solid var(--light-teal); background: var(--very-light-teal);
+  padding: 12px 18px; margin: 4px 0 16px; border-radius: 0 8px 8px 0; font-size: 14.5px; color: #33445c; }
+blockquote.bq + blockquote.bq { margin-top: -8px; }
+
+/* audio overview */
+.audio-overview { background: linear-gradient(135deg, #0A2540 0%, #10456E 100%); border-radius: 14px;
+  color: rgba(255,255,255,0.92); padding: 0; margin: 0 0 30px; overflow: hidden; box-shadow: var(--shadow); }
+.ao-head { display: flex; align-items: center; gap: 14px; padding: 16px 22px; }
+.ao-icon { font-size: 22px; }
+.ao-title { font-weight: 700; font-size: 15px; color: #fff; }
+.ao-sub { font-size: 12px; opacity: 0.65; }
+.ao-toggle { margin-left: auto; background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.ao-toggle:hover { background: rgba(255,255,255,0.2); }
+.ao-body { padding: 4px 24px 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+.ao-body p { color: rgba(255,255,255,0.88); font-size: 14.5px; margin: 12px 0 0; }
+.ao-body ul, .ao-body ol { margin: 12px 0 0 24px; }
+.ao-body li { color: rgba(255,255,255,0.88); font-size: 14px; }
+.audio-overview.collapsed .ao-body { display: none; }
+
+/* callout boxes (1x1 tables) */
+.callout { background: var(--very-light-teal); border-left: 4px solid var(--teal); border-radius: 10px;
+  padding: 20px 24px; margin: 20px 0; }
+.callout .callout-title { font-weight: 700; color: var(--dark-teal); font-size: 16px; margin-bottom: 10px; }
+.callout p { font-size: 14.5px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout .callout { background: #fff; border-color: var(--light-teal); }
+
+/* figures */
+.curr-figure { margin: 22px auto; text-align: center; max-width: 640px; }
+.curr-figure img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: var(--shadow); background: #fff; }
+.fig-caption { font-size: 13.5px; color: var(--text-light); margin-top: 10px; }
+.fig-credit { font-size: 12px; color: var(--text-light); font-style: italic; margin-top: 4px; }
+.orig-toggle { margin: 10px 0 22px; }
+.orig-toggle summary { cursor: pointer; color: var(--teal); font-size: 13.5px; font-weight: 600; }
+.orig-toggle summary:hover { text-decoration: underline; }
+
+/* data tables */
+.table-wrap { overflow-x: auto; margin: 20px 0; }
+.data-table { border-collapse: collapse; width: 100%; font-size: 14px; background: #fff; }
+.data-table th { background: var(--dark-teal); color: #fff; text-align: left; padding: 10px 14px; font-size: 13.5px; }
+.data-table td { border: 1px solid #E5E9F0; padding: 10px 14px; vertical-align: top; }
+.data-table td p { font-size: 14px; margin: 0 0 6px; } .data-table td p:last-child { margin: 0; }
+.data-table tr:nth-child(even) td { background: #F7FAFD; }
+
+/* flip cards */
+.flip-grid2 { display: grid; gap: 14px; margin: 18px 0 22px; grid-template-columns: repeat(3, 1fr); }
+.flip-grid2.flip-md { grid-template-columns: repeat(3, 1fr); }
+.flip-grid2.flip-lg { grid-template-columns: repeat(2, 1fr); }
+.flipc { perspective: 1000px; cursor: pointer; }
+.flipc-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+.flipc.flipped .flipc-inner { transform: rotateY(180deg); }
+.flipc-front, .flipc-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 12px; padding: 16px 18px; }
+.flipc-front { background: linear-gradient(135deg, var(--teal), var(--dark-teal)); color: #fff;
+  font-weight: 700; font-size: 15px; line-height: 1.35; display: flex; align-items: center; justify-content: center;
+  text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.flipc-front::after { content: '↻ flip'; position: absolute; bottom: 9px; right: 13px; font-size: 10px; font-weight: 500; letter-spacing: 0.6px; opacity: 0.6; }
+.flipc-back { background: #fff; border: 1px solid #E5E9F0; transform: rotateY(180deg);
+  font-size: 13px; line-height: 1.5; overflow-y: auto; text-align: left; }
+.flipc-back p { font-size: 13px; margin-bottom: 8px; }
+.flip-grid2 .flipc:nth-child(6n+2) .flipc-front { background: linear-gradient(135deg, #059669, #065F46); }
+.flip-grid2 .flipc:nth-child(6n+3) .flipc-front { background: linear-gradient(135deg, #F59E0B, #B45309); }
+.flip-grid2 .flipc:nth-child(6n+4) .flipc-front { background: linear-gradient(135deg, #BE185D, #7E1646); }
+.flip-grid2 .flipc:nth-child(6n+5) .flipc-front { background: linear-gradient(135deg, #7C3AED, #4C1D95); }
+.flip-grid2 .flipc:nth-child(6n+6) .flipc-front { background: linear-gradient(135deg, #0891B2, #155E75); }
+
+/* accordion */
+.accordion { margin: 16px 0 22px; }
+.accordion-item { border: 1px solid #E5E9F0; border-radius: 8px; margin-bottom: 8px; overflow: hidden; background: #fff; }
+.accordion-header { padding: 13px 18px; background: var(--very-light-teal); cursor: pointer; font-weight: 600;
+  color: var(--dark-teal); font-size: 14.5px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.accordion-header:hover { background: #DCEAF7; }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.accordion-body-inner { padding: 16px 20px; font-size: 14.5px; }
+.accordion-body-inner p { font-size: 14.5px; }
+.accordion-item.open .arrow { transform: rotate(180deg); }
+.accordion .arrow { transition: transform 0.2s; font-size: 11px; flex-shrink: 0; }
+
+/* tabs */
+.tabs { margin: 18px 0; }
+.tab-buttons { display: flex; gap: 3px; flex-wrap: wrap; padding: 0 8px 0; position: relative; z-index: 2; }
+.tab-btn { padding: 11px 18px; background: rgba(0,0,0,0.04); color: var(--text-light); border: 1px solid #E5E9F0;
+  border-bottom: none; border-radius: 10px 10px 0 0; cursor: pointer; font-size: 13.5px; font-family: inherit;
+  font-weight: 600; transition: all 0.2s; position: relative; top: 1px; margin-bottom: -1px; }
+.tab-btn:nth-child(1) { background: #DBEAFE; color: #0D5A8C; }
+.tab-btn:nth-child(2) { background: #D1FAE5; color: #047857; }
+.tab-btn.active { background: #fff; border-color: #E5E9F0; z-index: 3; box-shadow: 0 -2px 6px rgba(0,0,0,0.05); }
+.tab-btn:nth-child(1).active { border-top: 4px solid #1470AF; }
+.tab-btn:nth-child(2).active { border-top: 4px solid #059669; }
+.tab-panel { display: none; background: #fff; border: 1px solid #E5E9F0; border-radius: 0 10px 10px 10px; padding: 22px 26px; }
+.tab-panel.active { display: block; }
+
+/* indigenous perspectives */
+.indigenous-section { background: linear-gradient(180deg, #F3F8F3 0%, #EBF4EC 100%); border: 1px solid #CFE5D2;
+  border-left: 5px solid #2F7D46; border-radius: 12px; padding: 26px 30px; margin: 30px 0; }
+.indigenous-section .ind-head h2 { margin: 0 0 14px; color: #235C34; display: flex; align-items: center; gap: 10px; }
+.indigenous-section .ind-head h2::before { content: '🌿'; font-size: 20px; }
+.indigenous-section h2 { color: #235C34; }
+.indigenous-section blockquote.bq { border-color: #7FB48A; background: #fff; }
+.indigenous-section .callout { background: #fff; border-color: #2F7D46; }
+
+/* takeaways */
+.takeaways { background: var(--very-light-teal); border-radius: 12px; padding: 24px 28px; margin: 28px 0; }
+.takeaways h3 { color: var(--dark-teal); margin: 0 0 12px; font-size: 18px; }
+.takeaways ul { margin: 0 0 0 22px; }
+.takeaways li { margin-bottom: 6px; font-size: 15px; }
+
+/* activities */
+.activities { margin: 28px 0; }
+
+/* references */
+.references-section { margin-top: 32px; padding: 24px 28px; background: #FAFBFC; border: 1px solid #E5E9F0; border-radius: 12px; }
+.references-section h2 { font-size: 22px; color: var(--dark-teal); margin: 0 0 12px; }
+.references-section ul.refs-list { list-style: none; padding: 0; margin: 0; }
+.references-section ul.refs-list li { font-size: 13.5px; line-height: 1.55; padding: 7px 0;
+  border-bottom: 1px dashed #E5E9F0; color: var(--text); margin: 0; }
+.references-section ul.refs-list li:last-child { border-bottom: none; }
+.references-section ul.refs-list a { color: var(--teal); text-decoration: none; word-break: break-word; }
+.references-section ul.refs-list a:hover { text-decoration: underline; }
+
+/* contributors */
+.module-contribs { margin: 26px 0 0; background: #F7F9FC; border: 1px solid #E5E9F0; border-radius: 10px; padding: 12px 18px; }
+.module-contribs summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--text-light); }
+.module-contribs summary:hover { color: var(--dark-teal); }
+.module-contribs ul { margin: 10px 0 4px 22px; }
+.module-contribs li { font-size: 12.5px; color: var(--text-light); margin-bottom: 3px; }
+
+/* quiz */
+.quiz { background: #f7f9fc; border-radius: 12px; margin: 28px 0; overflow: hidden; border: 1px solid #E5E9F0; }
+.quiz-header { background: var(--dark-teal); color: #fff; padding: 14px 24px; font-weight: 700; }
+.quiz-body { padding: 22px 28px; }
+.quiz-question { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid #E5E9F0; }
+.quiz-question:last-of-type { border-bottom: none; }
+.quiz-question > p { font-weight: 600; color: var(--text); margin-bottom: 12px; font-size: 15px; }
+.quiz-option { display: block; padding: 10px 14px; margin-bottom: 8px; cursor: pointer; border: 1px solid #E5E9F0;
+  border-radius: 8px; font-size: 14px; transition: all 0.15s; background: #fff; }
+.quiz-option:hover { background: var(--very-light-teal); }
+.quiz-option input { margin-right: 10px; }
+.quiz-option.correct { background: var(--light-green); border-color: var(--green); }
+.quiz-option.incorrect { background: var(--light-rose); border-color: var(--rose); }
+.quiz-actions { display: flex; gap: 12px; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+.quiz-score { font-weight: 700; font-size: 14px; }
+.quiz-score.pass { color: var(--green); } .quiz-score.fail { color: var(--rose); }
+.reflect-ta { width: 100%; min-height: 90px; padding: 12px 14px; border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px; font-family: inherit; font-size: 14px; line-height: 1.6; resize: vertical; background: #fff; }
+.ta-status { font-size: 11.5px; color: var(--green); margin-top: 4px; min-height: 15px; }
+
+/* buttons */
+.btn { padding: 9px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; border: none; transition: all 0.2s; font-family: inherit; }
+.btn-primary { background: var(--teal); color: #fff; }
+.btn-primary:hover { background: var(--dark-teal); }
+.btn-secondary { background: var(--very-light-teal); color: var(--dark-teal); border: 1px solid rgba(20,112,175,0.2); }
+.btn-secondary:hover { background: rgba(20,112,175,0.12); }
+.module-nav-btns { margin: 40px 0 0; padding-top: 24px; border-top: 1px solid #E5E9F0; display: flex; justify-content: space-between; gap: 12px; }
+
+/* wheel */
+.wheel-wrap { display: grid; grid-template-columns: 340px 1fr; gap: 24px; align-items: start; margin: 20px 0; }
+.cwheel { width: 100%; max-width: 340px; height: auto; }
+.cwheel .seg { cursor: pointer; transition: opacity 0.2s; }
+.cwheel .seg:hover { opacity: 0.85; }
+.cwheel .seg.active { stroke: #1a2942; stroke-width: 3; }
+.cwheel .seg.any-active:not(.active) { opacity: 0.35; }
+.cwheel .seg-label { font-size: 15px; font-weight: 800; fill: #fff; pointer-events: none; }
+.cwheel .hub-label { font-size: 11px; font-weight: 700; fill: var(--dark-teal); text-anchor: middle; pointer-events: none; letter-spacing: 0.5px; text-transform: uppercase; }
+.wheel-detail { background: var(--very-light-teal); border-radius: 12px; padding: 18px 22px; min-height: 220px; }
+.wheel-detail h4 { color: var(--dark-teal); font-size: 16px; margin: 0 0 8px; }
+.wheel-detail p { font-size: 14px; line-height: 1.6; margin-bottom: 10px; }
+.wheel-detail .wd-default { font-style: italic; color: var(--text-light); }
+.wd-sub { padding: 7px 0; border-bottom: 1px dashed rgba(20,112,175,0.2); font-size: 13.5px; }
+.wd-sub:last-child { border-bottom: none; }
+.wd-sub strong { color: var(--dark-teal); }
+
+/* cedar */
+.cedar { margin: 20px 0; }
+.cedar-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.cedar-tab { padding: 10px 20px; border-radius: 24px; border: 2px solid transparent; font-family: inherit;
+  font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.cedar-tab.rose { background: var(--light-rose); color: var(--rose); }
+.cedar-tab.green { background: var(--light-green); color: #047857; }
+.cedar-tab.rose.active { border-color: var(--rose); }
+.cedar-tab.green.active { border-color: var(--green); }
+.cedar-panel.rose .accordion-header { background: var(--light-rose); color: #9F1239; }
+.cedar-panel.green .accordion-header { background: var(--light-green); color: #047857; }
+.cedar-item { padding: 8px 0; border-bottom: 1px dashed #E5E9F0; font-size: 13.5px; }
+.cedar-item:last-child { border-bottom: none; }
+.cedar-item strong { color: var(--dark-teal); }
+
+/* venn */
+.venn-wrap { display: grid; grid-template-columns: 400px 1fr; gap: 24px; align-items: start; margin: 20px 0; }
+.venn-svg { width: 100%; max-width: 400px; height: auto; }
+.venn-svg .vregion { cursor: pointer; transition: fill-opacity 0.2s; }
+.venn-svg .vlabel { font-size: 12px; font-weight: 700; pointer-events: none; }
+
+/* flash deck */
+.deck { margin: 22px 0; background: #fff; border: 1px solid #E5E9F0; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.deck-stage { position: relative; min-height: 400px; }
+.deck-card { display: none; padding: 28px 34px; min-height: 400px; max-height: 460px; overflow-y: auto; }
+.deck-card.active { display: block; animation: fadeIn 0.3s ease; }
+.deck-card h4 { font-size: 18px; color: var(--dark-teal); margin-bottom: 12px; }
+.deck-card .deck-body p { font-size: 14.5px; }
+.deck-card.deck-cat { background: linear-gradient(135deg, var(--dark-teal), var(--teal)); color: #fff;
+  display: none; align-items: center; justify-content: center; text-align: center; }
+.deck-card.deck-cat.active { display: flex; }
+.deck-card.deck-cat h3 { color: #fff; font-size: 26px; margin-bottom: 14px; }
+.deck-card.deck-cat p, .deck-card.deck-cat blockquote { color: rgba(255,255,255,0.9); font-size: 15.5px; }
+.deck-card.deck-cat blockquote.bq { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); text-align: left; }
+.deck-cat-inner { max-width: 560px; }
+.deck-controls { display: flex; align-items: center; gap: 14px; padding: 12px 20px; background: #F7F9FC; border-top: 1px solid #E5E9F0; }
+.deck-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid #D8E0EA; background: #fff;
+  font-size: 20px; cursor: pointer; color: var(--dark-teal); font-family: inherit; transition: all 0.15s; flex-shrink: 0; }
+.deck-btn:hover:not(:disabled) { background: var(--very-light-teal); }
+.deck-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.deck-dots { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; justify-content: center; }
+.deck-dot { width: 8px; height: 8px; border-radius: 50%; background: #D5DEE9; cursor: pointer; transition: all 0.15s; }
+.deck-dot.active { background: var(--teal); transform: scale(1.3); }
+.deck-dot.cat { width: 10px; height: 10px; background: #9DB8CE; border-radius: 3px; }
+.deck-dot.cat.active { background: var(--dark-teal); }
+.deck-counter { font-size: 12px; color: var(--text-light); min-width: 60px; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ── audio player bar (sticky, full width of content area) ── */
+.player-bar { position: sticky; top: 0; z-index: 60; width: 100%;
+  display: flex; align-items: center; gap: 16px;
+  background: #fff; border-bottom: 1px solid #E5E9F0;
+  box-shadow: 0 3px 12px rgba(10,37,64,0.08);
+  padding: 10px 28px; }
+.pb-play { width: 42px; height: 42px; border-radius: 50%; border: none; flex-shrink: 0;
+  background: var(--teal); color: #fff; font-size: 14px; cursor: pointer; font-family: inherit;
+  transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
+.pb-play:hover { background: var(--dark-teal); transform: scale(1.05); }
+.player-bar.playing .pb-play { background: var(--dark-teal); }
+.pb-mid { flex: 1; min-width: 0; }
+.pb-label { font-size: 12.5px; font-weight: 700; color: var(--dark-teal); letter-spacing: 0.4px;
+  text-transform: uppercase; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pb-label .pb-mtitle { color: var(--text-light); font-weight: 600; text-transform: none; letter-spacing: 0; }
+.pb-track { height: 6px; background: var(--very-light-teal); border-radius: 3px; cursor: pointer; }
+.pb-fill { height: 100%; width: 0%; background: var(--teal); border-radius: 3px; transition: width 0.1s linear; }
+.pb-time { font-size: 12px; color: var(--text-light); font-variant-numeric: tabular-nums; flex-shrink: 0; min-width: 86px; text-align: right; }
+.pb-dl { flex-shrink: 0; display: inline-flex; align-items: center; gap: 7px;
+  background: var(--teal); color: #fff; border: none;
+  padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none;
+  cursor: pointer; transition: background 0.15s, transform 0.15s; font-family: inherit; }
+.pb-dl:hover { background: var(--dark-teal); transform: translateY(-1px); }
+@media (max-width: 700px) {
+  .player-bar { padding: 8px 14px; gap: 10px; }
+  .pb-time { display: none; }
+  .pb-label .pb-mtitle { display: none; }
+  .pb-dl { padding: 8px 12px; font-size: 12px; }
+}
+
+/* glossary link in nav */
+.nav-item.nav-ext { margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; }
+
+/* mobile */
+.mobile-toggle { display: none; position: fixed; top: 12px; left: 12px; z-index: 110; background: var(--dark-teal);
+  color: #fff; border: none; width: 40px; height: 40px; border-radius: 8px; font-size: 18px; cursor: pointer; }
+@media (max-width: 1100px) {
+  .wheel-wrap, .venn-wrap { grid-template-columns: 1fr; }
+  .cwheel, .venn-svg { margin: 0 auto; }
+  .flip-grid2, .flip-grid2.flip-md { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; }
+  .static-section { padding: 32px 18px 60px; }
+  .module-banner { padding: 16px 22px; } .module-banner h1 { font-size: 17px; }
+  .mobile-toggle { display: flex; align-items: center; justify-content: center; }
+  .flip-grid2, .flip-grid2.flip-md, .flip-grid2.flip-lg { grid-template-columns: 1fr; }
+  .tab-btn { font-size: 12.5px; padding: 9px 12px; }
+}
+
+/* print-friendly-ish */
+@media print {
+  .sidebar, .mobile-toggle, .module-nav-btns, .player-bar { display: none; }
+  .main { margin-left: 0; }
+  .module-page { display: block !important; page-break-after: always; }
+}
+
+/* glossary page */
+.glossary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
+.gterm { background: #f7f9fc; border: 1px solid #E5E9F0; border-radius: 10px; padding: 16px 20px; border-top: 3px solid var(--teal); }
+.gterm .gname { font-weight: 700; color: var(--dark-teal); font-size: 15.5px; margin-bottom: 6px; }
+.gterm .gdef { font-size: 13.5px; color: var(--text-light); line-height: 1.6; }
+.gterm .gdef a { color: var(--teal); }
+.gterm.hidden { display: none; }
+.gsearch { width: 100%; padding: 13px 18px; border: 1px solid #E5E9F0; border-radius: 10px;
+  font-family: inherit; font-size: 15px; margin: 4px 0 14px; }
+.gsearch:focus { outline: 2px solid var(--light-teal); border-color: var(--teal); }
+.gjump-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+.gjump { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--very-light-teal); color: var(--dark-teal); border-radius: 8px; font-size: 13px;
+  font-weight: 700; text-decoration: none; transition: all 0.15s; }
+.gjump:hover { background: var(--teal); color: #fff; }
+.gletter { font-size: 22px; font-weight: 800; color: var(--dark-teal); border-bottom: 2px solid var(--very-light-teal);
+  margin: 6px 0 14px; padding-bottom: 4px; scroll-margin-top: 16px; }
+.gcount { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+.gnone { display: none; color: var(--text-light); font-style: italic; }
+@media (max-width: 900px) { .glossary-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <img src="MHCCA_logo.png" alt="MHCCA — Mental Health and Climate Change Alliance">
+    <h2>Understanding Climate Emotions</h2>
+    <p>Full Professional Development Curriculum</p>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">Reference</div>
+    <div class="nav-item active"><span class="dot">📖</span><span>Glossary of Key Terms</span></div>
+    <div class="nav-item nav-ext" onclick="window.location.href='curriculum.html'"><span class="dot">↩</span><span>Back to the Curriculum</span></div>
+  </div>
+  <div class="sidebar-footer">
+    <p>This digital resource presents the complete <em>Understanding Climate Emotions</em> professional development curriculum developed by the MHCCA and contributors. <a href="curriculum.html#contributors">Click here for a full list of contributors</a>.</p>
+    <p>© Mental Health and Climate Change Alliance. <strong>Open access</strong> — distributed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative Commons BY-SA 4.0</a>. Use with attribution; share alike.</p>
+  </div>
+</div>
+
+<div class="main">
+  <div class="module-page active" id="glossary">
+    <div class="module-banner"><span class="module-tag">Reference</span><h1>Glossary of Key Terms</h1></div>
+    <div class="static-section">
+      <p>Key terms used across the curriculum. Search, jump to a letter, or scroll to browse.</p>
+      <input type="search" class="gsearch" id="glossarySearch" placeholder="Search terms (e.g., solastalgia, equity, intersectionality)..." oninput="filterGlossary()">
+      <div class="gcount" id="gCount">25 terms</div>
+      <div class="gjump-bar" id="gJumps"><a class="gjump" href="#g-C">C</a><a class="gjump" href="#g-E">E</a><a class="gjump" href="#g-I">I</a><a class="gjump" href="#g-M">M</a><a class="gjump" href="#g-P">P</a><a class="gjump" href="#g-R">R</a><a class="gjump" href="#g-S">S</a><a class="gjump" href="#g-T">T</a><a class="gjump" href="#g-V">V</a></div>
+      <div id="glossaryBody">
+<div class="gletter" id="g-C">C</div><div class="glossary-grid"><div class="gterm"><div class="gname">Climate anxiety</div><div class="gdef">Heightened emotional distress, worry, and/or uncertainty related to climate change and its actual or anticipated effects. <em>Throughout the course, eco-anxiety is used interchangeably with climate anxiety. </em></div></div><div class="gterm"><div class="gname">Climate change</div><div class="gdef"> Long-term alterations in temperature, precipitation, and other atmospheric conditions. These changes can be natural, but since the 1800s have largely been driven by human activities such as burning fossil fuels, which release greenhouse gas (GHG) emissions into the atmosphere. These emissions cause heat from the sun to become trapped and cause warming.</div></div><div class="gterm"><div class="gname">Climate emotions</div><div class="gdef">A range of natural feelings and emotional responses to the challenges and realities of climate change, <em>sometimes also referred to as eco-emotions</em>. </div></div><div class="gterm"><div class="gname">Climate grief</div><div class="gdef">Deep sorrow and a sense of loss that people feel in relation to climate change and environmental destruction, <em>sometimes also referred to as eco-grief.</em></div></div><div class="gterm"><div class="gname">Climate justice</div><div class="gdef">A principle that addresses the human rights and inequities of climate change, strives for justice and fair treatment for all, seeks equitable systems and decision making processes, and recognizes that those least responsible for climate change are often the most impacted. Climate justice also recognizes the systems that have led to climate change are rooted in inequity and harm, and works towards just, restorative, caring systems instead.</div></div><div class="gterm"><div class="gname">Climate-related distress</div><div class="gdef">Describes a wide-range of psychological, physical, and social reactions and consequences that are related to the anticipated, observed, or experienced effects of climate change and/or the perception that our individual and collective responses to climate change are insufficient. </div></div><div class="gterm"><div class="gname">Climate-related resilience</div><div class="gdef">Multiple and interacting emotions, capacity, strategies, and actions used to cope with the acute and chronic anticipated, observed, or experienced effects of climate change and/or the perception that our individual and collective responses to climate change are insufficient.</div></div><div class="gterm"><div class="gname">Colonialism</div><div class="gdef"> A harmful system of power and extraction where a colonial external force tries to control and extract resources from another people and their lands. In Canada, this took the form of settler-colonialism, whereby settlers took and continue to hold power over Indigenous Peoples’ land, communities, and ways of life. This has involved controlling resources, changing laws, banning cultural practices, and hindering Indigenous Peoples’ connections to land. The effects of colonialism are not just in the past; they are ongoing and continue to shape Indigenous Peoples’ experiences, health, and well-being.</div></div></div>
+<div class="gletter" id="g-E">E</div><div class="glossary-grid"><div class="gterm"><div class="gname">Ecological (eco) anxiety</div><div class="gdef"> Often used alongside climate anxiety, or even synonymously with it, to refer to anxiety regarding environmental or ecosystem concerns, which can include climate anxiety, but may also be broader and not as climate specific. For example: if a company is dumping toxic chemicals into a river near your home, this may not be directly related to climate change, yet it still can provoke intense emotional responses. <em>Throughout the course, eco-anxiety is used interchangeably with climate anxiety. </em></div></div><div class="gterm"><div class="gname">Ecological (eco) emotions</div><div class="gdef"><em> </em><em>See climate emotions. </em></div></div><div class="gterm"><div class="gname">Ecological (eco) grief</div><div class="gdef"><em>See climate grief. </em></div></div><div class="gterm"><div class="gname">Ecosystem</div><div class="gdef">A community of living and non-living things which interact within a specific environment or geographic area. </div></div><div class="gterm"><div class="gname">Environment</div><div class="gdef">The interconnected physical, biological, and chemical conditions and relationships that support and influence all forms of life. It is also used synonymously at times for place, space, or ecosystem.</div></div><div class="gterm"><div class="gname">Environmental racism</div><div class="gdef">A type of systemic racism where communities of color are disproportionately exposed to environmental hazards such as toxic waste sites, polluted air, and urban heat islands. These disproportionate impacts are due to combined effects of racism, political exclusion, colonialism, and other harmful systems. Environmental racism creates unequal exposure to environmental risks, exacerbating both physical and emotional impacts of climate change and environmental degradation.</div></div><div class="gterm"><div class="gname">Equity</div><div class="gdef"> People have what they need to be safe, healthy, supported, and thriving, even if different people need different things. Equity aims to remove unfair imbalances that are caused by injustice and inequitable treatment of different groups.</div></div></div>
+<div class="gletter" id="g-I">I</div><div class="glossary-grid"><div class="gterm"><div class="gname">Indigenous Ways of Knowing</div><div class="gdef">The diverse cultural, relational, experiential, and scientific approaches through which Indigenous Peoples both singly and in groups understand the world. Closely linked to frameworks such Two‑Eyed Seeing, and Indigenous cultural safety, in the shared emphasis on respect for the importance of both Indigenous knowledge systems and Western knowledge and scientific methods. Indigenous Ways of knowing recognizes the strengths of each and maintains their distinctiveness, while also using them together to generate deeper, more holistic understanding for the benefit of communities and the environment.</div></div><div class="gterm"><div class="gname">Intersectionality</div><div class="gdef">A framework which outlines how individuals possess multiple, overlapping identities that interact to create unique experiences of privilege and oppression. In a climate context, it allows us to see how these overlapping systems affect who bears the brunt of environmental harm and who is most impacted emotionally.</div></div></div>
+<div class="gletter" id="g-M">M</div><div class="glossary-grid"><div class="gterm"><div class="gname">Marginalization</div><div class="gdef">Marginalization involves the systematic exclusion of individuals or groups from power, resources, and decision-making processes. This exclusion intensifies the impacts of climate change on already disadvantaged populations.</div></div></div>
+<div class="gletter" id="g-P">P</div><div class="glossary-grid"><div class="gterm"><div class="gname">Planetary health</div><div class="gdef">Planetary health is both a hopeful emerging field and social movement that relates to climate change and how it is connected with the health of people and the planet. It emphasizes that human well-being is connected to the environment.</div></div></div>
+<div class="gletter" id="g-R">R</div><div class="glossary-grid"><div class="gterm"><div class="gname">Relational accountability</div><div class="gdef"> An ethical practice rooted in the connections between people, communities, and the environment rather than individual needs and hierarchical power structures and systems.</div></div><div class="gterm"><div class="gname">Right Relationship</div><div class="gdef"> The act of being in right relations and relational accountability by centring an awareness of the interconnectedness of all things. Key to this is understanding the importance of trust, reciprocity, and respect for dignity and Rights in systems, structures and relationships in ways that disrupt inequality and inequity between all things both living and non-living.</div></div></div>
+<div class="gletter" id="g-S">S</div><div class="glossary-grid"><div class="gterm"><div class="gname">Solastalgia</div><div class="gdef">The emotional distress of witnessing ongoing environmental change in one’s home environment. Unlike grief that follows a recognized loss, solastalgia is the sense of homesickness and dislocation that arises when you are at home, but that home is fundamentally changed in real time.</div></div><div class="gterm"><div class="gname">Systematic oppression</div><div class="gdef">Ways in which inequities and harm are embedded within laws, policies, institutional practices, and broader societal norms, disproportionately affecting certain groups based on identity.</div></div></div>
+<div class="gletter" id="g-T">T</div><div class="glossary-grid"><div class="gterm"><div class="gname">Trauma-Informed</div><div class="gdef">An approach that recognizes what trauma is and how it can affect people, focuses on key areas like <em>safety, trust, clarity, connection and inclusion</em> and works to prevent further traumatization or re-traumatization. </div></div></div>
+<div class="gletter" id="g-V">V</div><div class="glossary-grid"><div class="gterm"><div class="gname">Vulnerability</div><div class="gdef">Refers to the degree to which individuals or communities are at risk of harm from climate impacts. It is not a fixed trait but a dynamic condition influenced by various social, economic, and environmental factors.</div></div></div>
+      </div>
+      <p class="gnone" id="gNone">No terms match your search.</p>
+      <div class="module-nav-btns">
+        <button class="btn btn-secondary" onclick="window.location.href='curriculum.html'">← Back to the Curriculum</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterGlossary() {
+  var q = (document.getElementById('glossarySearch').value || '').trim().toLowerCase();
+  var any = 0;
+  document.querySelectorAll('#glossaryBody .gterm').forEach(function(t){
+    var hit = q === '' || t.textContent.toLowerCase().indexOf(q) !== -1;
+    t.classList.toggle('hidden', !hit);
+    if (hit) any++;
+  });
+  document.querySelectorAll('#glossaryBody .gletter').forEach(function(h){
+    var grid = h.nextElementSibling;
+    var vis = grid ? grid.querySelectorAll('.gterm:not(.hidden)').length : 0;
+    h.style.display = vis ? '' : 'none';
+    if (grid) grid.style.display = vis ? '' : 'none';
+  });
+  document.getElementById('gJumps').style.display = q === '' ? '' : 'none';
+  document.getElementById('gNone').style.display = any ? 'none' : 'block';
+  document.getElementById('gCount').textContent = (q === '' ? 25 : any) + ' terms';
+}
+</script>
+</body>
+</html>
