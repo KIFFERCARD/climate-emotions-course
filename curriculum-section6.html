@@ -48,10 +48,10 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
 .sidebar-footer p { margin-bottom: 8px; } .sidebar-footer p:last-child { margin-bottom: 0; }
 .sidebar-footer a { color: rgba(255,255,255,0.85); text-decoration: underline; }
 .sidebar-footer a:hover { opacity: 0.85; }
-.course-link-btn { display: block; text-align: center; background: rgba(255,255,255,0.1);
+.curriculum-link-btn { display: block; text-align: center; background: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.22); color: #fff !important; padding: 8px 10px; border-radius: 8px;
   font-size: 11.5px; font-weight: 600; text-decoration: none !important; margin-bottom: 10px; transition: background 0.2s; }
-.course-link-btn:hover { background: rgba(255,255,255,0.18); }
+.curriculum-link-btn:hover { background: rgba(255,255,255,0.18); }
 
 /* ── Main ── */
 .main { margin-left: var(--sidebar-w); min-height: 100vh; }
@@ -420,6 +420,16 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
 .rb-save:hover { background: #9F1239; }
 .rb-status { font-size: 12px; color: #9F1239; font-weight: 600; }
 
+/* ── green + red callout variants (index) ── */
+.callout.callout-green { background: linear-gradient(180deg, #F3F8F3 0%, #EBF4EC 100%); border: 1px solid #CFE5D2; border-left: 5px solid #2F7D46; }
+.callout.callout-green .callout-title { color: #235C34; }
+.callout.callout-green blockquote.bq { border-color: #7FB48A; background: #fff; }
+.callout.callout-red { background: #FDF0F0; border: 1px solid #F3C1C1; border-left: 5px solid #DC2626; }
+.callout.callout-red .callout-title { color: #991B1B; }
+
+/* buttons never underline their labels */
+a.btn, .btn, a.btn:hover, .sec-card a.btn { text-decoration: none !important; border-bottom: none !important; }
+
 </style>
 </head>
 <body>
@@ -432,19 +442,11 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
   <div class="sidebar-header">
     <img src="MHCCA_logo.png" alt="MHCCA — Mental Health and Climate Change Alliance">
     <h2>Understanding Climate Emotions</h2>
-    <p>Full Professional Development Curriculum</p>
   </div>
   <div class="sidebar-nav" id="sidebarNav">
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum.html'"><span class="dot">⌂</span><span>Curriculum Home</span></div>
+<div class="nav-item nav-ext" onclick="window.location.href='curriculum.html'"><span class="dot">⌂</span><span>Return Home</span></div>
 <div class="nav-section">Section 6: Closing Remarks</div>
 <div class="nav-item" data-target="m52"><span class="dot"></span><span>Closing Remarks</span></div>
-<div class="nav-section">All sections</div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section1.html'"><span class="dot">1</span><span>Section 1: Introduction to Climate Change and Mental Health</span></div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section2.html'"><span class="dot">2</span><span>Section 2: Understanding the Landscape of Climate Emotions</span></div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section3.html'"><span class="dot">3</span><span>Section 3: Factors Influencing Mental Health in a Changing Climate</span></div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section4.html'"><span class="dot">4</span><span>Section 4: Strategies for Resilience and Coping</span></div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section5.html'"><span class="dot">5</span><span>Section 5: Addressing Climate Change and Mental Health in Policy and Practice</span></div>
-<div class="nav-item nav-ext active" onclick="window.location.href='javascript:void(0)'"><span class="dot">6</span><span>Section 6: Closing Remarks</span></div>
 <div class="nav-section">Reference</div>
 <div class="nav-item nav-ext" onclick="window.location.href='glossary.html'"><span class="dot">§</span><span>Glossary of Key Terms</span></div>
   </div>
@@ -504,6 +506,10 @@ function markVisited() {
   document.querySelectorAll('.nav-item').forEach(function(n){
     if (v[n.getAttribute('data-target')]) n.classList.add('visited');
   });
+  var nx = document.querySelector('.nav-next-sec');
+  if (nx && MODULES.length && MODULES.every(function(m){ return v[m.id]; })) {
+    nx.style.display = '';
+  }
 }
 document.querySelectorAll('.nav-item').forEach(function(n){
   n.addEventListener('click', function(){

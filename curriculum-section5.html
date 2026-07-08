@@ -48,10 +48,10 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
 .sidebar-footer p { margin-bottom: 8px; } .sidebar-footer p:last-child { margin-bottom: 0; }
 .sidebar-footer a { color: rgba(255,255,255,0.85); text-decoration: underline; }
 .sidebar-footer a:hover { opacity: 0.85; }
-.course-link-btn { display: block; text-align: center; background: rgba(255,255,255,0.1);
+.curriculum-link-btn { display: block; text-align: center; background: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.22); color: #fff !important; padding: 8px 10px; border-radius: 8px;
   font-size: 11.5px; font-weight: 600; text-decoration: none !important; margin-bottom: 10px; transition: background 0.2s; }
-.course-link-btn:hover { background: rgba(255,255,255,0.18); }
+.curriculum-link-btn:hover { background: rgba(255,255,255,0.18); }
 
 /* ── Main ── */
 .main { margin-left: var(--sidebar-w); min-height: 100vh; }
@@ -420,6 +420,16 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
 .rb-save:hover { background: #9F1239; }
 .rb-status { font-size: 12px; color: #9F1239; font-weight: 600; }
 
+/* ── green + red callout variants (index) ── */
+.callout.callout-green { background: linear-gradient(180deg, #F3F8F3 0%, #EBF4EC 100%); border: 1px solid #CFE5D2; border-left: 5px solid #2F7D46; }
+.callout.callout-green .callout-title { color: #235C34; }
+.callout.callout-green blockquote.bq { border-color: #7FB48A; background: #fff; }
+.callout.callout-red { background: #FDF0F0; border: 1px solid #F3C1C1; border-left: 5px solid #DC2626; }
+.callout.callout-red .callout-title { color: #991B1B; }
+
+/* buttons never underline their labels */
+a.btn, .btn, a.btn:hover, .sec-card a.btn { text-decoration: none !important; border-bottom: none !important; }
+
 </style>
 </head>
 <body>
@@ -432,10 +442,9 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
   <div class="sidebar-header">
     <img src="MHCCA_logo.png" alt="MHCCA — Mental Health and Climate Change Alliance">
     <h2>Understanding Climate Emotions</h2>
-    <p>Full Professional Development Curriculum</p>
   </div>
   <div class="sidebar-nav" id="sidebarNav">
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum.html'"><span class="dot">⌂</span><span>Curriculum Home</span></div>
+<div class="nav-item nav-ext" onclick="window.location.href='curriculum.html'"><span class="dot">⌂</span><span>Return Home</span></div>
 <div class="nav-section">Section 5: Addressing Climate Change and Mental Health in Policy and Practice</div>
 <div class="nav-item" data-target="m44"><span class="dot"></span><span>Addressing Climate Change and Mental Health in Policy and Practice</span></div>
 <div class="nav-item" data-target="m45"><span class="dot"></span><span>Professional Responsibility and Ethics</span></div>
@@ -445,13 +454,7 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
 <div class="nav-item" data-target="m49"><span class="dot"></span><span>Professional Roles - Moral and Spiritual Leaders</span></div>
 <div class="nav-item" data-target="m50"><span class="dot"></span><span>Professional Roles - Policy and Decision Makers</span></div>
 <div class="nav-item" data-target="m51"><span class="dot"></span><span>Quiz #5</span></div>
-<div class="nav-section">All sections</div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section1.html'"><span class="dot">1</span><span>Section 1: Introduction to Climate Change and Mental Health</span></div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section2.html'"><span class="dot">2</span><span>Section 2: Understanding the Landscape of Climate Emotions</span></div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section3.html'"><span class="dot">3</span><span>Section 3: Factors Influencing Mental Health in a Changing Climate</span></div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section4.html'"><span class="dot">4</span><span>Section 4: Strategies for Resilience and Coping</span></div>
-<div class="nav-item nav-ext active" onclick="window.location.href='javascript:void(0)'"><span class="dot">5</span><span>Section 5: Addressing Climate Change and Mental Health in Policy and Practice</span></div>
-<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section6.html'"><span class="dot">6</span><span>Section 6: Closing Remarks</span></div>
+<div class="nav-item nav-ext nav-next-sec" style="display:none" onclick="window.location.href='curriculum-section6.html'"><span class="dot">→</span><span>Continue to Section 6: Closing Remarks</span></div>
 <div class="nav-section">Reference</div>
 <div class="nav-item nav-ext" onclick="window.location.href='glossary.html'"><span class="dot">§</span><span>Glossary of Key Terms</span></div>
   </div>
@@ -464,12 +467,12 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
 <!-- ═══ Main ═══ -->
 <div class="main" id="main">
 <div class="module-page" id="m44"><div class="module-banner has-photo"><img class="banner-photo" src="https://images.pexels.com/photos/7869007/pexels-photo-7869007.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="A team in discussion around a table" loading="lazy" onerror="this.style.display='none'"><span class="module-tag">Section 5</span><h1>Section 5 Overview: Addressing Climate Change and Mental Health in Policy and Practice</h1><span class="photo-credit"><a href="https://www.pexels.com/photo/7869007/" target="_blank" rel="noopener">Photo via Pexels</a></span></div><div class="player-bar" data-audio="audio/curriculum/m44.mp3" data-mid="m44"><button class="pb-play" aria-label="Play audio overview">►</button><div class="pb-mid"><div class="pb-label">Audio Overview <span class="pb-mtitle">— Addressing Climate Change and Mental Health in Policy and Practice</span></div><div class="pb-track"><div class="pb-fill"></div></div></div><span class="pb-time">–:–– / –:––</span><button type="button" class="pb-dl" data-mid="m44" data-fn="Addressing Climate Change and Mental Health in Policy and Practice — Audio Overview Transcript.txt">⭳ Download transcript</button></div><div class="static-section"><p class="bsub">Welcome to Section 5: Addressing Climate Change and Mental Health in Policy and Practice</p>
-<p class="bsub">In this section of the course, you will learn:</p>
+<p class="bsub">In this section of the curriculum, you will learn:</p>
 <ul><li>How to incorporate mental health considerations into climate change policy and professional practice across different sectors .</li><li>The ethical responsibilities of professionals in addressing climate-related mental health challenges.</li><li>The roles of Educators, Health and Social Care Providers, News and Media Professionals, Moral and Spiritual Leaders, and Policy and Decision Makers.</li><li>Ways that climate-related mental health insights can be woven into professional practice to create environments where people feel supported and empowered to address the challenges of a changing planet.</li></ul>
 <div class="callout"><div class="callout-title">Learning Support</div><p>This section includes content relating to mental health, climate change, and injustice. Some learners may find these topics challenging to engage with. This information is available to you to engage with as you choose, including choosing not to engage with particular sections. We encourage you to approach the material in ways that support your well-being.</p>
 <p>Please remember to:</p>
-<ul><li>Pace yourself</li><li>Take breaks as necessary</li><li>Practice self-care as you work through the course</li></ul>
-<p>Resources are available to support yourself in navigating emotions that may arise during this course. Take some time to reflect on what supports you, consider what resources you could connect with as needed, and review the list of ideas we have compiled here:</p>
+<ul><li>Pace yourself</li><li>Take breaks as necessary</li><li>Practice self-care as you work through the curriculum</li></ul>
+<p>Resources are available to support yourself in navigating emotions that may arise during this curriculum. Take some time to reflect on what supports you, consider what resources you could connect with as needed, and review the list of ideas we have compiled here:</p>
 <ul><li>If you are in Canada and need immediate mental health support, you can access a list of available resources<a href="https://www.canada.ca/en/public-health/services/mental-health-services/mental-health-get-help.html" target="_blank" rel="noopener"> here</a>.</li><li>You can also access a list of additional supportive resources compiled by the MHCCA team <a href="https://docs.google.com/document/d/16MOixBYirbPgYmnKT9zME3Og3GYeQrSUwrwzKq6DkTg/edit?tab=t.0" target="_blank" rel="noopener">here</a>.</li><li>If you are feeling overwhelmed or in need of a mental pause, you may find support in this list of <a href="https://mhcca.ca/grounding-and-presencing-techniques" target="_blank" rel="noopener">grounding and presencing techniques</a>.</li></ul></div>
 <details class="module-contribs"><summary>Module reviewers &amp; contributors</summary><ul><li>Kiffer G. Card, Faculty of Health Sciences, Simon Fraser University</li><li>Kaylie Higgs, Mental Health and Climate Change Alliance</li><li>Dana De Benetti, Mental Health and Climate Change Alliance</li><li>Michael Marchand, sqilxw, syilx Nation - Cultural Safety Consultant  </li></ul></details><div class="module-nav-btns"><button class="btn btn-secondary nav-prev">← Previous</button><button class="btn btn-primary nav-next">Next →</button></div></div></div>
 <div class="module-page" id="m45"><div class="module-banner"><span class="module-tag">Section 5</span><h1>Section 5: Professional Responsibility and Ethics</h1></div><div class="player-bar" data-audio="audio/curriculum/m45.mp3" data-mid="m45"><button class="pb-play" aria-label="Play audio overview">►</button><div class="pb-mid"><div class="pb-label">Audio Overview <span class="pb-mtitle">— Professional Responsibility and Ethics</span></div><div class="pb-track"><div class="pb-fill"></div></div></div><span class="pb-time">–:–– / –:––</span><button type="button" class="pb-dl" data-mid="m45" data-fn="Professional Responsibility and Ethics — Audio Overview Transcript.txt">⭳ Download transcript</button></div><div class="static-section"><p>Professionals across various sectors are increasingly recognizing their ethical responsibilities in addressing the mental health impacts of climate change. As climate-related challenges become more pervasive, the duty to provide trauma-informed and mental health-aware care extends beyond traditional roles, encompassing a broader commitment to societal resilience and equity.</p>
@@ -886,6 +889,10 @@ function markVisited() {
   document.querySelectorAll('.nav-item').forEach(function(n){
     if (v[n.getAttribute('data-target')]) n.classList.add('visited');
   });
+  var nx = document.querySelector('.nav-next-sec');
+  if (nx && MODULES.length && MODULES.every(function(m){ return v[m.id]; })) {
+    nx.style.display = '';
+  }
 }
 document.querySelectorAll('.nav-item').forEach(function(n){
   n.addEventListener('click', function(){
