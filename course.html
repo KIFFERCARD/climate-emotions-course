@@ -88,7 +88,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
 
 /* Slim banner */
 .module-banner {
-  background: linear-gradient(135deg, var(--dark-teal) 0%, var(--teal) 100%);
+  background: linear-gradient(118deg, #0d4a78 0%, #176f8c 47%, #2f7d4f 100%);
   color: #fff; padding: 22px 36px; position: relative; overflow: hidden;
   display: flex; align-items: center; gap: 18px;
 }
@@ -4261,10 +4261,4 @@ loadProgress();
 try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
 updateProgress();
 // If a module was loaded from saved state, activate its AV
-if (typeof currentModule === 'number' && currentModule >= 0) {
-  activeAvModule = currentModule;
-  avGoTo(currentModule, avState[currentModule].current);
-}
-</script>
-</body>
-</html>
+if (typeof currentModule === '
