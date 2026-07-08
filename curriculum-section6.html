@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glossary of Key Terms — Understanding Climate Emotions Curriculum</title>
+<title>Section 6: Closing Remarks — Understanding Climate Emotions Curriculum</title>
 <link rel="icon" type="image/png" href="earth_logo.png">
 <link rel="shortcut icon" type="image/png" href="earth_logo.png">
 <link rel="apple-touch-icon" href="earth_logo.png">
@@ -420,42 +420,33 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
 .rb-save:hover { background: #9F1239; }
 .rb-status { font-size: 12px; color: #9F1239; font-weight: 600; }
 
-/* glossary page */
-.glossary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
-.gterm { background: #f7f9fc; border: 1px solid #E5E9F0; border-radius: 10px; padding: 16px 20px; border-top: 3px solid var(--teal); }
-.gterm .gname { font-weight: 700; color: var(--dark-teal); font-size: 15.5px; margin-bottom: 6px; }
-.gterm .gdef { font-size: 13.5px; color: var(--text-light); line-height: 1.6; }
-.gterm .gdef a { color: var(--teal); }
-.gterm.hidden { display: none; }
-.gsearch { width: 100%; padding: 13px 18px; border: 1px solid #E5E9F0; border-radius: 10px;
-  font-family: inherit; font-size: 15px; margin: 4px 0 14px; }
-.gsearch:focus { outline: 2px solid var(--light-teal); border-color: var(--teal); }
-.gjump-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
-.gjump { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
-  background: var(--very-light-teal); color: var(--dark-teal); border-radius: 8px; font-size: 13px;
-  font-weight: 700; text-decoration: none; transition: all 0.15s; }
-.gjump:hover { background: var(--teal); color: #fff; }
-.gletter { font-size: 22px; font-weight: 800; color: var(--dark-teal); border-bottom: 2px solid var(--very-light-teal);
-  margin: 6px 0 14px; padding-bottom: 4px; scroll-margin-top: 16px; }
-.gcount { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
-.gnone { display: none; color: var(--text-light); font-style: italic; }
-@media (max-width: 900px) { .glossary-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+<script>var WHEELS = []; var VENNS = [];</script>
 
 <button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
 
+<!-- ═══ Sidebar ═══ -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <img src="MHCCA_logo.png" alt="MHCCA — Mental Health and Climate Change Alliance">
     <h2>Understanding Climate Emotions</h2>
     <p>Full Professional Development Curriculum</p>
   </div>
-  <div class="sidebar-nav">
-    <div class="nav-section">Reference</div>
-    <div class="nav-item active"><span class="dot">§</span><span>Glossary of Key Terms</span></div>
-    <div class="nav-item nav-ext" onclick="window.location.href='curriculum.html'"><span class="dot">←</span><span>Back to the Curriculum</span></div>
+  <div class="sidebar-nav" id="sidebarNav">
+<div class="nav-item nav-ext" onclick="window.location.href='curriculum.html'"><span class="dot">⌂</span><span>Curriculum Home</span></div>
+<div class="nav-section">Section 6: Closing Remarks</div>
+<div class="nav-item" data-target="m52"><span class="dot"></span><span>Closing Remarks</span></div>
+<div class="nav-section">All sections</div>
+<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section1.html'"><span class="dot">1</span><span>Section 1: Introduction to Climate Change and Mental Health</span></div>
+<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section2.html'"><span class="dot">2</span><span>Section 2: Understanding the Landscape of Climate Emotions</span></div>
+<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section3.html'"><span class="dot">3</span><span>Section 3: Factors Influencing Mental Health in a Changing Climate</span></div>
+<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section4.html'"><span class="dot">4</span><span>Section 4: Strategies for Resilience and Coping</span></div>
+<div class="nav-item nav-ext" onclick="window.location.href='curriculum-section5.html'"><span class="dot">5</span><span>Section 5: Addressing Climate Change and Mental Health in Policy and Practice</span></div>
+<div class="nav-item nav-ext active" onclick="window.location.href='javascript:void(0)'"><span class="dot">6</span><span>Section 6: Closing Remarks</span></div>
+<div class="nav-section">Reference</div>
+<div class="nav-item nav-ext" onclick="window.location.href='glossary.html'"><span class="dot">§</span><span>Glossary of Key Terms</span></div>
   </div>
   <div class="sidebar-footer">
     <p>This digital resource presents the complete <em>Understanding Climate Emotions</em> professional development curriculum developed by the MHCCA and contributors. <a href="curriculum.html#contributors">Click here for a full list of contributors</a>.</p>
@@ -463,50 +454,406 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
   </div>
 </div>
 
-<div class="main">
-  <div class="module-page active" id="glossary">
-    <div class="module-banner"><span class="module-tag">Reference</span><h1>Glossary of Key Terms</h1></div>
-    <div class="static-section">
-      <p>Key terms used across the curriculum. Search, jump to a letter, or scroll to browse.</p>
-      <input type="search" class="gsearch" id="glossarySearch" placeholder="Search terms (e.g., solastalgia, equity, intersectionality)..." oninput="filterGlossary()">
-      <div class="gcount" id="gCount">25 terms</div>
-      <div id="glossaryBody">
-<div class="gletter" id="g-C">C</div><div class="glossary-grid"><div class="gterm"><div class="gname">Climate anxiety</div><div class="gdef">Heightened emotional distress, worry, and/or uncertainty related to climate change and its actual or anticipated effects. <em>Throughout the course, eco-anxiety is used interchangeably with climate anxiety. </em></div></div><div class="gterm"><div class="gname">Climate change</div><div class="gdef"> Long-term alterations in temperature, precipitation, and other atmospheric conditions. These changes can be natural, but since the 1800s have largely been driven by human activities such as burning fossil fuels, which release greenhouse gas (GHG) emissions into the atmosphere. These emissions cause heat from the sun to become trapped and cause warming.</div></div><div class="gterm"><div class="gname">Climate emotions</div><div class="gdef">A range of natural feelings and emotional responses to the challenges and realities of climate change, <em>sometimes also referred to as eco-emotions</em>. </div></div><div class="gterm"><div class="gname">Climate grief</div><div class="gdef">Deep sorrow and a sense of loss that people feel in relation to climate change and environmental destruction, <em>sometimes also referred to as eco-grief.</em></div></div><div class="gterm"><div class="gname">Climate justice</div><div class="gdef">A principle that addresses the human rights and inequities of climate change, strives for justice and fair treatment for all, seeks equitable systems and decision making processes, and recognizes that those least responsible for climate change are often the most impacted. Climate justice also recognizes the systems that have led to climate change are rooted in inequity and harm, and works towards just, restorative, caring systems instead.</div></div><div class="gterm"><div class="gname">Climate-related distress</div><div class="gdef">Describes a wide-range of psychological, physical, and social reactions and consequences that are related to the anticipated, observed, or experienced effects of climate change and/or the perception that our individual and collective responses to climate change are insufficient. </div></div><div class="gterm"><div class="gname">Climate-related resilience</div><div class="gdef">Multiple and interacting emotions, capacity, strategies, and actions used to cope with the acute and chronic anticipated, observed, or experienced effects of climate change and/or the perception that our individual and collective responses to climate change are insufficient.</div></div><div class="gterm"><div class="gname">Colonialism</div><div class="gdef"> A harmful system of power and extraction where a colonial external force tries to control and extract resources from another people and their lands. In Canada, this took the form of settler-colonialism, whereby settlers took and continue to hold power over Indigenous Peoples’ land, communities, and ways of life. This has involved controlling resources, changing laws, banning cultural practices, and hindering Indigenous Peoples’ connections to land. The effects of colonialism are not just in the past; they are ongoing and continue to shape Indigenous Peoples’ experiences, health, and well-being.</div></div></div>
-<div class="gletter" id="g-E">E</div><div class="glossary-grid"><div class="gterm"><div class="gname">Ecological (eco) anxiety</div><div class="gdef"> Often used alongside climate anxiety, or even synonymously with it, to refer to anxiety regarding environmental or ecosystem concerns, which can include climate anxiety, but may also be broader and not as climate specific. For example: if a company is dumping toxic chemicals into a river near your home, this may not be directly related to climate change, yet it still can provoke intense emotional responses. <em>Throughout the course, eco-anxiety is used interchangeably with climate anxiety. </em></div></div><div class="gterm"><div class="gname">Ecological (eco) emotions</div><div class="gdef"><em> </em><em>See climate emotions. </em></div></div><div class="gterm"><div class="gname">Ecological (eco) grief</div><div class="gdef"><em>See climate grief. </em></div></div><div class="gterm"><div class="gname">Ecosystem</div><div class="gdef">A community of living and non-living things which interact within a specific environment or geographic area. </div></div><div class="gterm"><div class="gname">Environment</div><div class="gdef">The interconnected physical, biological, and chemical conditions and relationships that support and influence all forms of life. It is also used synonymously at times for place, space, or ecosystem.</div></div><div class="gterm"><div class="gname">Environmental racism</div><div class="gdef">A type of systemic racism where communities of color are disproportionately exposed to environmental hazards such as toxic waste sites, polluted air, and urban heat islands. These disproportionate impacts are due to combined effects of racism, political exclusion, colonialism, and other harmful systems. Environmental racism creates unequal exposure to environmental risks, exacerbating both physical and emotional impacts of climate change and environmental degradation.</div></div><div class="gterm"><div class="gname">Equity</div><div class="gdef"> People have what they need to be safe, healthy, supported, and thriving, even if different people need different things. Equity aims to remove unfair imbalances that are caused by injustice and inequitable treatment of different groups.</div></div></div>
-<div class="gletter" id="g-I">I</div><div class="glossary-grid"><div class="gterm"><div class="gname">Indigenous Ways of Knowing</div><div class="gdef">The diverse cultural, relational, experiential, and scientific approaches through which Indigenous Peoples both singly and in groups understand the world. Closely linked to frameworks such Two‑Eyed Seeing, and Indigenous cultural safety, in the shared emphasis on respect for the importance of both Indigenous knowledge systems and Western knowledge and scientific methods. Indigenous Ways of knowing recognizes the strengths of each and maintains their distinctiveness, while also using them together to generate deeper, more holistic understanding for the benefit of communities and the environment.</div></div><div class="gterm"><div class="gname">Intersectionality</div><div class="gdef">A framework which outlines how individuals possess multiple, overlapping identities that interact to create unique experiences of privilege and oppression. In a climate context, it allows us to see how these overlapping systems affect who bears the brunt of environmental harm and who is most impacted emotionally.</div></div></div>
-<div class="gletter" id="g-M">M</div><div class="glossary-grid"><div class="gterm"><div class="gname">Marginalization</div><div class="gdef">Marginalization involves the systematic exclusion of individuals or groups from power, resources, and decision-making processes. This exclusion intensifies the impacts of climate change on already disadvantaged populations.</div></div></div>
-<div class="gletter" id="g-P">P</div><div class="glossary-grid"><div class="gterm"><div class="gname">Planetary health</div><div class="gdef">Planetary health is both a hopeful emerging field and social movement that relates to climate change and how it is connected with the health of people and the planet. It emphasizes that human well-being is connected to the environment.</div></div></div>
-<div class="gletter" id="g-R">R</div><div class="glossary-grid"><div class="gterm"><div class="gname">Relational accountability</div><div class="gdef"> An ethical practice rooted in the connections between people, communities, and the environment rather than individual needs and hierarchical power structures and systems.</div></div><div class="gterm"><div class="gname">Right Relationship</div><div class="gdef"> The act of being in right relations and relational accountability by centring an awareness of the interconnectedness of all things. Key to this is understanding the importance of trust, reciprocity, and respect for dignity and Rights in systems, structures and relationships in ways that disrupt inequality and inequity between all things both living and non-living.</div></div></div>
-<div class="gletter" id="g-S">S</div><div class="glossary-grid"><div class="gterm"><div class="gname">Solastalgia</div><div class="gdef">The emotional distress of witnessing ongoing environmental change in one’s home environment. Unlike grief that follows a recognized loss, solastalgia is the sense of homesickness and dislocation that arises when you are at home, but that home is fundamentally changed in real time.</div></div><div class="gterm"><div class="gname">Systematic oppression</div><div class="gdef">Ways in which inequities and harm are embedded within laws, policies, institutional practices, and broader societal norms, disproportionately affecting certain groups based on identity.</div></div></div>
-<div class="gletter" id="g-T">T</div><div class="glossary-grid"><div class="gterm"><div class="gname">Trauma-Informed</div><div class="gdef">An approach that recognizes what trauma is and how it can affect people, focuses on key areas like <em>safety, trust, clarity, connection and inclusion</em> and works to prevent further traumatization or re-traumatization. </div></div></div>
-<div class="gletter" id="g-V">V</div><div class="glossary-grid"><div class="gterm"><div class="gname">Vulnerability</div><div class="gdef">Refers to the degree to which individuals or communities are at risk of harm from climate impacts. It is not a fixed trait but a dynamic condition influenced by various social, economic, and environmental factors.</div></div></div>
-      </div>
-      <p class="gnone" id="gNone">No terms match your search.</p>
-      <div class="module-nav-btns">
-        <button class="btn btn-secondary" onclick="window.location.href='curriculum.html'">← Back to the Curriculum</button>
-      </div>
-    </div>
-  </div>
+<!-- ═══ Main ═══ -->
+<div class="main" id="main">
+<div class="module-page" id="m52"><div class="module-banner has-photo"><img class="banner-photo" src="https://images.pexels.com/photos/28481920/pexels-photo-28481920.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="A misty field at dawn" loading="lazy" onerror="this.style.display='none'"><span class="module-tag">Section 6</span><h1>Section 6: Closing Remarks</h1><span class="photo-credit"><a href="https://www.pexels.com/photo/28481920/" target="_blank" rel="noopener">Photo via Pexels</a></span></div><div class="player-bar" data-audio="audio/curriculum/m52.mp3" data-mid="m52"><button class="pb-play" aria-label="Play audio overview">►</button><div class="pb-mid"><div class="pb-label">Audio Overview <span class="pb-mtitle">— Closing Remarks</span></div><div class="pb-track"><div class="pb-fill"></div></div></div><span class="pb-time">–:–– / –:––</span><button type="button" class="pb-dl" data-mid="m52" data-fn="Closing Remarks — Audio Overview Transcript.txt">⭳ Download transcript</button></div><div class="static-section"><h2>You have reached the end!</h2>
+<p>Together, we’ve explored the emotions tied to climate change including worry, anxiety, guilt, anger, and hope, and how they shape our response to this global challenge.</p>
+<p>You’ve learned about how different emotional responses to climate change emerge as a result of exposures, life course and developmental factors, the ways that climate change impacts some populations disproportionately and can worsen existing inequities, and the intersection of all these factors.</p>
+<p>We’ve examined the connections behind climate impacts and their psychological effects, alongside practical strategies for resilience and well-being.</p>
+<p>Finally, we explored the responsibilities of professionals in helping support mental health in the context of climate change.</p>
+<p>It is our hope that in exploring each of these areas, you will now be ready to go forward with an increased capacity and commitment to support healthy and resilient communities.</p>
+<details class="module-contribs"><summary>Module reviewers &amp; contributors</summary><ul><li>Kiffer G. Card, Faculty of Health Sciences, Simon Fraser University</li><li>Kaylie Higgs, Mental Health and Climate Change Alliance</li><li>Dana De Benetti, Mental Health and Climate Change Alliance</li><li>Michael Marchand, sqilxw, syilx Nation - Cultural Safety Consultant   </li><li>Gina Martin, Faculty of Health Disciplines, Athabasca University</li></ul></details><div class="module-nav-btns"><button class="btn btn-secondary nav-prev">← Previous</button><button class="btn btn-primary nav-next">Next →</button></div></div></div>
 </div>
 
 <script>
-function filterGlossary() {
-  var q = (document.getElementById('glossarySearch').value || '').trim().toLowerCase();
-  var any = 0;
-  document.querySelectorAll('#glossaryBody .gterm').forEach(function(t){
-    var hit = q === '' || t.textContent.toLowerCase().indexOf(q) !== -1;
-    t.classList.toggle('hidden', !hit);
-    if (hit) any++;
+var MODULES = [{"id": "m52", "title": "Section 6: Closing Remarks", "short": "Closing Remarks", "group": 6}];
+var TOTAL = 1;
+var TRANSCRIPTS = {"m52": "Section 6: Closing Remarks\nAudio Overview — Transcript\n\nCongratulations on reaching this final chapter in our journey together. We’ve traversed a landscape of emotions, including worry, anxiety, guilt, anger, and hope, and explored how these feelings intertwine with the urgent realities of climate change. We’ve looked at climate impacts and their psychological effects, while also delving into practical strategies to foster resilience and wellbeing. Along the way, we’ve seen that no role is too small and no profession too distant: from educators and health providers to media professionals, policymakers, and spiritual leaders, we all share in the opportunity and responsibility to address climate change and its growing influence on mental health.\n\nThe challenges we face are, by nature, interconnected. Many stem from a period in human history, when industrialization and resource extraction have pushed the existing planetary systems to their limits. A disconnection from Indigenous roots and traditional ecological knowledge has not only harmed the ecosystems we depend on; it has also taken a toll on our collective psyche. Reorienting ourselves toward more environmentally sustainable ways of living requires us to acknowledge and learn from those communities, past and present, that have long understood the value of reciprocity with the Earth.\n\nThroughout this course, we’ve studied how climate emotions can be a natural response to overwhelming threats. The strategies we’ve covered—differentiating more adaptive from to less adaptive coping, building resilience, validating emotions, and collaborating across sectors—are meant to help us honor the authenticity of these reactions while moving toward effective solutions and promoting health and wellbeing. Indeed, caring for our mental health in this changing climate is just one piece of a much larger puzzle. No single individual, therapy, or policy can turn the tide alone. But our ethical conduct, grounded in empathy and compassion, can form a foundation for collective resilience.\n\nYou may leave this course aware that your actions won’t magically erase all the outcomes of climate change. The world will continue to experience unpredictable challenges. But the work you do as an educator, health or social care provider, media professional, spiritual or moral leader, policymaker, or community member, can still create pockets of adaptation and well-being, reducing harm and kindling hope. This spirit of collaboration and persistence is what enables us to transcend barriers and remain deeply committed to each other and to our planet.\n\nBy weaving mental health awareness into every layer of our efforts—from policy-making to grassroots organizing—we signal a new way forward, one where people’s psychological and emotional realities are not overlooked but integrated into the broader mission. In this way, no matter the hurdles, we can adapt, endure, and maintain our shared sense of meaning and purpose.\n\nThank you for accompanying us on this learning experience. Your dedication to understanding climate change and mental health, and to applying that knowledge with empathy, is a powerful step toward a more sustainable and caring world. As you bring what you’ve learned into your work and communities, remember that change happens when we unite across disciplines and viewpoints. May you feel both empowered and supported in the endeavors that lie ahead—knowing that, together, our collective efforts truly can make a difference.\n"};
+var PREV_LINK = "curriculum-section5.html";
+var NEXT_LINK = null;
+</script>
+<script>
+// ─── storage helpers (fail-safe if unavailable) ───
+function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+
+// ─── navigation ───
+var current = 0;
+function showModule(i, push) {
+  if (i < 0 || i >= TOTAL) return;
+  current = i;
+  if (window.pbPauseAll) pbPauseAll();
+  document.querySelectorAll('.module-page').forEach(function(p){ p.classList.remove('active'); });
+  var page = document.getElementById(MODULES[i].id);
+  if (page) page.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(function(n){
+    n.classList.toggle('active', n.getAttribute('data-target') === MODULES[i].id);
   });
-  document.querySelectorAll('#glossaryBody .gletter').forEach(function(h){
-    var grid = h.nextElementSibling;
-    var vis = grid ? grid.querySelectorAll('.gterm:not(.hidden)').length : 0;
-    h.style.display = vis ? '' : 'none';
-    if (grid) grid.style.display = vis ? '' : 'none';
-  });
-  document.getElementById('gNone').style.display = any ? 'none' : 'block';
-  document.getElementById('gCount').textContent = (q === '' ? 25 : any) + ' terms';
+  // visited
+  var v = {}; try { v = JSON.parse(lsGet('uce-curr-visited') || '{}'); } catch(e){}
+  v[MODULES[i].id] = 1; lsSet('uce-curr-visited', JSON.stringify(v));
+  markVisited();
+  if (push !== false) { try { history.replaceState(null, '', '#' + MODULES[i].id); } catch(e){} }
+  window.scrollTo(0, 0);
+  document.getElementById('sidebar').classList.remove('open');
+  var act = document.querySelector('.nav-item.active');
+  if (act && act.scrollIntoView) { try { act.scrollIntoView({ block: 'nearest' }); } catch(e){} }
 }
+function markVisited() {
+  var v = {}; try { v = JSON.parse(lsGet('uce-curr-visited') || '{}'); } catch(e){}
+  document.querySelectorAll('.nav-item').forEach(function(n){
+    if (v[n.getAttribute('data-target')]) n.classList.add('visited');
+  });
+}
+document.querySelectorAll('.nav-item').forEach(function(n){
+  n.addEventListener('click', function(){
+    var id = n.getAttribute('data-target');
+    var i = MODULES.findIndex(function(m){ return m.id === id; });
+    if (i >= 0) showModule(i);
+  });
+});
+document.querySelectorAll('.nav-prev').forEach(function(b){ b.addEventListener('click', function(){
+  if (current === 0 && PREV_LINK) { window.location.href = PREV_LINK; return; }
+  showModule(current - 1);
+}); });
+document.querySelectorAll('.nav-next').forEach(function(b){ b.addEventListener('click', function(){
+  if (current === TOTAL - 1 && NEXT_LINK) { window.location.href = NEXT_LINK; return; }
+  showModule(current + 1);
+}); });
+
+// ─── contributors page ───
+function showContributors() {
+  if (window.pbPauseAll) pbPauseAll();
+  document.querySelectorAll('.module-page').forEach(function(p){ p.classList.remove('active'); });
+  var page = document.getElementById('contributors');
+  if (page) page.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('active'); });
+  try { history.replaceState(null, '', '#contributors'); } catch(e){}
+  window.scrollTo(0, 0);
+  document.getElementById('sidebar').classList.remove('open');
+}
+var contribLink = document.getElementById('contribLink');
+if (contribLink) contribLink.addEventListener('click', function(e){ e.preventDefault(); showContributors(); });
+
+// ─── audio overview player bars ───
+var pbAudio = new Audio();
+var pbActive = null;
+function pbFmt(s) {
+  if (!isFinite(s)) return '–:––';
+  var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+  return m + ':' + (ss < 10 ? '0' : '') + ss;
+}
+function pbPauseAll() {
+  if (!pbAudio.paused) pbAudio.pause();
+}
+function pbUpdate() {
+  if (!pbActive) return;
+  var fill = pbActive.querySelector('.pb-fill');
+  var time = pbActive.querySelector('.pb-time');
+  var d = pbAudio.duration;
+  if (fill) fill.style.width = (d ? (100 * pbAudio.currentTime / d) : 0) + '%';
+  if (time) time.textContent = pbFmt(pbAudio.currentTime) + ' / ' + pbFmt(d);
+}
+pbAudio.addEventListener('timeupdate', pbUpdate);
+pbAudio.addEventListener('loadedmetadata', pbUpdate);
+pbAudio.addEventListener('play', function(){
+  if (pbActive) { pbActive.querySelector('.pb-play').textContent = '❚❚'; pbActive.classList.add('playing'); }
+});
+pbAudio.addEventListener('pause', function(){
+  if (pbActive) { pbActive.querySelector('.pb-play').textContent = '►'; pbActive.classList.remove('playing'); }
+});
+pbAudio.addEventListener('ended', function(){
+  if (pbActive) {
+    pbActive.querySelector('.pb-play').textContent = '►';
+    pbActive.classList.remove('playing');
+    pbActive.querySelector('.pb-fill').style.width = '0%';
+    pbActive.querySelector('.pb-time').textContent = pbFmt(0) + ' / ' + pbFmt(pbAudio.duration);
+  }
+});
+pbAudio.addEventListener('error', function(){
+  if (pbActive) {
+    var t = pbActive.querySelector('.pb-time');
+    if (t) t.textContent = 'audio unavailable';
+  }
+});
+document.querySelectorAll('.player-bar').forEach(function(bar){
+  var btn = bar.querySelector('.pb-play');
+  var track = bar.querySelector('.pb-track');
+  btn.addEventListener('click', function(){
+    if (pbActive !== bar) {
+      if (pbActive) {
+        pbActive.querySelector('.pb-play').textContent = '►';
+        pbActive.classList.remove('playing');
+        pbActive.querySelector('.pb-fill').style.width = '0%';
+      }
+      pbActive = bar;
+      pbAudio.src = bar.getAttribute('data-audio');
+      pbAudio.play();
+    } else {
+      if (pbAudio.paused) pbAudio.play(); else pbAudio.pause();
+    }
+  });
+  track.addEventListener('click', function(e){
+    if (pbActive !== bar || !pbAudio.duration) return;
+    var r = track.getBoundingClientRect();
+    pbAudio.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * pbAudio.duration;
+    pbUpdate();
+  });
+  var dl = bar.querySelector('.pb-dl');
+  if (dl) dl.addEventListener('click', function(e){
+    e.preventDefault();
+    var mid = dl.getAttribute('data-mid');
+    var text = (typeof TRANSCRIPTS !== 'undefined' && TRANSCRIPTS[mid]) || '';
+    if (!text) { window.open('audio/curriculum/' + mid + '.txt', '_blank'); return; }
+    try {
+      var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = dl.getAttribute('data-fn') || (mid + ' transcript.txt');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+    } catch (err) {
+      window.open('audio/curriculum/' + mid + '.txt', '_blank');
+    }
+  });
+});
+
+// ─── flip cards ───
+document.querySelectorAll('.flipc').forEach(function(c){
+  function flip(){ c.classList.toggle('flipped'); c.setAttribute('aria-pressed', c.classList.contains('flipped')); }
+  c.addEventListener('click', flip);
+  c.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+});
+
+// ─── accordions ───
+document.querySelectorAll('.accordion-header').forEach(function(h){
+  function toggle(){
+    var item = h.parentElement;
+    var body = item.querySelector('.accordion-body');
+    var open = item.classList.toggle('open');
+    h.setAttribute('aria-expanded', String(open));
+    body.style.maxHeight = open ? (body.scrollHeight + 40) + 'px' : '0px';
+  }
+  h.addEventListener('click', toggle);
+  h.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+});
+
+// ─── tabs (activities + cedar) ───
+document.querySelectorAll('.tab-buttons .tab-btn').forEach(function(b){
+  b.addEventListener('click', function(){
+    var tabs = b.closest('.tabs');
+    tabs.querySelectorAll('.tab-btn').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    tabs.querySelectorAll(':scope > .tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    var t = document.getElementById(b.getAttribute('data-target'));
+    if (t) t.classList.add('active');
+  });
+});
+document.querySelectorAll('.cedar-tab').forEach(function(b){
+  b.addEventListener('click', function(){
+    var cedar = b.closest('.cedar');
+    cedar.querySelectorAll('.cedar-tab').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    cedar.querySelectorAll('.cedar-panel').forEach(function(p){ p.style.display = 'none'; });
+    var t = document.getElementById(b.getAttribute('data-target'));
+    if (t) t.style.display = 'block';
+  });
+});
+
+// ─── flash decks ───
+document.querySelectorAll('.deck').forEach(function(deck){
+  var cards = deck.querySelectorAll('.deck-card');
+  var dots = deck.querySelectorAll('.deck-dot');
+  var counter = deck.querySelector('.deck-counter');
+  var prev = deck.querySelector('.deck-btn.prev');
+  var next = deck.querySelector('.deck-btn.next');
+  var idx = 0;
+  cards.forEach(function(c, i){ if (c.classList.contains('deck-cat')) dots[i].classList.add('cat'); });
+  function go(i){
+    idx = Math.max(0, Math.min(cards.length - 1, i));
+    cards.forEach(function(c, j){ c.classList.toggle('active', j === idx); });
+    dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+    counter.textContent = (idx + 1) + ' / ' + cards.length;
+    prev.disabled = idx === 0; next.disabled = idx === cards.length - 1;
+  }
+  prev.addEventListener('click', function(){ go(idx - 1); });
+  next.addEventListener('click', function(){ go(idx + 1); });
+  dots.forEach(function(d, j){ d.addEventListener('click', function(){ go(j); }); });
+  go(0);
+});
+
+// ─── emotion wheels ───
+function describeArc(cx, cy, rO, rI, sa, ea) {
+  var tr = function(a){ return (a - 90) * Math.PI / 180; };
+  var x1o = cx + rO * Math.cos(tr(sa)), y1o = cy + rO * Math.sin(tr(sa));
+  var x2o = cx + rO * Math.cos(tr(ea)), y2o = cy + rO * Math.sin(tr(ea));
+  var x1i = cx + rI * Math.cos(tr(sa)), y1i = cy + rI * Math.sin(tr(sa));
+  var x2i = cx + rI * Math.cos(tr(ea)), y2i = cy + rI * Math.sin(tr(ea));
+  var la = (ea - sa) > 180 ? 1 : 0;
+  return ['M', x1o, y1o, 'A', rO, rO, 0, la, 1, x2o, y2o, 'L', x2i, y2i, 'A', rI, rI, 0, la, 0, x1i, y1i, 'Z'].join(' ');
+}
+WHEELS.forEach(function(w){
+  var svg = document.getElementById(w.id);
+  var detail = document.getElementById(w.id + '-detail');
+  if (!svg || !detail) return;
+  var n = w.data.length, seg = 360 / n, rO = 170, rI = 62, lr = (rO + rI) / 2;
+  var html = '';
+  w.data.forEach(function(d, i){
+    var sa = i * seg, ea = (i + 1) * seg;
+    html += '<path class="seg" data-i="' + i + '" d="' + describeArc(0, 0, rO, rI, sa, ea) + '" fill="' + d.color + '" stroke="#fff" stroke-width="2"/>';
+    var ma = (sa + ea) / 2, rad = (ma - 90) * Math.PI / 180;
+    var lx = lr * Math.cos(rad), ly = lr * Math.sin(rad);
+    html += '<text class="seg-label" text-anchor="middle" x="' + lx.toFixed(1) + '" y="' + (ly + 5).toFixed(1) + '">' + d.name + '</text>';
+  });
+  html += '<circle cx="0" cy="0" r="' + rI + '" fill="#fff" stroke="#E5E7EB" stroke-width="1.5"/>';
+  html += '<text class="hub-label" x="0" y="-4">Climate</text><text class="hub-label" x="0" y="12">Emotions</text>';
+  svg.innerHTML = html;
+  svg.querySelectorAll('.seg').forEach(function(s){
+    s.setAttribute('tabindex', '0'); s.setAttribute('role', 'button');
+    function act(){
+      var i = +s.getAttribute('data-i');
+      var was = s.classList.contains('active');
+      svg.querySelectorAll('.seg').forEach(function(x){ x.classList.remove('active'); x.classList.remove('any-active'); });
+      if (!was) {
+        s.classList.add('active');
+        svg.querySelectorAll('.seg').forEach(function(x){ if (x !== s) x.classList.add('any-active'); });
+        var d = w.data[i];
+        var subs = d.subs.map(function(u){
+          return '<div class="wd-sub"><strong>' + u.name + '</strong>' + (u.desc ? ' — ' + u.desc : '') + '</div>';
+        }).join('');
+        detail.innerHTML = '<h4 style="color:' + d.color + '">' + d.name + (d.desc ? ' — ' + d.desc : '') + '</h4>' + subs;
+      } else {
+        detail.innerHTML = '<p class="wd-default">Click a wedge of the wheel to explore that family of climate emotions and examples of what they can mean.</p>';
+      }
+    }
+    s.addEventListener('click', act);
+    s.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
+  });
+});
+
+// ─── venn diagrams ───
+VENNS.forEach(function(v){
+  var svg = document.getElementById(v.id);
+  var detail = document.getElementById(v.id + '-detail');
+  if (!svg) return;
+  var colors = { A: '#E8D544', B: '#E05A6D', C: '#3B82B6' };
+  var cx = { A: [160, 150], B: [300, 150], C: [230, 265] };
+  var R = 105;
+  var defs = '<defs>' +
+    '<clipPath id="' + v.id + '-ca"><circle cx="160" cy="150" r="105"/></clipPath>' +
+    '<clipPath id="' + v.id + '-cb"><circle cx="300" cy="150" r="105"/></clipPath>' +
+    '<clipPath id="' + v.id + '-cc"><circle cx="230" cy="265" r="105"/></clipPath></defs>';
+  var shapes = defs;
+  ['A','B','C'].forEach(function(k){
+    shapes += '<circle class="vregion" data-k="' + k + '" cx="' + cx[k][0] + '" cy="' + cx[k][1] + '" r="' + R + '" fill="' + colors[k] + '" fill-opacity="0.45" stroke="' + colors[k] + '" stroke-width="2"/>';
+  });
+  shapes += '<circle class="vregion" data-k="AB" cx="300" cy="150" r="105" fill="#C97A3D" fill-opacity="0.55" clip-path="url(#' + v.id + '-ca)"/>';
+  shapes += '<circle class="vregion" data-k="AC" cx="230" cy="265" r="105" fill="#7FA83F" fill-opacity="0.55" clip-path="url(#' + v.id + '-ca)"/>';
+  shapes += '<g clip-path="url(#' + v.id + '-cb)"><circle class="vregion" data-k="BC" cx="230" cy="265" r="105" fill="#8E5A9E" fill-opacity="0.55"/></g>';
+  shapes += '<g clip-path="url(#' + v.id + '-ca)"><g clip-path="url(#' + v.id + '-cb)"><circle class="vregion" data-k="ABC" cx="230" cy="265" r="105" fill="#5C5F66" fill-opacity="0.8"/></g></g>';
+  shapes += '<text class="vlabel" x="80" y="60" fill="#8a7d1e">A</text><text class="vlabel" x="372" y="60" fill="#a33b4b">B</text><text class="vlabel" x="224" y="398" fill="#26618c">C</text>';
+  svg.innerHTML = shapes;
+  var legend = { A: 'A', B: 'B', C: 'C', AB: 'A + B', AC: 'A + C', BC: 'B + C', ABC: 'A + B + C' };
+  svg.querySelectorAll('.vregion').forEach(function(s){
+    s.addEventListener('click', function(){
+      var k = s.getAttribute('data-k');
+      var d = v.data[k];
+      if (!d) return;
+      svg.querySelectorAll('.vregion').forEach(function(x){ x.setAttribute('stroke-width', x.getAttribute('data-k') === k ? '4' : '2'); if (!['A','B','C'].includes(x.getAttribute('data-k'))) x.setAttribute('stroke', x.getAttribute('data-k') === k ? '#1a2942' : 'none'); });
+      detail.innerHTML = '<h4>' + d.title + '</h4>' + d.body.join('');
+    });
+  });
+});
+
+// ─── quizzes ───
+document.querySelectorAll('.quiz').forEach(function(qz){
+  var check = qz.querySelector('.quiz-check');
+  if (!check) return;
+  check.addEventListener('click', function(){
+    var qs = qz.querySelectorAll('.quiz-question[data-correct]');
+    var right = 0, answered = 0;
+    qs.forEach(function(q){
+      var correct = +q.getAttribute('data-correct');
+      var opts = q.querySelectorAll('.quiz-option');
+      var sel = q.querySelector('input:checked');
+      opts.forEach(function(o){ o.classList.remove('correct', 'incorrect'); });
+      if (sel) {
+        answered++;
+        var v = +sel.value;
+        if (v === correct) { right++; opts[v].classList.add('correct'); }
+        else { opts[v].classList.add('incorrect'); if (opts[correct]) opts[correct].classList.add('correct'); }
+      }
+    });
+    var score = qz.querySelector('.quiz-score');
+    if (answered < qs.length) {
+      score.textContent = 'Answered ' + answered + ' of ' + qs.length + ' — ' + right + ' correct so far.';
+      score.className = 'quiz-score';
+    } else {
+      var pct = Math.round(100 * right / qs.length);
+      score.textContent = 'You scored ' + right + ' / ' + qs.length + ' (' + pct + '%).';
+      score.className = 'quiz-score ' + (pct >= 70 ? 'pass' : 'fail');
+    }
+  });
+});
+
+// ─── reflection boxes: save = download question + answer ───
+document.querySelectorAll('.rb-save').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var ta = document.getElementById(btn.getAttribute('data-ta'));
+    var box = btn.closest('.reflection-box');
+    var status = box.querySelector('.rb-status');
+    var qs = [];
+    box.querySelectorAll('p').forEach(function(p){ qs.push(p.textContent.trim()); });
+    var title = btn.getAttribute('data-title') || 'Reflection';
+    var modTitle = (document.querySelector('.module-page.active .module-banner h1') || {}).textContent || '';
+    var text = title + (modTitle ? ' — ' + modTitle : '') + '\n\n' + qs.join('\n') + '\n\nMy reflection:\n' + (ta ? ta.value : '') + '\n';
+    try {
+      var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = (title + (modTitle ? ' - ' + modTitle : '') + '.txt').replace(/[\\/:*?"<>|]+/g, '-');
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      if (status) { status.textContent = 'Saved — check your downloads.'; setTimeout(function(){ status.textContent = ''; }, 3500); }
+    } catch (err) {
+      if (status) status.textContent = 'Could not save automatically — please copy your text.';
+    }
+  });
+});
+
+// ─── reflection textareas (autosave) ───
+document.querySelectorAll('.reflect-ta, .refl-ta').forEach(function(ta){
+  var key = 'uce-curr-ta-' + ta.getAttribute('data-key');
+  var saved = lsGet(key);
+  if (saved) ta.value = saved;
+  var status = document.createElement('div');
+  status.className = 'ta-status';
+  ta.insertAdjacentElement('afterend', status);
+  var t;
+  ta.addEventListener('input', function(){
+    clearTimeout(t);
+    t = setTimeout(function(){ lsSet(key, ta.value); status.textContent = 'Saved on this device ✓'; setTimeout(function(){ status.textContent = ''; }, 2000); }, 500);
+  });
+});
+
+// ─── init from hash ───
+(function(){
+  var h = (location.hash || '').replace('#', '');
+  markVisited();
+  if (h === 'contributors') { showContributors(); return; }
+  var i = MODULES.findIndex(function(m){ return m.id === h; });
+  showModule(i >= 0 ? i : 0, false);
+})();
+window.addEventListener('hashchange', function(){
+  var h = (location.hash || '').replace('#', '');
+  if (h === 'contributors') { showContributors(); return; }
+  var i = MODULES.findIndex(function(m){ return m.id === h; });
+  if (i >= 0 && i !== current) showModule(i, false);
+});
 </script>
 </body>
 </html>
