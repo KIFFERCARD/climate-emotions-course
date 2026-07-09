@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Privacy Policy | Understanding Climate Emotions | MHCCA</title>
-<meta name="description" content="Privacy policy for the Understanding Climate Emotions course and curriculum, resources of the Mental Health and Climate Change Alliance." />
+<meta name="description" content="Why the Understanding Climate Emotions resources exist: the connection between climate change and mental health, the team behind the curriculum, and its funders." />
 <link rel="icon" type="image/png" href="earth_logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,6 +60,20 @@ a{color:var(--blue-600);}
 .footer-legal{display:flex;gap:18px;}
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr;}}
+
+/* about-page additions */
+.about-main{max-width:820px;margin:0 auto;padding:38px 22px 70px;}
+.about-main h2{margin:38px 0 12px;font-size:1.45rem;}
+.about-main p{margin:0 0 14px;}
+.funders{display:flex;gap:38px;align-items:center;justify-content:center;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);padding:28px 30px;margin:22px 0 8px;}
+.funders img{height:74px;width:auto;display:block;}
+.funders .funder{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.funders .funder span{font-size:.8rem;color:var(--ink-500);font-family:var(--font-head);letter-spacing:.06em;text-transform:uppercase;}
+.contrib-list{list-style:none;padding:0;margin:10px 0 0;}
+.contrib-list li{padding:9px 0;border-bottom:1px dashed var(--line);line-height:1.5;}
+.contrib-list li:last-child{border-bottom:none;}
+.contrib-list .who{font-weight:600;color:var(--ink-900);}
+.contrib-note{font-size:.9rem;color:var(--ink-500);margin-top:14px;}
 </style>
 </head>
 <body>
@@ -74,49 +88,70 @@ a{color:var(--blue-600);}
       <a href="index.html">Home</a>
       <a href="course.html">The Course</a>
       <a href="curriculum.html">The Curriculum</a>
-      <a href="about.html">About</a>
+      <a href="about.html" aria-current="page">About</a>
     </nav>
   </div>
 </header>
 
 <div class="page-hero">
   <div class="wrap">
-    <h1>Privacy Policy</h1>
+    <h1>About This Resource</h1>
     <p>Understanding Climate Emotions, a resource of the Mental Health and Climate Change Alliance</p>
   </div>
 </div>
 
-<main class="legal">
-  <p class="updated">Effective date: July 8, 2026</p>
+<main class="about-main">
 
-  <p>This Privacy Policy describes how the Mental Health and Climate Change Alliance ("MHCCA", "we", "us") handles information in connection with this website, including the Understanding Climate Emotions course, curriculum, and glossary (together, the "Site"). We designed the Site to collect as little information about you as possible. Using the Site requires no account, registration, or submission of personal information.</p>
+  <h2>Climate change and mental health</h2>
+  <p>Climate change is not only an environmental crisis; it is a human one. Wildfires, floods, heat, and smoke reach into people&rsquo;s homes, health, and livelihoods, while the steady awareness of a changing planet stirs worry, grief, guilt, anger, and hope, sometimes all in the same day. These climate emotions are natural, meaningful responses to real threats and real losses. They are increasingly present in classrooms, clinics, workplaces, and kitchen-table conversations, and they carry consequences for mental health and well-being, particularly for young people, Indigenous communities, and those already facing marginalization.</p>
 
-  <h2>1. Information we do not collect</h2>
-  <p>The Site has no user accounts, sign-up forms, or comment features. We do not run our own analytics or advertising on the Site, we do not set our own cookies, and we do not sell or rent personal information to anyone.</p>
+  <h2>Why this resource exists</h2>
+  <p>Most professionals are never taught how to recognize or respond to climate emotions, in themselves or in the people they support. <em>Understanding Climate Emotions</em> was created to fill that gap. It offers a shared vocabulary, evidence-informed frameworks, and practical strategies for fostering resilience, delivered as a complete professional development curriculum alongside a guided two-hour course. Everything is free and open access, and may be used and adapted with attribution under a Creative Commons BY-SA 4.0 license.</p>
 
-  <h2>2. Information stored on your device</h2>
-  <p>The course and curriculum remember your progress (for example, which modules you have completed and quiz results) using your browser's local storage. This information stays on your device. It is never transmitted to us, and we cannot see it. If you complete the course, the certificate is generated entirely in your browser using the name you type, which is likewise not sent to us. Clearing your browser's site data removes this stored information; doing so will also reset your course progress.</p>
+  <h2>Funding and development</h2>
+  <p>This resource was funded by the British Columbia Ministry of Health and developed by the Mental Health and Climate Change Alliance (MHCCA), with an interdisciplinary community of reviewers and contributors from across Canada and beyond.</p>
+  <div class="funders">
+    <div class="funder">
+      <a href="https://mhcca.ca/" target="_blank" rel="noopener"><img src="MHCCA_logo.png" alt="Mental Health and Climate Change Alliance logo" style="background:#0f527f;border-radius:12px;padding:10px 14px;"></a>
+      <span>Developed by the MHCCA</span>
+    </div>
+    <div class="funder">
+      <a href="https://www2.gov.bc.ca/gov/content/health" target="_blank" rel="noopener"><img src="https://www2.gov.bc.ca/images/BCID_H_rgb_pos.png" alt="Government of British Columbia logo" onerror="this.closest('.funder').style.display='none'"></a>
+      <span>Funded by the B.C. Ministry of Health</span>
+    </div>
+  </div>
 
-  <h2>3. Hosting and server logs</h2>
-  <p>The Site is served by a third-party hosting provider. Like most web hosts, the provider automatically processes standard technical information needed to deliver pages and keep the service secure, such as your IP address, browser type, and the pages requested. This information is handled under the hosting provider's own privacy practices and retention schedules; we do not use it to identify visitors.</p>
+  <h2 id="contributors">Core Developers</h2>
+  <ul class="contrib-list">
+    <li><span class="who">Kiffer G. Card, PhD</span>, Blanche and Charlie Beckerman Scholar in Public Health Innovation, Faculty of Health Sciences, Simon Fraser University</li>
+    <li><span class="who">Dana De Benetti</span>, Mental Health and Climate Change Alliance</li>
+    <li><span class="who">Kaylie Higgs</span>, Mental Health and Climate Change Alliance</li>
+    <li><span class="who">Michael Marchand, sqilxw</span>, syilx Nation - Cultural Safety Consultant</li>
+  </ul>
 
-  <h2>4. Third-party content</h2>
-  <p>Some elements of the Site are loaded from third-party servers: web fonts from Google Fonts, photographs served by Pexels' content delivery network, and certain scripts from public content delivery networks. When your browser requests these files, the third party receives the technical information that accompanies any web request, including your IP address, and handles it under its own privacy policy. If you prefer not to share this information, you can use browser settings or extensions that block third-party requests; the text of the Site will remain readable.</p>
+  <h2>Reviewers and Contributors</h2>
+  <ul class="contrib-list">
+    <li><span class="who">Claire Perry</span>, Centre for Addiction and Mental Health</li>
+    <li><span class="who">Ashley Stoltz</span>, Faculty of Health Sciences, Simon Fraser University</li>
+    <li><span class="who">Brianna Aspinall Nuñez</span>, Carbon Conversations TO</li>
+    <li><span class="who">Monique Beneteau</span>, Canadian Coalition for Seniors’ Mental Health</li>
+    <li><span class="who">Lilian Barraclough</span>, College of Social and Applied Human Sciences, University of Guelph & Youth Climate Lab</li>
+    <li><span class="who">Kelly Green Guilbeau</span>, Conservation social scientist, Johns Hopkins University Bloomberg School of Public Health</li>
+    <li><span class="who">Susan Clayton</span>, Psychology Department, The College of Wooster</li>
+    <li><span class="who">Judy Wu</span>, Faculty of Health Sciences, Simon Fraser University</li>
+    <li><span class="who">Maya K. Gislason</span>, Faculty of Health Sciences, Simon Fraser University</li>
+    <li><span class="who">Dora Rebelo</span>, MHPSS Consultant, Iscte-University Institute of Lisbon</li>
+    <li><span class="who">Sonya L. Jakubec</span>, School of Nursing and Midwifery, Mount Royal University</li>
+    <li><span class="who">Rachel Davies</span>, BSc, MSc, PGCert, MRTPI, MIEnvSc</li>
+    <li><span class="who">Gina Martin</span>, Faculty of Health Disciplines, Athabasca University</li>
+    <li><span class="who">Abhay Singh Sachal</span>, Break The Divide; Faculty of Education, University of Regina</li>
+    <li><span class="who">Naomi Leung</span>, Climate Recentered, Solastalgia</li>
+    <li><span class="who">Steve Willis</span>, Herculean Climate Solutions</li>
+    <li><span class="who">Susan Bodnar, PhD</span>, Clinical Psychologist; Adjunct Associate Professor of Psychology, Teachers College, Columbia University; Principal Investigator, <a href="https://www.dewlab.org/" target="_blank" rel="noopener">DEWLab</a>; Co-editor of <em>Unmoored Yet Unbroken: Ecopsychology for a Changing World</em></li>
+    <li><span class="who">Tajrin Faurschou</span>, MSc Student, Climate Change and Global Health, School of Public Health, University of Alberta</li>
+  </ul>
+  <p class="contrib-note">Contributors reviewed individual modules or the curriculum as a whole; their listing does not imply endorsement of every statement by every contributor.</p>
 
-  <h2>5. Links to other websites</h2>
-  <p>The Site links to many external resources, including research articles, videos, and the websites of other organizations. This policy applies only to this Site. We encourage you to review the privacy policies of any website you visit through our links.</p>
-
-  <h2>6. Email</h2>
-  <p>If you contact us by email, we will receive the information you choose to send, and we will use it to respond to you. Please do not include sensitive personal information in an email.</p>
-
-  <h2>7. Children</h2>
-  <p>The Site is an educational resource intended for adults and professional learners. We do not knowingly collect personal information from children.</p>
-
-  <h2>8. Changes to this policy</h2>
-  <p>We may update this policy from time to time. The effective date above reflects the latest revision, and continued use of the Site after changes are posted constitutes acceptance of the revised policy.</p>
-
-  <h2>9. Contact</h2>
-  <p>Questions about this policy can be sent to <a href="mailto:team@mhcca.ca">team@mhcca.ca</a>.</p>
 </main>
 
 <footer class="site-footer">
@@ -130,6 +165,7 @@ a{color:var(--blue-600);}
         <h5>Learn</h5>
         <a href="course.html">The two-hour course</a>
         <a href="curriculum.html">The full curriculum</a>
+        <a href="about.html">About this resource</a>
         <a href="about.html#contributors">Contributors</a>
       </div>
       <div>
