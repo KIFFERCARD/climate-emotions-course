@@ -26,7 +26,9 @@
 html{background:var(--page-bg);}
 body{margin:0;background:var(--page-bg);font-family:var(--font-sans);color:var(--ink-700);line-height:1.65;}
 h1,h2{font-family:var(--font-head);letter-spacing:-.01em;color:var(--ink-900);}
-a{color:var(--blue-600);}
+a{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--blue-500);text-decoration-thickness:1px;text-underline-offset:3px;}
+a:hover{text-decoration-style:solid;color:var(--blue-700);}
+.btn,.nav-links>a,.brand,.site-footer a,.rel-card,.callout,.lhero-cta a,.rescard-cta a{text-decoration:none;}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
 .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.1) blur(10px);border-bottom:1px solid var(--line-soft);}
 .nav{display:flex;align-items:center;gap:18px;height:84px;}
@@ -51,7 +53,7 @@ a{color:var(--blue-600);}
 .site-footer h5{font-family:var(--font-head);color:#fff;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin:0 0 12px;}
 .site-footer a{color:rgba(255,255,255,.8);display:block;padding:3px 0;text-decoration:none;}
 .site-footer a:hover{color:#fff;}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:26px;}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;}
 .footer-grid p{color:#bfe0f4;max-width:34ch;}
 .brand-logo-white{filter:brightness(0) invert(1);height:56px;width:auto;display:block;margin-bottom:14px;}
 .land-ack{border-top:1px solid rgba(255,255,255,.16);margin-top:30px;padding-top:22px;}
@@ -72,7 +74,6 @@ a{color:var(--blue-600);}
       <span class="brand-sub">Understanding Climate Emotions</span>
     </div>
     <nav class="nav-links" aria-label="Main navigation">
-      <a href="index.html">Home</a>
       <a href="course.html">The Course</a>
       <a href="curriculum.html">The Curriculum</a>
       <a href="about.html">About</a>
@@ -142,19 +143,11 @@ a{color:var(--blue-600);}
         <p>Open-access learning resources on the emotional dimensions of the climate crisis, developed by the Mental Health and Climate Change Alliance and contributors.</p>
       </div>
       <div>
-        <h5>Learn</h5>
+        <h5>Site Navigation</h5>
         <a href="course.html">The two-hour course</a>
         <a href="curriculum.html">The full curriculum</a>
-        <a href="about.html#contributors">Contributors</a>
-      </div>
-      <div>
-        <h5>Related resources</h5>
-        <a href="https://facilitation.mhcca.ca/" target="_blank" rel="noopener">Facilitation guide</a>
-        <a href="https://evaluation.mhcca.ca/" target="_blank" rel="noopener">Evaluation toolkit</a>
-        <a href="https://mhcca.ca/initatives-library" target="_blank" rel="noopener">Initiatives library</a>
-      </div>
-      <div>
-        <h5>MHCCA</h5>
+        <a href="glossary.html">Glossary of key terms</a>
+        <a href="about.html">About</a>
         <a href="https://mhcca.ca/" target="_blank" rel="noopener">MHCCA home</a>
       </div>
     </div>

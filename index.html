@@ -39,7 +39,9 @@
 html{background:var(--page-bg);scroll-behavior:smooth;}
 body{margin:0;background:var(--page-bg);font-family:var(--font-sans);color:var(--ink-700);line-height:1.6;}
 h1,h2,h3,h4,h5{font-family:var(--font-head);letter-spacing:-.01em;color:var(--ink-900);}
-a{color:var(--blue-600);}
+a{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--blue-500);text-decoration-thickness:1px;text-underline-offset:3px;}
+a:hover{text-decoration-style:solid;color:var(--blue-700);}
+.btn,.nav-links>a,.brand,.site-footer a,.rel-card,.callout,.lhero-cta a,.rescard-cta a{text-decoration:none;}
 img{max-width:100%;}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
 .section{padding:64px 0;}
@@ -73,7 +75,7 @@ img{max-width:100%;}
 @media(max-width:560px){.brand .brand-logo{height:64px;}.brand .brand-sub{display:none;}}
 
 /* ---- eyebrow pill ---- */
-.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:var(--leaf-b);background:#fff;color:var(--blue-700);border:1px solid var(--teal-100);box-shadow:var(--shadow-sm);font-family:var(--font-head);font-weight:500;font-size:.82rem;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:var(--leaf-b);background:#fff;color:var(--blue-700);border:1px solid var(--teal-100);box-shadow:var(--shadow-sm);font-family:var(--font-head);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;}
 .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--moss-500);display:inline-block;}
 
 /* ---- hero: light, with an emotion-word cluster (unique to this site) ---- */
@@ -88,6 +90,16 @@ img{max-width:100%;}
 .lblob-4{bottom:-120px;left:36%;width:390px;height:230px;transform:rotate(-8deg);opacity:.55;filter:blur(32px);border-radius:58% 42% 33% 67% / 63% 30% 70% 37%;background:linear-gradient(118deg,rgba(23,111,140,.15) 0%,rgba(79,154,99,.18) 100%);}
 .lblob-5{bottom:-150px;right:-110px;width:480px;height:320px;transform:rotate(19deg);opacity:.7;filter:blur(36px);border-radius:34% 66% 57% 43% / 48% 39% 61% 52%;background:linear-gradient(300deg,rgba(47,125,79,.19) 0%,rgba(23,111,140,.13) 60%,rgba(20,112,175,.16) 100%);}
 @media(max-width:900px){.lblob-2,.lblob-4{display:none;}.lblob-1{width:380px;height:330px;}.lblob-3{width:400px;height:360px;}}
+/* blobs continuing through the light sections below the hero */
+body{overflow-x:hidden;}
+.section{position:relative;}
+.section>.wrap{position:relative;z-index:1;}
+.sblob{position:absolute;pointer-events:none;z-index:0;}
+.sblob-a{top:-40px;right:-170px;width:470px;height:340px;transform:rotate(12deg);opacity:.55;filter:blur(36px);border-radius:57% 43% 36% 64% / 40% 62% 38% 60%;background:linear-gradient(210deg,rgba(20,112,175,.17) 0%,rgba(79,154,99,.13) 100%);}
+.sblob-b{bottom:-90px;left:-180px;width:520px;height:360px;transform:rotate(-19deg);opacity:.6;filter:blur(40px);border-radius:38% 62% 60% 40% / 62% 36% 64% 38%;background:linear-gradient(120deg,rgba(23,111,140,.15) 0%,rgba(126,175,4,.10) 70%);}
+.sblob-c{top:30%;left:-150px;width:400px;height:300px;transform:rotate(8deg);opacity:.5;filter:blur(34px);border-radius:66% 34% 45% 55% / 48% 58% 42% 52%;background:linear-gradient(140deg,rgba(35,132,196,.14) 0%,rgba(47,125,79,.12) 100%);}
+.sblob-d{bottom:-70px;right:-140px;width:430px;height:290px;transform:rotate(-13deg);opacity:.65;filter:blur(38px);border-radius:44% 56% 63% 37% / 57% 41% 59% 43%;background:linear-gradient(310deg,rgba(79,154,99,.15) 0%,rgba(20,112,175,.13) 100%);}
+@media(max-width:900px){.sblob{display:none;}}
 .lhero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr 1fr;gap:44px;align-items:center;padding-top:64px;padding-bottom:72px;}
 .lhero h1{font-weight:600;font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.1;margin:20px 0 18px;color:var(--ink-900);}
 .lhero h1 .grad{background:linear-gradient(100deg,var(--blue-600) 0%,#176f8c 55%,var(--moss-600) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
@@ -175,7 +187,7 @@ img{max-width:100%;}
 .site-footer h5{font-family:var(--font-head);color:#fff;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin:0 0 12px;}
 .site-footer a{color:rgba(255,255,255,.8);display:block;padding:3px 0;text-decoration:none;}
 .site-footer a:hover{color:#fff;}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:26px;}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;}
 .footer-grid p{color:#bfe0f4;max-width:34ch;}
 .brand-logo-white{filter:brightness(0) invert(1);height:56px;width:auto;display:block;margin-bottom:14px;}
 .land-ack{border-top:1px solid rgba(255,255,255,.16);margin-top:30px;padding-top:22px;}
@@ -244,6 +256,8 @@ img{max-width:100%;}
 
   <!-- ===================== TWO RESOURCES ===================== -->
   <section class="section" id="resources">
+    <div class="sblob sblob-a" aria-hidden="true"></div>
+    <div class="sblob sblob-b" aria-hidden="true"></div>
     <div class="wrap">
       <div class="sec-head">
         <span class="kicker">Two ways in</span>
@@ -298,6 +312,8 @@ img{max-width:100%;}
 
   <!-- ===================== RELATED MHCCA RESOURCES ===================== -->
   <section class="section" id="related">
+    <div class="sblob sblob-c" aria-hidden="true"></div>
+    <div class="sblob sblob-d" aria-hidden="true"></div>
     <div class="wrap">
       <div class="sec-head">
         <span class="kicker">Part of a family of tools</span>
@@ -359,22 +375,12 @@ img{max-width:100%;}
         <p>Open-access learning resources on the emotional dimensions of the climate crisis, developed by the Mental Health and Climate Change Alliance and contributors.</p>
       </div>
       <div>
-        <h5>Learn</h5>
+        <h5>Site Navigation</h5>
         <a href="course.html">The two-hour course</a>
         <a href="curriculum.html">The full curriculum</a>
         <a href="glossary.html">Glossary of key terms</a>
-        <a href="about.html">About this resource</a>
-      </div>
-      <div>
-        <h5>Related resources</h5>
-        <a href="https://facilitation.mhcca.ca/" target="_blank" rel="noopener">Facilitation guide</a>
-        <a href="https://evaluation.mhcca.ca/" target="_blank" rel="noopener">Evaluation toolkit</a>
-        <a href="https://mhcca.ca/initatives-library" target="_blank" rel="noopener">Initiatives library</a>
-      </div>
-      <div>
-        <h5>MHCCA</h5>
+        <a href="about.html">About</a>
         <a href="https://mhcca.ca/" target="_blank" rel="noopener">MHCCA home</a>
-        <a href="about.html#contributors">Contributors</a>
       </div>
     </div>
     <div class="land-ack">

@@ -360,11 +360,12 @@ blockquote.bq + blockquote.bq { margin-top: -8px; }
   .module-page { display: block !important; page-break-after: always; }
 }
 
-/* ── external links: dotted underline, inherit text colour ── */
-.static-section a[href^="http"], .references-section ul.refs-list a[href^="http"] {
+/* ── links: dotted underline, inherit text colour (internal + external) ── */
+.static-section a, .references-section ul.refs-list a, .gterm .gdef a {
   color: inherit; text-decoration: none; border-bottom: 1px dotted var(--teal); }
-.static-section a[href^="http"]:hover, .references-section ul.refs-list a[href^="http"]:hover {
+.static-section a:hover, .references-section ul.refs-list a:hover, .gterm .gdef a:hover {
   color: var(--dark-teal); border-bottom-style: solid; background: var(--very-light-teal); }
+.sidebar-footer a { text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.6); }
 .indigenous-section a[href^="http"] { border-bottom-color: #2F7D46; }
 .indigenous-section a[href^="http"]:hover { color: #235C34; background: #E4F0E6; }
 
@@ -486,7 +487,7 @@ a.btn, .btn, a.btn:hover, .sec-card a.btn { text-decoration: none !important; bo
 <script>
 var MODULES = [{"id": "m1", "title": "Course Overview and Objectives", "short": "Course Overview and Objectives", "group": 0}];
 var TOTAL = 1;
-var TRANSCRIPTS = {"m1": "Course Overview and Objectives\nAudio Overview — Transcript\n\nWelcome to the Mental Health and Climate Change Alliance’s (MHCCA) Professional Certificate Course on Understanding Climate Emotions!\n\nThroughout the course, you will find audio overview sections like this one. These are opportunities to engage with course content in another way, preview the module’s full content, and engage multiple learning styles. While understanding that this privileges those that are not deaf or experiencing hearing loss, we offer this as an option for engagement alongside the transcripts and more full, written course content.\n\nIn this course, we will explore the complex relationship between climate change, mental health and emotions. We will delve into the diverse psychological impacts of climate change, such as eco-anxiety and climate grief, and discuss the ways in which individuals and communities can build resilience in the face of these challenges.\n\nBy the end of this course, you will have a deeper understanding of how climate change affects mental health directly and indirectly and the strategies that can be implemented to support mental well-being in a changing climate. Throughout the course, we will also examine the intersections of climate change and mental health, including how specific populations are disproportionately affected by both environmental and mental health challenges.\n\nWe will explore the role of advocacy and policy in addressing these issues and highlight the importance of integrating trauma-informed, culturally safe, and health-aware principles into climate action.\n"};
+var TRANSCRIPTS = {"m1": "Course Overview and Objectives\nAudio Overview — Transcript\n\nWelcome to the Mental Health and Climate Change Alliance’s (MHCCA) Understanding Climate Emotions Curriculum!\n\nThroughout the curriculum, you will find audio overview sections like this one. These are opportunities to engage with curriculum content in another way, preview the module’s full content, and engage multiple learning styles. While understanding that this privileges those that are not deaf or experiencing hearing loss, we offer this as an option for engagement alongside the transcripts and more full, written curriculum content.\n\nIn this curriculum, we will explore the complex relationship between climate change, mental health and emotions. We will delve into the diverse psychological impacts of climate change, such as eco-anxiety and climate grief, and discuss the ways in which individuals and communities can build resilience in the face of these challenges.\n\nBy the end of this curriculum, you will have a deeper understanding of how climate change affects mental health directly and indirectly and the strategies that can be implemented to support mental well-being in a changing climate. Throughout the curriculum, we will also examine the intersections of climate change and mental health, including how specific populations are disproportionately affected by both environmental and mental health challenges.\n\nWe will explore the role of advocacy and policy in addressing these issues and highlight the importance of integrating trauma-informed, culturally safe, and health-aware principles into climate action.\n"};
 var PREV_LINK = null;
 var NEXT_LINK = null;
 </script>

@@ -688,8 +688,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
     <div class="progress-text" id="progressText">0% complete</div>
   </div>
   <div class="sidebar-footer">
-    <p><a href="index.html" style="color:rgba(255,255,255,0.85);text-decoration:underline;">&larr; All Understanding Climate Emotions resources</a></p>
-    <p>This course is based on the professional development curriculum developed by the MHCCA and contributors. For the full curriculum and a complete list of contributors, see the <a href="curriculum.html" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.85);text-decoration:underline;">Understanding Climate Emotions Curriculum</a>.</p>
+    <p>This course is based on the professional development curriculum developed by the MHCCA and contributors. For the full curriculum and a complete list of contributors, see the <a href="index.html" style="color:rgba(255,255,255,0.85);text-decoration:underline;">Understanding Climate Emotions Curriculum</a>.</p>
     <p>© Mental Health and Climate Change Alliance. <strong>Open access</strong> — distributed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.85);text-decoration:underline;">Creative Commons BY-SA 4.0</a>. Use with attribution; share alike.</p>
   </div>
 </div>
@@ -4261,4 +4260,9 @@ loadProgress();
 try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
 updateProgress();
 // If a module was loaded from saved state, activate its AV
-if (typeof currentModule === '
+if (typeof currentModule === 'number' && currentModule >= 0) {
+  avGoTo(currentModule, avState[currentModule].current);
+}
+</script>
+</body>
+</html>
