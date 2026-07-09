@@ -76,7 +76,7 @@ body { font-family: 'Open Sans', 'Segoe UI', system-ui, -apple-system, sans-seri
 .static-section h2 { font-size: 23px; color: var(--dark-teal); margin: 34px 0 14px; font-weight: 700; }
 .static-section h2:first-child { margin-top: 0; }
 .static-section h3 { font-size: 18px; color: var(--teal); margin: 22px 0 10px; font-weight: 600; }
-.static-section .h4 { font-size: 15.5px; color: var(--dark); margin: 18px 0 8px; font-weight: 700; }
+.static-section h4:not(.bsub), .static-section .h4 { font-size: 15.5px; color: var(--dark); margin: 18px 0 8px; font-weight: 700; }
 .static-section p { font-size: 15.5px; color: var(--text); margin-bottom: 15px; }
 .static-section ul, .static-section ol { margin: 0 0 16px 26px; padding-left: 0; }
 .static-section li { margin-bottom: 8px; font-size: 15.5px; color: var(--text); padding-left: 4px; }
@@ -880,5 +880,6 @@ window.addEventListener('hashchange', function(){
   if (i >= 0 && i !== current) showModule(i, false);
 });
 </script>
+<script src="feedback-widget.js" defer></script>
 </body>
 </html>
